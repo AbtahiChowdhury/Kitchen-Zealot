@@ -1,14 +1,19 @@
-<nav class = "navbar navbar-expand-sm bg-light navbar-light fixed-top">
+<nav class = "navbar navbar-expand-md bg-dark navbar-dark fixed-top">
     <a class = "navbar-brand" routerLink="/">Kitchen Zealot</a>
 
-    <ul class = "navbar-nav">
-        <li class = "nav-item">
-            <a class = "nav-link" routerLink="/menu">Menu</a>
-        </li>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNavBar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id = "collapseNavBar">
+        <ul class = "navbar-nav ml-auto">
+            <li class = "nav-item">
+                <a class = "nav-link" routerLink="/menu">Menu</a>
+            </li>
 
-        <li class = "nav-item">
-            <a class = "nav-link" routerLink="/login">Login</a>
-        </li>
-    </ul>
+            <li class = "nav-item">
+                <a class = "nav-link" routerLink="/login">Login</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
