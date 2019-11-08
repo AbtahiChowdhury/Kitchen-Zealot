@@ -1,0 +1,24 @@
+<div *ngIf = "product.title" class="card">
+        <img [src]="product.imageUrl" alt="{{product.title}}" class="card-img-top" style="width:100%;height:20vw;object-fit:cover;" *ngIf = "product.imageUrl">
+        <div class="card-body">
+            <h4 class="card-title">{{product.title}}</h4>
+            <p class="card-text">{{product.price | currency:'USD':'symbol'}}</p>
+        </div>
+        <div *ngIf = "showActions" class="card-footer">
+                <button class = "btn btn-primary btn-block">Add to Cart</button>
+                <ng-template #updateQuantity>
+                    <div class="row no-gutters">
+                        <div class = "col-2">
+                            <button class="btn btn-secondary btn-block">-</button>
+                        </div>
+                        <div class = "col text-center">
+                            in cart
+                        </div>
+                        <div class = "col-2">
+                            <button class="btn btn-secondary btn-block">+</button>
+                        </div>
+                    </div>
+                </ng-template>
+        </div>
+    </div>
+    
