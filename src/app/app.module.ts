@@ -17,6 +17,7 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { ProductCardComponent } from './components/shared/product-card/product-card.component';
 import { RegisterComponent } from './components/homepage/register/register.component';
+import { CustomerComponent } from './components/customers/customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RegisterComponent } from './components/homepage/register/register.compo
     MenuComponent,
     ProductCardComponent,
     RegisterComponent,
+    CustomerComponent,
   ],
   imports: [
     BrowserModule,
