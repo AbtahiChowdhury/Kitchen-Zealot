@@ -9,6 +9,10 @@ import { CustomerComponent } from './components/customers/customer/customer.comp
 import { OrderComponent } from './components/customers/order/order.component';
 import { MyOrdersComponent } from './components/customers/my-orders/my-orders.component';
 import { AuthGuardService } from './services/guards/auth-guard.service';
+import { ManagerComponent } from './components/managers/manager/manager.component';
+import { CookComponent } from './components/cooks/cook/cook.component';
+import { DeliveryPersonComponent } from './components/delivery-people/delivery-person/delivery-person.component';
+import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
 
 
 const routes: Routes = [
@@ -21,7 +25,11 @@ const routes: Routes = [
   {path:"customer",component:CustomerComponent, children:[
     {path:"order",component:OrderComponent},
     {path:"my-orders",component:MyOrdersComponent}
-  ]}
+  ]},
+  {path:"manager", component:ManagerComponent},
+  {path:"cook",component:CookComponent},
+  {path:"delivery-person",component:DeliveryPersonComponent},
+  {path:"salesperson",component:SalespersonComponent}
 ];
 
 @NgModule({

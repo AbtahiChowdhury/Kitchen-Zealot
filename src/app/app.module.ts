@@ -21,6 +21,10 @@ import { CustomerComponent } from './components/customers/customer/customer.comp
 import { CustomerNavbarComponent } from './components/customers/customer-navbar/customer-navbar.component';
 import { OrderComponent } from './components/customers/order/order.component';
 import { MyOrdersComponent } from './components/customers/my-orders/my-orders.component';
+import { ManagerComponent } from './components/managers/manager/manager.component';
+import { CookComponent } from './components/cooks/cook/cook.component';
+import { DeliveryPersonComponent } from './components/delivery-people/delivery-person/delivery-person.component';
+import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,10 @@ import { MyOrdersComponent } from './components/customers/my-orders/my-orders.co
     CustomerNavbarComponent,
     OrderComponent,
     MyOrdersComponent,
+    ManagerComponent,
+    CookComponent,
+    DeliveryPersonComponent,
+    SalespersonComponent,
   ],
   imports: [
     BrowserModule,
