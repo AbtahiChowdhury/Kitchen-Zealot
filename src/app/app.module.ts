@@ -18,6 +18,9 @@ import { environment } from 'src/environments/environment';
 import { ProductCardComponent } from './components/shared/product-card/product-card.component';
 import { RegisterComponent } from './components/homepage/register/register.component';
 import { CustomerComponent } from './components/customers/customer/customer.component';
+import { CustomerNavbarComponent } from './components/customers/customer-navbar/customer-navbar.component';
+import { OrderComponent } from './components/customers/order/order.component';
+import { MyOrdersComponent } from './components/customers/my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { CustomerComponent } from './components/customers/customer/customer.comp
     ProductCardComponent,
     RegisterComponent,
     CustomerComponent,
+    CustomerNavbarComponent,
+    OrderComponent,
+    MyOrdersComponent,
   ],
   imports: [
     BrowserModule,
