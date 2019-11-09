@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { auth } from 'firebase/app';
+import { auth, FirebaseError } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { take } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
@@ -13,6 +12,7 @@ import { Router } from '@angular/router';
 export class AuthService 
 {
   user$:Observable<firebase.User>;
+  error:FirebaseError;
   constructor(private afAuth:AngularFireAuth,private userServe:UserService,private router:Router) { 
     this.user$ = afAuth.authState;
   }
@@ -25,7 +25,7 @@ export class AuthService
           this.router.navigateByUrl("/" + user.type);
         })
       })
-    });
+    }).catch(error=>{this.error = error});
   }
 
   register(email:string, password:string)
@@ -37,5 +37,6 @@ export class AuthService
   logout()
   {
     this.afAuth.auth.signOut();
+    this.router.navigateByUrl("");
   }
 }
