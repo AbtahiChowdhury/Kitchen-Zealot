@@ -1,0 +1,13 @@
+.bodybg {
+    background-image: url(./../../../../assets/loginbg.jpg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+    font-size: 20pt;
+}
