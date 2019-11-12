@@ -15,7 +15,7 @@ export class CustomerNavbarComponent implements OnInit {
       if(user)
       {
         this.userServe.getUser(user.uid).pipe(take(1)).subscribe(user=>{
-          this.username = user.firstName;
+          this.username = user.name;
         })
       }
       else
