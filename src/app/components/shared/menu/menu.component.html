@@ -2,7 +2,7 @@
     <div class="row">
         <ng-container *ngFor = "let product of products$|async; let i = index">
             <div class="col-4">
-                <product-card [product] = "product" [showActions] = "false"></product-card>
+                <product-card [product] = "product" [showActions] = "showActions"></product-card>
             </div>
             <div *ngIf = "(i+1) % 3 == 0"class = "w-100"></div>
         </ng-container>

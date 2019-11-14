@@ -26,6 +26,7 @@ import { CookComponent } from './components/cooks/cook/cook.component';
 import { DeliveryPersonComponent } from './components/delivery-people/delivery-person/delivery-person.component';
 import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
 import { ManagerNavbarComponent } from './components/managers/manager-navbar/manager-navbar.component';
+import { CartComponent } from './components/customers/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ManagerNavbarComponent } from './components/managers/manager-navbar/man
     DeliveryPersonComponent,
     SalespersonComponent,
     ManagerNavbarComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

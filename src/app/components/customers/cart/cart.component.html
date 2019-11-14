@@ -1,0 +1,16 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let cartItem of shoppingCart">
+            <td>{{cartItem.product.title}}</td>
+            <td>{{cartItem.product.price|currency}}</td>
+            <td>{{cartItem.quantity}}</td>
+        </tr>
+    </tbody>
+</table>
