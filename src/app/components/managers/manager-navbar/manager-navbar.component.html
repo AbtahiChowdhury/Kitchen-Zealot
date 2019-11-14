@@ -1,5 +1,5 @@
 <nav class = "navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-        <a class = "navbar-brand" routerLink="/customer">Kitchen Zealot</a>
+        <a class = "navbar-brand" routerLink="/">Kitchen Zealot</a>
     
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNavBar">
             <span class="navbar-toggler-icon"></span>
@@ -7,13 +7,18 @@
         <div class="collapse navbar-collapse" id = "collapseNavBar">
             <ul class = "navbar-nav ml-auto">
                 <li class = "nav-item">
-                    <a class = "nav-link" routerLink="order">Order</a>
+                    <a class = "nav-link" routerLink="order">Employees</a>
+                </li>
+                <li class = "nav-item">
+                    <a class = "nav-link" routerLink="order">Customers</a>
+                </li>
+                <li class = "nav-item">
+                    <a class = "nav-link" routerLink="order">Orders</a>
                 </li>
 
                 <li class = "nav-item dropdown">
-                    <a class = "nav-link dropdown-toggle" id ="navbardrop" data-toggle="dropdown"style="cursor:pointer;">{{username}}</a>
+                    <a class = "nav-link dropdown-toggle" id ="navbardrop" data-toggle="dropdown"style="cursor:pointer;">{{ username }}</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class = "dropdown-item" routerLink="my-orders">My Orders</a>
                         <a class="dropdown-item" routerLink="profile">Profile</a>
                         <a class="dropdown-item" (click) = "signOut()">Sign Out</a>
                     </div>
@@ -21,4 +26,3 @@
             </ul>
         </div>
     </nav>
-        

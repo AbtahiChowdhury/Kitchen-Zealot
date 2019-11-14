@@ -3,7 +3,7 @@ import { CartItem } from './cart-item';
 
 export interface Customer extends User
 {
-    uid?:string;
+    uid:string;
     address:string;
     cardNumber?:string;
     CVV?:number;

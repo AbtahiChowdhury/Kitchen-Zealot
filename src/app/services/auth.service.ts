@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
+import { EmployeeService } from './employee.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService
 {
   user$:Observable<firebase.User>;
   error:FirebaseError;
-  constructor(private afAuth:AngularFireAuth,private userServe:UserService,private router:Router) { 
+  constructor(private afAuth:AngularFireAuth,private userServe:UserService,private emplServe:EmployeeService,private router:Router) { 
     this.user$ = afAuth.authState;
   }
 
@@ -22,7 +23,16 @@ export class AuthService
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(userCredentials=>{
       this.user$.pipe(take(1)).subscribe(user=>{
         this.userServe.getUser(user.uid).pipe(take(1)).subscribe(user=>{
-          this.router.navigateByUrl("/" + user.type);
+          if(user.type=="customer")
+          {
+            this.router.navigateByUrl("/" + user.type);
+          }
+          else
+          {
+            this.emplServe.getEmployee(user.uid).pipe(take(1)).subscribe(employee=>{
+              this.router.navigateByUrl("/" + employee.position);
+            })
+          }
         })
       })
     }).catch(error=>{this.error = error});

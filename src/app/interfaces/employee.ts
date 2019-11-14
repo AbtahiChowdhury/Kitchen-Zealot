@@ -2,7 +2,7 @@ import { User } from './user';
 
 export interface Employee extends User
 {
-    uid?:string;
+    uid:string;
     position:string;
     salary:number;
     averageRating?:number;

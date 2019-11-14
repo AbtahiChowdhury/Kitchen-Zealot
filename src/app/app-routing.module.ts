@@ -16,13 +16,14 @@ import { SalespersonComponent } from './components/salespeople/salesperson/sales
 
 
 const routes: Routes = [
-  {path:'', component:HomeComponent,canActivate:[AuthGuardService],children:[
+  {path:'', component:HomeComponent,children:[
     {path:'',component:HomeContentComponent},
     {path:'login',component:LoginComponent},
     {path:'menu',component:MenuComponent},
     {path:'register',component:RegisterComponent}
   ]},
   {path:"customer",component:CustomerComponent, children:[
+    {path:"",component:HomeContentComponent},
     {path:"order",component:OrderComponent},
     {path:"my-orders",component:MyOrdersComponent}
   ]},
