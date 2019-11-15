@@ -13,6 +13,7 @@ import { ManagerComponent } from './components/managers/manager/manager.componen
 import { CookComponent } from './components/cooks/cook/cook.component';
 import { DeliveryPersonComponent } from './components/delivery-people/delivery-person/delivery-person.component';
 import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
+import { CheckoutComponent } from './components/customers/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path:"customer",component:CustomerComponent, children:[
     {path:"",component:HomeContentComponent},
     {path:"order",component:OrderComponent},
-    {path:"my-orders",component:MyOrdersComponent}
+    {path:"my-orders",component:MyOrdersComponent},
+    {path:"checkout",component:CheckoutComponent}
   ]},
   {path:"manager", component:ManagerComponent},
   {path:"cook",component:CookComponent},
