@@ -13,10 +13,24 @@
             <td>{{cartItem.quantity}}</td>
         </tr>
         <tr>
+            <td>Subtotal</td>
+            <td>{{subtotal|currency}}</td>
+        </tr>
+        <ng-container *ngIf = "checkout">
+            <tr>
+                <td>Tax</td>
+                <td>+{{tax|currency}}</td>
+            </tr>
+            <tr>
+                <td>Customer Discount</td>
+                <td>-{{discount|currency}}</td>
+            </tr>
+            <tr>
                 <td>Total</td>
                 <td>{{total|currency}}</td>
             </tr>
+        </ng-container>
     </tbody>
 </table>
 
-<button class="btn btn-primary btn-block" routerLink = "/customer/checkout" >Order</button>
+<button *ngIf = "!checkout" class="btn btn-primary btn-block" routerLink = "/customer/checkout" >Order</button>

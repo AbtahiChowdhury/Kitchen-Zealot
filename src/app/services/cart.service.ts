@@ -58,4 +58,11 @@ export class CartService
     }));
   }
 
+  getUser()
+  {
+    return this.authServe.user$.pipe(switchMap(user=>{
+      return this.custServe.getUser(user.uid);
+    }));
+  }
+
 }

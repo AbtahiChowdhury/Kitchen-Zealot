@@ -1,1 +1,62 @@
-<p>checkout works!</p>
+<div class="row">
+    <div class="col-9">
+            <form #form = "ngForm" (ngSubmit)="checkout(form.value)">
+                <br>
+                <div class = "form-group">
+                    <label for="name">Name</label>
+                    <input [ngModel] = "(user$|async).name" type="text" required #name = "ngModel" name="name" class="form-control">
+                    <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
+                        Name is Required
+                    </div>
+                </div>
+        
+                <div class = "form-group">
+                    <label for="phone">Phone Number</label>
+                    <input ngModel type="tel" required #phone = "ngModel" name="phone" class="form-control">
+                    <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
+                        Password is Required
+                    </div>
+                </div>
+
+                <div class = "form-group">
+                    <label for="address">Address</label>
+                    <input ngModel type="text" required #address = "ngModel" name="address" class="form-control">
+                    <div *ngIf = "address.touched && address.invalid" class="alert alert-danger">
+                        Address is Required
+                    </div>
+                </div>
+
+                <div class = "form-group">
+                    <label for="nameOnCard">Name on Card</label>
+                    <input ngModel type="text" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
+                    <div *ngIf = "nameOnCard.touched && nameOnCard.invalid" class="alert alert-danger">
+                        Name on Card is Required
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <label for="cardNumber">Credit Card Number</label>
+                    <input ngModel type="text" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
+                    <div *ngIf = "cardNumber.touched && cardNumber.invalid" class="alert alert-danger">
+                        Credit Card Number is Required
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <label for="expirationDate">Expiration Date</label>
+                    <input ngModel type="text" required #expirationDate = "ngModel" name="expirationDate" class="form-control">
+                    <div *ngIf = "expirationDate.touched && expirationDate.invalid" class="alert alert-danger">
+                        Expiration Date is Required
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <label for="CVV">CVV</label>
+                    <input ngModel type="text" required #CVV = "ngModel" name="CVV" class="form-control">
+                    <div *ngIf = "CVV.touched && CVV.invalid" class="alert alert-danger">
+                        CVV is Required
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block">Order</button>
+                <br>
+            </form>
+    </div>
+    <div class="col-3"><app-cart [checkout] = "true" ></app-cart></div>
+</div>

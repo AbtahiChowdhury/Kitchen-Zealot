@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { CartItem } from 'src/app/interfaces/cart-item';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
@@ -11,17 +11,25 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit,OnDestroy 
 {
   shoppingCart$:Subscription;
-  total:number;
+  subtotal:number = 0;
+  tax:number = 0;
+  discount:number = 0;
+  total:number = 0;
   shoppingCart:CartItem[] = null;
+
+  @Input('checkout') checkout = false;
   constructor(private cartServe:CartService)
   { 
     this.shoppingCart$ = this.cartServe.getCustomer().subscribe(customer=>{
       this.shoppingCart = customer.shoppingCart;
-      this.total = 0;
+      this.subtotal = 0;
       for(let cartItem of customer.shoppingCart)
       {
-        this.total += cartItem.product.price * cartItem.quantity;
+        this.subtotal += cartItem.product.price * cartItem.quantity;
       }
+      this.tax = this.subtotal * .08;
+      this.discount = this.tax;
+      this.total = this.subtotal;
     });
   }
 
