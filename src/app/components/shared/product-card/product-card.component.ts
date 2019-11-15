@@ -1,7 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
-import { AuthService } from 'src/app/services/auth.service';
-import { CustomerService } from 'src/app/services/customer.service';
+import { CartService } from 'src/app/services/cart.service';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -13,26 +12,36 @@ export class ProductCardComponent implements OnInit {
 
   @Input('product') product: Product;
   @Input('showActions') showActions = false;
+  quantity:number = 0;
 
-  constructor(private authServe:AuthService,private custServe:CustomerService) { }
+  constructor(private cartServe:CartService) 
+  {
+    this.updateQuanity();
+  }
 
   addToCart()
   {
-    this.authServe.user$.pipe(take(1)).subscribe(user=>{
-      this.custServe.getCustomer(user.uid).pipe(take(1)).subscribe(customer=>{
-        for(let cartItem of customer.shoppingCart)
+    this.cartServe.addToCart(this.product);
+    this.updateQuanity();
+  }
+
+  removeFromCart()
+  {
+    this.cartServe.removeFromCart(this.product);
+    this.updateQuanity();
+  }
+
+  updateQuanity()
+  {
+    this.cartServe.getCustomer().pipe(take(1)).subscribe(customer=>{
+      for(let cartItem of customer.shoppingCart)
+      {
+        if(cartItem.product.title == this.product.title)
         {
-          if(cartItem.product.title == this.product.title)
-          {
-            cartItem.quantity += 1;
-            this.custServe.updateCustomer(user.uid,customer);
-            return;
-          }
+          this.quantity = cartItem.quantity;
         }
-        customer.shoppingCart.push({product:this.product,quantity:1});
-        this.custServe.updateCustomer(user.uid,customer);
-      });
-    });
+      }
+    })
   }
 
   ngOnInit() {
