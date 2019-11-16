@@ -41,11 +41,19 @@ export class CheckoutComponent implements OnInit {
   
   checkout(form)
   {
-    let order:Order = {contents:null,orderedBy:null};
+    let order:Order = {contents:null,orderedBy:null,orderedOn:null,subtotal:0,tax:0,discount:0,total:0};
     this.cartServe.getCustomer().pipe(take(1)).subscribe(customer=>{
       this.cartServe.getUser().pipe(take(1)).subscribe(user=>{
         order.contents = customer.shoppingCart;
         order.orderedBy = user.uid;
+        order.orderedOn = new Date();
+        for(let cartItem of order.contents)
+        {
+          order.subtotal += cartItem.product.price * cartItem.quantity;
+        }
+        order.tax = order.subtotal * .08;
+        order.discount = order.tax;
+        order.total = order.subtotal;
         this.orderServe.addOrder(order);
         customer.shoppingCart = [];
         this.cartServe.updateCart(customer);

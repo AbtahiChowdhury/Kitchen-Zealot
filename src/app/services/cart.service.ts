@@ -54,16 +54,12 @@ export class CartService
 
   getCustomer()
   {
-    return this.authServe.user$.pipe(switchMap(user=>{
-      return this.custServe.getCustomer(user.uid)
-    }));
+    return this.custServe.getCurrentCustomer();
   }
 
   getUser()
   {
-    return this.authServe.user$.pipe(switchMap(user=>{
-      return this.custServe.getUser(user.uid);
-    }));
+    return this.custServe.getCurrentUser();
   }
 
   updateCart(customer:Customer)
