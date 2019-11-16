@@ -4,9 +4,9 @@ export interface Order
 {
     uid?:string;
     orderedBy:string;
-    cookedBy:string;
-    deliveredBy:string;
-    foodRating:number;
-    deliveryRating:number;
+    cookedBy?:string;
+    deliveredBy?:string;
+    foodRating?:number;
+    deliveryRating?:number;
     contents:CartItem[];
 }
