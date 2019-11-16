@@ -54,7 +54,9 @@ export class CheckoutComponent implements OnInit {
         order.tax = order.subtotal * .08;
         order.discount = order.tax;
         order.total = order.subtotal;
-        this.orderServe.addOrder(order);
+        let id = this.orderServe.addOrder(order);
+        order.uid = id;
+        this.orderServe.updateOrder(id,order);
         customer.shoppingCart = [];
         this.cartServe.updateCart(customer);
         this.router.navigateByUrl("/customer/my-orders");

@@ -18,11 +18,19 @@ export class OrderService {
 
   addOrder(order:Order)
   {
-    this.orderCollection.add(order);
+    let id = this.afs.createId()
+    this.orderCollection.doc(id).set(order);
+    return id;
   }
 
   removeOrder(order:Order)
   {
     this.afs.doc("orders/" + order.uid).delete();
   }
+
+  updateOrder(uid:string,order:Order)
+  {
+    this.afs.doc("orders/" + uid).update(order);
+  }
+
 }

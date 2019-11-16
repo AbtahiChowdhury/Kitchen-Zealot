@@ -15,6 +15,7 @@ import { DeliveryPersonComponent } from './components/delivery-people/delivery-p
 import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
 import { CheckoutComponent } from './components/customers/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
+import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:"customer",component:CustomerComponent, children:[
     {path:"",component:HomeContentComponent},
     {path:"order",component:OrderComponent},
+    {path:"my-orders/:uid",component:ViewOrderComponent},
     {path:"my-orders",component:MyOrdersComponent},
     {path:"checkout",component:CheckoutComponent},
     {path:"profile",component:ProfileComponent}

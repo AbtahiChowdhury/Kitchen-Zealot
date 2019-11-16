@@ -29,6 +29,7 @@ import { ManagerNavbarComponent } from './components/managers/manager-navbar/man
 import { CartComponent } from './components/customers/cart/cart.component';
 import { CheckoutComponent } from './components/customers/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
+import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ProfileComponent } from './components/customers/profile/profile.compone
     CartComponent,
     CheckoutComponent,
     ProfileComponent,
+    ViewOrderComponent,
   ],
   imports: [
     BrowserModule,
