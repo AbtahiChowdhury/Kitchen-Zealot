@@ -28,6 +28,7 @@ import { SalespersonComponent } from './components/salespeople/salesperson/sales
 import { ManagerNavbarComponent } from './components/managers/manager-navbar/manager-navbar.component';
 import { CartComponent } from './components/customers/cart/cart.component';
 import { CheckoutComponent } from './components/customers/checkout/checkout.component';
+import { ProfileComponent } from './components/customers/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CheckoutComponent } from './components/customers/checkout/checkout.comp
     ManagerNavbarComponent,
     CartComponent,
     CheckoutComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

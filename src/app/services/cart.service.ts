@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { CustomerService } from './customer.service';
 import { take, switchMap } from 'rxjs/operators';
 import { Product } from '../interfaces/product';
+import { Customer } from '../interfaces/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,13 @@ export class CartService
     return this.authServe.user$.pipe(switchMap(user=>{
       return this.custServe.getUser(user.uid);
     }));
+  }
+
+  updateCart(customer:Customer)
+  {
+    this.authServe.user$.pipe(take(1)).subscribe(user=>{
+      this.custServe.updateCustomer(user.uid,customer);
+    })
   }
 
 }

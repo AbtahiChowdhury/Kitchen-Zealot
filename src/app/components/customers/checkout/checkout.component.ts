@@ -4,6 +4,7 @@ import { take } from 'rxjs/operators';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/interfaces/order';
 import { OrderComponent } from '../order/order.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -18,7 +19,7 @@ export class CheckoutComponent implements OnInit {
   customerCardNumber:string = "";
   customerCVV:number = 0;
   customerExpirationDate:string = "";
-  constructor(private cartServe:CartService,private orderServe:OrderService) 
+  constructor(private cartServe:CartService,private orderServe:OrderService,private router:Router) 
   { 
     this.cartServe.getUser().pipe(take(1)).subscribe(user=>{
       this.userName = user.name;
@@ -46,6 +47,9 @@ export class CheckoutComponent implements OnInit {
         order.contents = customer.shoppingCart;
         order.orderedBy = user.uid;
         this.orderServe.addOrder(order);
+        customer.shoppingCart = [];
+        this.cartServe.updateCart(customer);
+        this.router.navigateByUrl("/customer/my-orders");
       })
     })
   }

@@ -14,6 +14,7 @@ import { CookComponent } from './components/cooks/cook/cook.component';
 import { DeliveryPersonComponent } from './components/delivery-people/delivery-person/delivery-person.component';
 import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
 import { CheckoutComponent } from './components/customers/checkout/checkout.component';
+import { ProfileComponent } from './components/customers/profile/profile.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
     {path:"",component:HomeContentComponent},
     {path:"order",component:OrderComponent},
     {path:"my-orders",component:MyOrdersComponent},
-    {path:"checkout",component:CheckoutComponent}
+    {path:"checkout",component:CheckoutComponent},
+    {path:"profile",component:ProfileComponent}
   ]},
   {path:"manager", component:ManagerComponent},
   {path:"cook",component:CookComponent},
