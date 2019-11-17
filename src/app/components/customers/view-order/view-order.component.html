@@ -1,2 +1,66 @@
-<p>view-order works!</p>
-<p>{{uid}}</p>
+<table class="table table-bordered">
+    <tr style="border: solid black 5px;">
+        <td style="border: solid black 5px;"class = "bg-primary">Order Id:</td>
+        <td>{{uid}}</td>
+    </tr>
+
+    <tr style="border: solid black 5px;">
+        <td style="border: solid black 5px;" class = "bg-primary" >Ordered On:</td>
+        <td>{{orderedOn.seconds*1000|date:'medium'}}</td>
+    </tr>
+
+    <tr *ngIf = "cookedBy" style="border: solid black 5px;">
+        <td style="border: solid black 5px;" class = "bg-primary" >Cooked By:</td>
+        <td>{{cookedBy}}</td>
+    </tr>
+
+    <tr *ngIf = "deliveredBy" style="border: solid black 5px;">
+        <td style="border: solid black 5px;" class = "bg-primary" >Delivered By:</td>
+        <td>{{deliveredBy}}</td>
+    </tr>
+
+    <tr *ngIf = "deliveredBy" style="border: solid black 5px;">
+        <td style="border: solid black 5px;" class = "bg-primary" >Food Rating:</td>
+        <td>{{foodRating}}</td>
+    </tr>
+
+    <tr *ngIf = "deliveredBy" style="border: solid black 5px;">
+        <td style="border: solid black 5px;" class = "bg-primary" >Delivery Rating:</td>
+        <td>{{deliveryRating}}</td>
+    </tr>
+
+    <tr style="border: solid black 5px;">
+        <td style="border: solid black 5px;" class = "bg-primary" >Contents:</td>
+        <td>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let cartItem of contents">
+                        <td>{{cartItem.product.title}}</td>
+                        <td>{{cartItem.product.price|currency}}</td>
+                        <td>{{cartItem.quantity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+
+    <tr style="border: solid black 5px;">
+        <td style="border: solid black 5px;" class = "bg-primary" >Cost:</td>
+        <td>
+            <div>Subtotal: {{subtotal|currency}}</div>
+            <div>Tax: +{{tax|currency}}</div>
+            <div>Discount: -{{discount|currency}}</div>
+            <div>Total: {{total|currency}}</div>
+        </td>
+    </tr>
+    
+</table>
+
+

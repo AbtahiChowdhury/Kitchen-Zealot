@@ -33,4 +33,10 @@ export class OrderService {
     this.afs.doc("orders/" + uid).update(order);
   }
 
+  getOrder(uid:string):Observable<Order>
+  {
+    return this.afs.doc("orders/" + uid).valueChanges() as Observable<Order>;
+  }
+
+
 }

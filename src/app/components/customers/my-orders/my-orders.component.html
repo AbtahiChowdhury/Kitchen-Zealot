@@ -13,9 +13,9 @@
         <tr *ngFor = "let order of myOrders">
             <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
             <td>{{order.total}}</td>
-            <td>Delivered On</td>
-            <td>Food Rating</td>
-            <td>Delivery Rating</td>
+            <td *ngIf = "order.deliveredOn">Delivered On</td>
+            <td *ngIf = "order.foodRating">Food Rating</td>
+            <td *ngIf = "order.deliveryRating">Delivery Rating</td>
             <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
         </tr>
     </tbody>
