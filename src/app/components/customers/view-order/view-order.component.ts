@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouteConfigLoadStart } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 import { take } from 'rxjs/operators';
 import { CartItem } from 'src/app/interfaces/cart-item';
@@ -26,7 +26,7 @@ export class ViewOrderComponent implements OnInit {
   { 
     this.uid = this.aRoute.snapshot.paramMap.get("uid");
     this.orderServe.getOrder(this.uid).pipe(take(1)).subscribe(order=>{
-      this.orderedOn = order.orderedOn;
+      this.orderedOn = order.orderedOn as Date;
       this.cookedBy = order.cookedBy ? order.cookedBy : null;
       this.deliveredBy = order.deliveredBy ? order.deliveredBy : null;
       this.foodRating = order.foodRating ? order.foodRating : null;

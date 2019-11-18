@@ -33,7 +33,9 @@ const routes: Routes = [
     {path:"checkout",component:CheckoutComponent},
     {path:"profile",component:ProfileComponent}
   ]},
-  {path:"manager", component:ManagerComponent},
+  {path:"manager", component:ManagerComponent, children:[
+    {path:"",component:HomeContentComponent},
+  ]},
   {path:"cook",component:CookComponent},
   {path:"delivery-person",component:DeliveryPersonComponent},
   {path:"salesperson",component:SalespersonComponent}
