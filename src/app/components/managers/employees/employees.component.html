@@ -1,0 +1,16 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employeesArr">
+            <td>{{name}}</td>
+            <td>{{employee.position|uppercase}}</td>
+            <td><a class = "btn btn-primary" [routerLink] = "['/manager/employees/',employee.uid]">View</a></td>
+        </tr>
+    </tbody>
+</table>

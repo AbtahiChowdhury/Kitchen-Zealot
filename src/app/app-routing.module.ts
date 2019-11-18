@@ -16,6 +16,12 @@ import { SalespersonComponent } from './components/salespeople/salesperson/sales
 import { CheckoutComponent } from './components/customers/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
 import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
+import { EmployeesComponent } from './components/managers/employees/employees.component';
+import { CustomersComponent } from './components/managers/customers/customers.component';
+import { OrdersComponent } from './components/managers/orders/orders.component';
+import { ViewEmployeeComponent } from './components/managers/view-employee/view-employee.component';
+import { ViewCustomerComponent } from './components/managers/view-customer/view-customer.component';
+import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
 
 
 const routes: Routes = [
@@ -35,6 +41,12 @@ const routes: Routes = [
   ]},
   {path:"manager", component:ManagerComponent, children:[
     {path:"",component:HomeContentComponent},
+    {path:"employees/:uid",component:ViewEmployeeComponent},
+    {path:"employees",component:EmployeesComponent},
+    {path:"customers/:uid",component:ViewCustomerComponent},
+    {path:"customers",component:CustomersComponent},
+    {path:"orders/:uid",component:ViewAllOrdersComponent},
+    {path:"orders",component:OrdersComponent},
   ]},
   {path:"cook",component:CookComponent},
   {path:"delivery-person",component:DeliveryPersonComponent},

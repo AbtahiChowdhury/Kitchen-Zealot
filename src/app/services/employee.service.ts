@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Employee } from '../interfaces/employee';
 import { UserService } from './user.service';
 import { User } from '../interfaces/user';
+import { AuthService } from './auth.service';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class EmployeeService {
   employeeCollection: AngularFirestoreCollection<Employee>;
   employeesObservable: Observable<Employee[]>;
 
-  constructor(private afs:AngularFirestore,private userServe:UserService) { 
+  constructor(private afs:AngularFirestore, private userServe:UserService) { 
     this.employeeCollection = this.afs.collection('employees');
     this.employeesObservable = this.employeeCollection.valueChanges({idfield:"uid"});
   }

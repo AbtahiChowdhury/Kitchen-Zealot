@@ -11,7 +11,7 @@ import { CartItem } from 'src/app/interfaces/cart-item';
 })
 export class ViewOrderComponent implements OnInit {
   uid:string;
-  orderedOn:Date;
+  orderedOn:any;
   cookedBy:string;
   deliveredBy:string;
   foodRating:number;
@@ -26,7 +26,7 @@ export class ViewOrderComponent implements OnInit {
   { 
     this.uid = this.aRoute.snapshot.paramMap.get("uid");
     this.orderServe.getOrder(this.uid).pipe(take(1)).subscribe(order=>{
-      this.orderedOn = order.orderedOn as Date;
+      this.orderedOn = order.orderedOn;
       this.cookedBy = order.cookedBy ? order.cookedBy : null;
       this.deliveredBy = order.deliveredBy ? order.deliveredBy : null;
       this.foodRating = order.foodRating ? order.foodRating : null;

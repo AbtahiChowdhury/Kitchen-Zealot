@@ -30,6 +30,12 @@ import { CartComponent } from './components/customers/cart/cart.component';
 import { CheckoutComponent } from './components/customers/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
 import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
+import { EmployeesComponent } from './components/managers/employees/employees.component';
+import { CustomersComponent } from './components/managers/customers/customers.component';
+import { OrdersComponent } from './components/managers/orders/orders.component';
+import { ViewEmployeeComponent } from './components/managers/view-employee/view-employee.component';
+import { ViewCustomerComponent } from './components/managers/view-customer/view-customer.component';
+import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +60,12 @@ import { ViewOrderComponent } from './components/customers/view-order/view-order
     CheckoutComponent,
     ProfileComponent,
     ViewOrderComponent,
+    EmployeesComponent,
+    CustomersComponent,
+    OrdersComponent,
+    ViewEmployeeComponent,
+    ViewCustomerComponent,
+    ViewAllOrdersComponent,
   ],
   imports: [
     BrowserModule,
