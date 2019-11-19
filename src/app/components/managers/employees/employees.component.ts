@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/interfaces/employee';
 import { take } from 'rxjs/operators';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-employees',
@@ -10,19 +11,16 @@ import { take } from 'rxjs/operators';
 })
 export class EmployeesComponent implements OnInit {
 
-  employeesArr:Employee[] = new Array();
-  name:string;
+  employeesArr:[Employee,User][] = new Array();
   constructor(private emplServe:EmployeeService) { 
     this.emplServe.employeesObservable.pipe(take(1)).subscribe(employees=>{
       for(let employee of employees)
       {
-        if(employee.position != "manager")
-        {
-          this.employeesArr.push(employee);
-        }
-
         this.emplServe.getUser(employee.uid).pipe(take(1)).subscribe(user=>{
-          this.name = user.name;
+          if(employee.position != "manager")
+          {
+            this.employeesArr.push([employee,user]);
+          }
         })
       }
     })

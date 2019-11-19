@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export interface Employee extends User
+export interface Employee
 {
     uid:string;
     position:string;

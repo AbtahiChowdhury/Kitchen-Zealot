@@ -6,6 +6,8 @@ import { take } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { EmployeeService } from './employee.service';
+import { User } from '../interfaces/user';
+import { Employee } from '../interfaces/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class AuthService
 {
   user$:Observable<firebase.User>;
   error:FirebaseError;
-  constructor(private afAuth:AngularFireAuth,private userServe:UserService,private emplServe:EmployeeService,private router:Router) { 
+  constructor(private afAuth:AngularFireAuth,private userServe:UserService,private emplServe:EmployeeService,public router:Router) { 
     this.user$ = afAuth.authState;
   }
 
@@ -49,4 +51,15 @@ export class AuthService
     this.afAuth.auth.signOut();
     this.router.navigateByUrl("");
   }
+
+  registerEmployee(formValue)
+  {
+    this.afAuth.auth.createUserWithEmailAndPassword(formValue.email,"124356").then(userCredential=>{
+      let tempUser:User = {uid:userCredential.user.uid,email:userCredential.user.email,phone:formValue.phone,name:formValue.name,type:"employee"};
+      this.userServe.addUser(tempUser);
+      let tempEmployee:Employee = {uid:userCredential.user.uid,position:formValue.position,salary:formValue.salary};
+      this.emplServe.addEmployee(tempEmployee);
+    });
+  }
+
 }

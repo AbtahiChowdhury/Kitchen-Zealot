@@ -1,7 +1,7 @@
 import { User } from './user';
 import { CartItem } from './cart-item';
 
-export interface Customer extends User
+export interface Customer
 {
     uid:string;
     address:string;

@@ -36,6 +36,7 @@ import { OrdersComponent } from './components/managers/orders/orders.component';
 import { ViewEmployeeComponent } from './components/managers/view-employee/view-employee.component';
 import { ViewCustomerComponent } from './components/managers/view-customer/view-customer.component';
 import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
+import { AddEmployeeComponent } from './components/managers/add-employee/add-employee.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { ViewAllOrdersComponent } from './components/managers/view-all-orders/vi
     ViewEmployeeComponent,
     ViewCustomerComponent,
     ViewAllOrdersComponent,
+    AddEmployeeComponent,
   ],
   imports: [
     BrowserModule,

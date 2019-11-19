@@ -22,6 +22,7 @@ import { OrdersComponent } from './components/managers/orders/orders.component';
 import { ViewEmployeeComponent } from './components/managers/view-employee/view-employee.component';
 import { ViewCustomerComponent } from './components/managers/view-customer/view-customer.component';
 import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
+import { AddEmployeeComponent } from './components/managers/add-employee/add-employee.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   ]},
   {path:"manager", component:ManagerComponent, children:[
     {path:"",component:HomeContentComponent},
+    {path:"employees/add",component:AddEmployeeComponent},
     {path:"employees/:uid",component:ViewEmployeeComponent},
     {path:"employees",component:EmployeesComponent},
     {path:"customers/:uid",component:ViewCustomerComponent},

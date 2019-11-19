@@ -1,22 +1,24 @@
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>Ordered On</th>
-            <th>Total</th>
-            <th>Delivered On</th>
-            <th>Food Rating</th>
-            <th>Delivery Rating</th>
-            <th>View</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let order of myOrders">
-            <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
-            <td>{{order.total}}</td>
-            <td>Delivered On</td>
-            <td>Food Rating</td>
-            <td>Delivery Rating</td>
-            <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Ordered On</th>
+                <th>Total</th>
+                <th>Delivered On</th>
+                <th>Food Rating</th>
+                <th>Delivery Rating</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let order of myOrders">
+                <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                <td>{{order.total}}</td>
+                <td>Delivered On</td>
+                <td>Food Rating</td>
+                <td>Delivery Rating</td>
+                <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
