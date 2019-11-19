@@ -1,5 +1,6 @@
 .bodybg {
     background-image: url(./../../../../assets/loginbg.jpg);
+    background-size: cover;
     position: absolute;
     top: 0;
     left: 0;

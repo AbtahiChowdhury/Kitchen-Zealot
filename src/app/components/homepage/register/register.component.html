@@ -1,11 +1,13 @@
-<div class="jumbotron">
-    <h1 style="text-align: center;">Registration</h1>
+<div class="bodybg w-100 vh-100"></div>
+
+<div class="container">
+    <h1 class="registration-title">Registration</h1>
 </div>
 
-<div class="container" style="border: solid;">
+<div class="container registration-form">
     <form #form = "ngForm" (ngSubmit)="register(form.value)">
         <br>
-        <div class = "form-group">
+        <div class = "form-group center-pls">
             <label for="name">Name</label>
             <input ngModel type="text" required #name = "ngModel" name="name" class="form-control">
             <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
@@ -13,7 +15,7 @@
             </div>
         </div>
 
-        <div class = "form-group">
+        <div class = "form-group center-pls">
             <label for="email">Email</label>
             <input ngModel type="email" required #email = "ngModel" name="email" class="form-control">
             <div *ngIf = "email.touched && email.invalid" class="alert alert-danger">
@@ -21,7 +23,7 @@
             </div>
         </div>
 
-        <div class = "form-group">
+        <div class = "form-group center-pls">
             <label for="password">Password</label>
             <input ngModel type="password" required #password = "ngModel" name="password" class="form-control">
             <div *ngIf = "password.touched && password.invalid" class="alert alert-danger">
@@ -29,7 +31,7 @@
             </div>
         </div>
 
-        <div class = "form-group">
+        <div class = "form-group center-pls">
             <label for="phone">Phone Number</label>
             <input ngModel type="tel" required #phone = "ngModel" name="phone" class="form-control">
             <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
