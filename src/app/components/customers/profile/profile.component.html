@@ -1,1 +1,59 @@
-<p>profile works!</p>
+<div class="container">
+        <form #form = "ngForm" (ngSubmit)="update(form.value)">
+            <br>
+            <div class = "form-group">
+                <label for="name">Name</label>
+                <input disabled [ngModel] = "userName" type="text" required #name = "ngModel" name="name" class="form-control">
+            </div>
+    
+            <div class = "form-group">
+                <label for="phone">Phone Number</label>
+                <input disabled [ngModel] = "userPhone" type="tel" required #phone = "ngModel" name="phone" class="form-control">
+            </div>
+
+            <div class = "form-group">
+                <label for="email">Email</label>
+                <input disabled [ngModel] = "userEmail" type="email" #email = "ngModel" name="email" class="form-control">
+            </div>
+
+            <div class = "form-group">
+                <label for="address">Address</label>
+                <input [ngModel] = "customerAddress" type="text" required #address = "ngModel" name="address" class="form-control">
+                <div *ngIf = "address.touched && address.invalid" class="alert alert-danger">
+                    Address is Required
+                </div>
+            </div>
+
+            <div class = "form-group">
+                <label for="nameOnCard">Name on Card</label>
+                <input [ngModel] = "customerNameOnCard" type="text" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
+                <div *ngIf = "nameOnCard.touched && nameOnCard.invalid" class="alert alert-danger">
+                    Name on Card is Required
+                </div>
+            </div>
+            <div class = "form-group">
+                <label for="cardNumber">Credit Card Number</label>
+                <input [ngModel] = "customerCardNumber" type="number" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
+                <div *ngIf = "cardNumber.touched && cardNumber.invalid" class="alert alert-danger">
+                    Credit Card Number is Required
+                </div>
+            </div>
+            <div class = "form-group">
+                <label for="expirationDate">Expiration Date</label>
+                <input [ngModel] = "customerExpirationDate" type="month" required #expirationDate = "ngModel" name="expirationDate" class="form-control">
+                <div *ngIf = "expirationDate.touched && expirationDate.invalid" class="alert alert-danger">
+                    Expiration Date is Required
+                </div>
+            </div>
+            <div class = "form-group">
+                <label for="CVV">CVV</label>
+                <input [ngModel] = "customerCVV" type="number" required #CVV = "ngModel" name="CVV" class="form-control">
+                <div *ngIf = "CVV.touched && CVV.invalid" class="alert alert-danger">
+                    CVV is Required
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Save</button>
+            <br>
+        </form>
+</div>
+

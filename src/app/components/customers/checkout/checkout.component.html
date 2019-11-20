@@ -14,7 +14,7 @@
                     <label for="phone">Phone Number</label>
                     <input [ngModel] = "userPhone" type="tel" required #phone = "ngModel" name="phone" class="form-control">
                     <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
-                        Password is Required
+                        Phone Number is Required
                     </div>
                 </div>
 
