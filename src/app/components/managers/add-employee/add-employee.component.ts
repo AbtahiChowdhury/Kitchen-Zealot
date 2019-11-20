@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { take } from 'rxjs/operators';
+import { AddNewAuthService } from 'src/app/services/add-new-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -9,15 +9,15 @@ import { take } from 'rxjs/operators';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  constructor(private authServe:AuthService) { }
+  constructor(private addNewAuthServe:AddNewAuthService,private router:Router) { }
 
   ngOnInit() {
   }
 
   add(formValue)
   {
-    this.authServe.registerEmployee(formValue);
-    this.authServe.router.navigateByUrl("/manager/employees");
+    this.addNewAuthServe.addNewEmployee(formValue);
+    this.router.navigateByUrl("/manager/employees");
   }
 
 }

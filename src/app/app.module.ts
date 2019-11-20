@@ -15,6 +15,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+
+
 import { ProductCardComponent } from './components/shared/product-card/product-card.component';
 import { RegisterComponent } from './components/homepage/register/register.component';
 import { CustomerComponent } from './components/customers/customer/customer.component';

@@ -52,14 +52,4 @@ export class AuthService
     this.router.navigateByUrl("");
   }
 
-  registerEmployee(formValue)
-  {
-    this.afAuth.auth.createUserWithEmailAndPassword(formValue.email,"124356").then(userCredential=>{
-      let tempUser:User = {uid:userCredential.user.uid,email:userCredential.user.email,phone:formValue.phone,name:formValue.name,type:"employee"};
-      this.userServe.addUser(tempUser);
-      let tempEmployee:Employee = {uid:userCredential.user.uid,position:formValue.position,salary:formValue.salary};
-      this.emplServe.addEmployee(tempEmployee);
-    });
-  }
-
 }

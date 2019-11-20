@@ -16,7 +16,7 @@ export class EmployeeService {
   employeesObservable: Observable<Employee[]>;
 
   constructor(private afs:AngularFirestore, private userServe:UserService) { 
-    this.employeeCollection = this.afs.collection('employees');
+    this.employeeCollection = this.afs.collection('employees', ref => ref.orderBy("position","asc"));
     this.employeesObservable = this.employeeCollection.valueChanges({idfield:"uid"});
   }
 
