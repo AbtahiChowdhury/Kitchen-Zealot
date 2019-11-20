@@ -12,7 +12,7 @@ export class OrderService {
   ordersObservable:Observable<Order[]>;
   constructor(private afs:AngularFirestore) 
   { 
-    this.orderCollection = this.afs.collection("orders");
+    this.orderCollection = this.afs.collection("orders", ref => ref.orderBy("orderedOn","desc"));
     this.ordersObservable = this.orderCollection.valueChanges({idfield:"uid"});
   }
 

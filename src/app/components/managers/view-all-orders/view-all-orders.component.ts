@@ -5,9 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './view-all-orders.component.html',
   styleUrls: ['./view-all-orders.component.css']
 })
-export class ViewAllOrdersComponent implements OnInit {
-
-  constructor() { }
+export class ViewAllOrdersComponent implements OnInit 
+{
+  constructor() 
+  { 
+  }
 
   ngOnInit() {
   }

@@ -8,6 +8,7 @@ export interface Order
     cookedBy?:string;
     deliveredBy?:string;
     foodRating?:number;
+    deliveredOn?:Date;
     deliveryRating?:number;
     customerRating?:number;
     contents:CartItem[];

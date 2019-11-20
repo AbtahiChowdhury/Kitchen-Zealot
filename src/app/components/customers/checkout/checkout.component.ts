@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   customerNameOnCard:string = "";
   customerCardNumber:string = "";
   customerCVV:number = 0;
-  customerExpirationDate:string = "";
+  customerExpirationDate:Date = null;
   constructor(private cartServe:CartService,private orderServe:OrderService,private router:Router) 
   { 
     this.cartServe.getUser().pipe(take(1)).subscribe(user=>{

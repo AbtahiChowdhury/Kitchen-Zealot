@@ -34,11 +34,11 @@ import { ProfileComponent } from './components/customers/profile/profile.compone
 import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
 import { EmployeesComponent } from './components/managers/employees/employees.component';
 import { CustomersComponent } from './components/managers/customers/customers.component';
-import { OrdersComponent } from './components/managers/orders/orders.component';
 import { ViewEmployeeComponent } from './components/managers/view-employee/view-employee.component';
 import { ViewCustomerComponent } from './components/managers/view-customer/view-customer.component';
 import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
 import { AddEmployeeComponent } from './components/managers/add-employee/add-employee.component';
+import { AllOrdersComponent } from './components/managers/all-orders/all-orders.component';
 
 @NgModule({
   declarations: [
@@ -65,11 +65,11 @@ import { AddEmployeeComponent } from './components/managers/add-employee/add-emp
     ViewOrderComponent,
     EmployeesComponent,
     CustomersComponent,
-    OrdersComponent,
     ViewEmployeeComponent,
     ViewCustomerComponent,
     ViewAllOrdersComponent,
     AddEmployeeComponent,
+    AllOrdersComponent,
   ],
   imports: [
     BrowserModule,
