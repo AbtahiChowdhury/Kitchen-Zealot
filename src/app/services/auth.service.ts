@@ -52,4 +52,11 @@ export class AuthService
     this.router.navigateByUrl("");
   }
 
+  guestLogin(formValue)
+  {
+    this.afAuth.auth.signInAnonymously().then(guestCredentials=>{
+      this.router.navigateByUrl("/guest");
+    });
+  }
+
 }

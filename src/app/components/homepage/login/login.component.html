@@ -21,11 +21,35 @@
         </div>
         <div class="row m-2">
             <div class="col-6">
-                <a class="btn btn-warning btn-block" routerLink="/register">Sign Up</a>
+                <a class="btn btn-warning btn-block" routerLink="/register" type = "button">Sign Up</a>
             </div>
             <div class="col-6">
-                <button class="btn btn-secondary btn-block">Continue as Guest</button>
+                <button class="btn btn-secondary btn-block" type = "button" data-toggle = "modal" data-target="#guest">Continue as Guest</button>
             </div>
         </div>
     </form>
+    <div class="modal" id = "guest">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class = "modal-title">Continue as Guest</h4>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                </div>
+
+                <div class="modal-body">
+                    <form #guestForm = "ngForm" (ngSubmit) = "guestLogin(guestForm.value)">
+                        <div class = "form-group">
+                            <label for="name" style="color:black;font-size:12pt;">Name:</label>
+                            <input ngModel type="text" required #name = "ngModel" name="name" class="form-control">
+                        </div>
+                        <div class = "form-group">
+                            <label for="phone" style="color:black;font-size:12pt;">Phone:</label>
+                            <input ngModel type="tel" required #nphone = "ngModel" name="phone" class="form-control">
+                        </div>
+                        <button class="btn btn-primary btn-block">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

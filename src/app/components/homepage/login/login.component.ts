@@ -19,4 +19,9 @@ export class LoginComponent implements OnInit {
     this.authServe.login(form.email, form.password);
   }
 
+  guestLogin(formValue)
+  {
+    this.authServe.guestLogin(formValue);
+  }
+
 }

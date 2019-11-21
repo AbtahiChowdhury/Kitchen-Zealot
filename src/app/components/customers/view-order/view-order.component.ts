@@ -14,6 +14,7 @@ export class ViewOrderComponent implements OnInit {
   orderedOn:any;
   cookedBy:string;
   deliveredBy:string;
+  deliveredOn:Date;
   foodRating:number;
   deliveryRating:number;
   contents:CartItem[];
@@ -29,6 +30,7 @@ export class ViewOrderComponent implements OnInit {
       this.orderedOn = order.orderedOn;
       this.cookedBy = order.cookedBy ? order.cookedBy : null;
       this.deliveredBy = order.deliveredBy ? order.deliveredBy : null;
+      this.deliveredOn = order.deliveredOn ? order.deliveredOn : null;
       this.foodRating = order.foodRating ? order.foodRating : null;
       this.deliveryRating = order.deliveryRating ? order.deliveryRating : null;
       this.contents = order.contents;

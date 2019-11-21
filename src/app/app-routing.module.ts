@@ -23,6 +23,7 @@ import { ViewCustomerComponent } from './components/managers/view-customer/view-
 import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
 import { AddEmployeeComponent } from './components/managers/add-employee/add-employee.component';
 import { AllOrdersComponent } from './components/managers/all-orders/all-orders.component';
+import { GuestComponent } from './components/guests/guest/guest.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,9 @@ const routes: Routes = [
     {path:"customers",component:CustomersComponent},
     {path:"orders/:uid",component:ViewAllOrdersComponent},
     {path:"orders",component:AllOrdersComponent},
+  ]},
+  {path:"guest",component:GuestComponent, children:[
+    {path:"",component:HomeContentComponent}
   ]},
   {path:"cook",component:CookComponent},
   {path:"delivery-person",component:DeliveryPersonComponent},
