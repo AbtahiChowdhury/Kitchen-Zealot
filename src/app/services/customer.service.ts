@@ -5,7 +5,7 @@ import { Customer } from '../interfaces/customer';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { AuthService } from './auth.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class CustomerService {
 
   updateCustomer(uid:string,customer:Customer)
   {
-    this.afs.doc("customers/" + uid).update(customer);
+    this.afs.doc("customers/"+uid).update(customer);
   }
 
   getCustomer(uid:string):Observable<Customer>

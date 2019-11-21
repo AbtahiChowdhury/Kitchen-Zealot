@@ -35,21 +35,21 @@
                 <label for="cardNumber">Credit Card Number</label>
                 <input [ngModel] = "customerCardNumber" type="number" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
                 <div *ngIf = "cardNumber.touched && cardNumber.invalid" class="alert alert-danger">
-                    Credit Card Number is Required
+                    Credit Card Number is Invalid
                 </div>
             </div>
             <div class = "form-group">
                 <label for="expirationDate">Expiration Date</label>
-                <input [ngModel] = "customerExpirationDate" type="month" required #expirationDate = "ngModel" name="expirationDate" class="form-control">
+                <input [ngModel] = "customerExpirationDate" type="text" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required #expirationDate = "ngModel" name="expirationDate" class="form-control">
                 <div *ngIf = "expirationDate.touched && expirationDate.invalid" class="alert alert-danger">
-                    Expiration Date is Required
+                    Expiration Date is Invalid
                 </div>
             </div>
             <div class = "form-group">
                 <label for="CVV">CVV</label>
                 <input [ngModel] = "customerCVV" type="number" required #CVV = "ngModel" name="CVV" class="form-control">
                 <div *ngIf = "CVV.touched && CVV.invalid" class="alert alert-danger">
-                    CVV is Required
+                    CVV is Invalid
                 </div>
             </div>
             <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Save</button>

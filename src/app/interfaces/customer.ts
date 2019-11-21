@@ -7,7 +7,7 @@ export interface Customer
     address:string;
     cardNumber?:string;
     CVV?:number;
-    expirationDate?:Date;
+    expirationDate?:string;
     nameOnCard?:string;
     shoppingCart:CartItem[];
 }

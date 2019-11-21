@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit
   customerNameOnCard:string = "";
   customerCardNumber:string = "";
   customerCVV:number = 0;
-  customerExpirationDate:Date = null;
+  customerExpirationDate:string = "";
   customerCart:CartItem[] = null;
 
   constructor(private custServe:CustomerService) 
@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit
       this.customerExpirationDate = customer.expirationDate;
       this.customerCart = customer.shoppingCart;
     })
+
   }
 
   ngOnInit() {
@@ -52,9 +53,9 @@ export class ProfileComponent implements OnInit
       cardNumber: formValue.cardNumber,
       CVV: formValue.CVV,
       nameOnCard: formValue.nameOnCard,
-      expirationDate: formValue.expirationDate as Date,
+      expirationDate: formValue.expirationDate,
       shoppingCart: this.customerCart
     }
-    this.custServe.updateCustomer(this.userUid,tempCust);
+    this.custServe.updateCustomer(this.userUid.trim(),tempCust);
   }
 }
