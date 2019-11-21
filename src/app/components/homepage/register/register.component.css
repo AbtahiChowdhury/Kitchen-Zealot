@@ -1,26 +1,11 @@
-.bodybg {
-    background-image: url(./../../../../assets/registerbg.jpg);
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -2;
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.5s;
+    border-radius: 5px;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
-.registration-form {
-    padding-left: 20%;
-    padding-right: 20%;
-}
-
-.registration-title {
-    text-align: center;
-    font-size: 48pt;
-    color: crimson;
-}
-
-.center-pls {
-    text-align: center;
-    color: black;
-    font-size: 18pt;
-    font-weight: bolder;
+body {
+    background-color: darkred;
 }

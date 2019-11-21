@@ -1,51 +1,42 @@
-<div class="bodybg w-100 vh-100"></div>
-
-<div class="container">
-    <h1 class="registration-title">Registration</h1>
-</div>
-
-<div class="container registration-form">
-    <form #form = "ngForm" (ngSubmit)="register(form.value)">
-        <br>
-        <div class = "form-group center-pls">
-            <label for="name">Name</label>
-            <input ngModel type="text" required #name = "ngModel" name="name" class="form-control">
-            <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
-                Name is Required
-            </div>
+<body>
+    <div class="card" style="text-align: center; margin-bottom: 5%;">
+        <h5 class="card-header">Registration</h5>
+        <div class="card-body">
+            <form #form = "ngForm" (ngSubmit)="register(form.value)">
+                <div class = "form-group">
+                    <label for="name">Name</label>
+                    <input ngModel type="text" required #name = "ngModel" name="name" class="form-control">
+                    <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
+                        Name is Required
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <label for="email">Email</label>
+                    <input ngModel type="email" required #email = "ngModel" name="email" class="form-control">
+                    <div *ngIf = "email.touched && email.invalid" class="alert alert-danger">
+                        Email is Required
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <label for="password">Password</label>
+                    <input ngModel type="password" required #password = "ngModel" name="password" class="form-control">
+                    <div *ngIf = "password.touched && password.invalid" class="alert alert-danger">
+                        Password is Required
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <label for="phone">Phone Number</label>
+                    <input ngModel type="tel" required #phone = "ngModel" name="phone" class="form-control">
+                    <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
+                        Phone Number is Required
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col">
+                        <button class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <div class = "form-group center-pls">
-            <label for="email">Email</label>
-            <input ngModel type="email" required #email = "ngModel" name="email" class="form-control">
-            <div *ngIf = "email.touched && email.invalid" class="alert alert-danger">
-                Email is Required
-            </div>
-        </div>
-
-        <div class = "form-group center-pls">
-            <label for="password">Password</label>
-            <input ngModel type="password" required #password = "ngModel" name="password" class="form-control">
-            <div *ngIf = "password.touched && password.invalid" class="alert alert-danger">
-                Password is Required
-            </div>
-        </div>
-
-        <div class = "form-group center-pls">
-            <label for="phone">Phone Number</label>
-            <input ngModel type="tel" required #phone = "ngModel" name="phone" class="form-control">
-            <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
-                Password is Required
-            </div>
-        </div>
-
-        <div class="row m-2">
-            <div class="col">
-                <button class="btn btn-primary btn-block">Register</button>
-            </div>
-        </div>
-        <br>
-    </form>
-</div>
-
-<br><br>
+    </div>
+</body>
