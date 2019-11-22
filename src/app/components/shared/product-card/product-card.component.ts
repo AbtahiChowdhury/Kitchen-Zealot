@@ -13,12 +13,14 @@ export class ProductCardComponent implements OnInit,OnDestroy {
 
   @Input('product') product: Product;
   @Input('showActions') showActions = false;
+  @Input('guest') guest = false;
   quantity$:Subscription;
   quantity:number = 0;
 
   constructor(private cartServe:CartService) 
   {
-    this.updateQuanity();
+    if(this.showActions)
+      this.updateQuantity();
   }
 
   addToCart()
@@ -26,24 +28,32 @@ export class ProductCardComponent implements OnInit,OnDestroy {
     this.cartServe.addToCart(this.product);
   }
 
+  addToGuestCart()
+  {
+    console.log("ADDING");
+  }
+
   removeFromCart()
   {
     this.cartServe.removeFromCart(this.product);
   }
 
-  updateQuanity()
+  updateQuantity()
   {
-    this.quantity$ = this.cartServe.getCustomer().subscribe(customer=>{
-      for(let cartItem of customer.shoppingCart)
-      {
-        if(cartItem.product.title == this.product.title)
+    if(!this.guest)
+    {
+      this.quantity$ = this.cartServe.getCustomer().subscribe(customer=>{
+        for(let cartItem of customer.shoppingCart)
         {
-          this.quantity = cartItem.quantity;
-          return;
+          if(cartItem.product.title == this.product.title)
+          {
+            this.quantity = cartItem.quantity;
+            return;
+          }
         }
-      }
-      this.quantity = 0;
-    })
+        this.quantity = 0;
+      })
+    }
   }
 
   ngOnInit() {
@@ -51,7 +61,8 @@ export class ProductCardComponent implements OnInit,OnDestroy {
 
   ngOnDestroy()
   {
-    this.quantity$.unsubscribe();
+    if(this.showActions && !this.guest)
+      this.quantity$.unsubscribe();
   }
 
 }

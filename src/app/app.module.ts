@@ -41,6 +41,8 @@ import { AddEmployeeComponent } from './components/managers/add-employee/add-emp
 import { AllOrdersComponent } from './components/managers/all-orders/all-orders.component';
 import { GuestComponent } from './components/guests/guest/guest.component';
 import { GuestNavbarComponent } from './components/guests/guest-navbar/guest-navbar.component';
+import { GuestOrderComponent } from './components/guests/guest-order/guest-order.component';
+import { GuestCartComponent } from './components/guests/guest-cart/guest-cart.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { GuestNavbarComponent } from './components/guests/guest-navbar/guest-nav
     AllOrdersComponent,
     GuestComponent,
     GuestNavbarComponent,
+    GuestOrderComponent,
+    GuestCartComponent,
   ],
   imports: [
     BrowserModule,

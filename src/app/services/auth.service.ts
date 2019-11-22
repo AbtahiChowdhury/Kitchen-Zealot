@@ -52,7 +52,7 @@ export class AuthService
     this.router.navigateByUrl("");
   }
 
-  guestLogin(formValue)
+  guestLogin()
   {
     this.afAuth.auth.signInAnonymously().then(guestCredentials=>{
       this.router.navigateByUrl("/guest");

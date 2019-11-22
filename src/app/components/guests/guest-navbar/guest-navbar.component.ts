@@ -10,14 +10,9 @@ import { take } from 'rxjs/operators';
 })
 export class GuestNavbarComponent implements OnInit 
 {
-  name:string = "";
+  name:string = "Guest";
   constructor(private authServe:AuthService,private guestServe:GuestService) 
   { 
-    this.authServe.user$.pipe(take(1)).subscribe(user=>{
-      this.guestServe.getGuest(user.uid).pipe(take(1)).subscribe(guest=>{
-        this.name = guest.name;
-      })
-    })
   }
 
   signOut()

@@ -24,6 +24,7 @@ import { ViewAllOrdersComponent } from './components/managers/view-all-orders/vi
 import { AddEmployeeComponent } from './components/managers/add-employee/add-employee.component';
 import { AllOrdersComponent } from './components/managers/all-orders/all-orders.component';
 import { GuestComponent } from './components/guests/guest/guest.component';
+import { GuestOrderComponent } from './components/guests/guest-order/guest-order.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
     {path:"orders",component:AllOrdersComponent},
   ]},
   {path:"guest",component:GuestComponent, children:[
-    {path:"",component:HomeContentComponent}
+    {path:"",component:HomeContentComponent},
+    {path:"order",component:GuestOrderComponent},
   ]},
   {path:"cook",component:CookComponent},
   {path:"delivery-person",component:DeliveryPersonComponent},

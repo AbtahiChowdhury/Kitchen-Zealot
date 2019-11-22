@@ -24,10 +24,16 @@
                 <a class="btn btn-warning btn-block" routerLink="/register" type = "button">Sign Up</a>
             </div>
             <div class="col-6">
-                <button class="btn btn-secondary btn-block" type = "button" data-toggle = "modal" data-target="#guest">Continue as Guest</button>
+                <button class="btn btn-secondary btn-block" type = "button" (click) = "guestLogin()">Continue as Guest</button>
             </div>
         </div>
     </form>
+</div>
+
+<!--
+<div class="col-6">
+    <button class="btn btn-secondary btn-block" type = "button" data-toggle = "modal" data-target="#guest">Continue as Guest</button>
+</div>
     <div class="modal" id = "guest">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -52,4 +58,4 @@
             </div>
         </div>
     </div>
-</div>
+-->

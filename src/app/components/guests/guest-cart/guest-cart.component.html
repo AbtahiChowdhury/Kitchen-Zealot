@@ -1,0 +1,32 @@
+<table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let cartItem of shoppingCart">
+                <td>{{cartItem.product.title}}</td>
+                <td>{{cartItem.product.price|currency}}</td>
+                <td>{{cartItem.quantity}}</td>
+            </tr>
+            <tr>
+                <td>Subtotal</td>
+                <td>{{subtotal|currency}}</td>
+            </tr>
+            <ng-container *ngIf = "checkout">
+                <tr>
+                    <td>Tax</td>
+                    <td>+{{tax|currency}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{total|currency}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    
+<button *ngIf = "!checkout" class="btn btn-primary btn-block" routerLink = "/guest/checkout">Order</button>

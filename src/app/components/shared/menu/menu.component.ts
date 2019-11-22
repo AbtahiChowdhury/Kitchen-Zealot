@@ -11,6 +11,7 @@ import { Product } from 'src/app/interfaces/product';
 export class MenuComponent implements OnInit {
 
   @Input('showActions')showActions = false;
+  @Input('guest') guest = false;
   products$:Observable<Product[]>
   constructor(private productServe: ProductService) {
     this.products$ = productServe.productObservable; 

@@ -1,6 +1,6 @@
 export interface Guest 
 {
-    uid:string;
+    uid?:string;
     name:string;
     phone:string;
 }
