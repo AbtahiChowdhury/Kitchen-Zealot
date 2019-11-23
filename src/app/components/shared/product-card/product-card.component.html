@@ -22,8 +22,8 @@
                 </ng-template>
             </div>
             <ng-template #customer>
-                <button *ngIf="quantity == 0;else updateQuantity"class = "btn btn-primary btn-block" (click) = "addToCart()">Add to Cart</button>
-                <ng-template #updateQuantity>
+                <button *ngIf="quantity == 0;else updateQuantity2"class = "btn btn-primary btn-block" (click) = "addToCart()">Add to Cart</button>
+                <ng-template #updateQuantity2>
                     <div class="row no-gutters">
                         <div class = "col-2">
                             <button class="btn btn-secondary btn-block" (click) = "removeFromCart()">-</button>
