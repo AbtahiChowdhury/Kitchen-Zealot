@@ -33,4 +33,7 @@
     </tbody>
 </table>
 
-<button *ngIf = "!checkout" class="btn btn-primary btn-block" routerLink = "/customer/checkout" >Order</button>
+<div *ngIf = "!checkout">
+    <button *ngIf = "!guest" class="btn btn-primary btn-block" routerLink = "/customer/checkout" >Order</button>
+    <button *ngIf = "guest" class="btn btn-primary btn-block" routerLink = "/guest/checkout" >Order</button>
+</div>

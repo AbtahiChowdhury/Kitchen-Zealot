@@ -13,7 +13,7 @@ import { ManagerComponent } from './components/managers/manager/manager.componen
 import { CookComponent } from './components/cooks/cook/cook.component';
 import { DeliveryPersonComponent } from './components/delivery-people/delivery-person/delivery-person.component';
 import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
-import { CheckoutComponent } from './components/customers/checkout/checkout.component';
+import { CheckoutComponent } from './components/shared/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
 import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
 import { EmployeesComponent } from './components/managers/employees/employees.component';
@@ -25,6 +25,8 @@ import { AddEmployeeComponent } from './components/managers/add-employee/add-emp
 import { AllOrdersComponent } from './components/managers/all-orders/all-orders.component';
 import { GuestComponent } from './components/guests/guest/guest.component';
 import { GuestOrderComponent } from './components/guests/guest-order/guest-order.component';
+import { CustomerCheckoutComponent } from './components/customers/customer-checkout/customer-checkout.component';
+import { GuestCheckoutComponent } from './components/guests/guest-checkout/guest-checkout.component';
 
 
 const routes: Routes = [
@@ -39,7 +41,7 @@ const routes: Routes = [
     {path:"order",component:OrderComponent},
     {path:"my-orders/:uid",component:ViewOrderComponent},
     {path:"my-orders",component:MyOrdersComponent},
-    {path:"checkout",component:CheckoutComponent},
+    {path:"checkout",component:CustomerCheckoutComponent},
     {path:"profile",component:ProfileComponent}
   ]},
   {path:"manager", component:ManagerComponent, children:[
@@ -55,6 +57,7 @@ const routes: Routes = [
   {path:"guest",component:GuestComponent, children:[
     {path:"",component:HomeContentComponent},
     {path:"order",component:GuestOrderComponent},
+    {path:"checkout",component:GuestCheckoutComponent}
   ]},
   {path:"cook",component:CookComponent},
   {path:"delivery-person",component:DeliveryPersonComponent},

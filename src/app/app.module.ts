@@ -28,8 +28,8 @@ import { CookComponent } from './components/cooks/cook/cook.component';
 import { DeliveryPersonComponent } from './components/delivery-people/delivery-person/delivery-person.component';
 import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
 import { ManagerNavbarComponent } from './components/managers/manager-navbar/manager-navbar.component';
-import { CartComponent } from './components/customers/cart/cart.component';
-import { CheckoutComponent } from './components/customers/checkout/checkout.component';
+import { CartComponent } from './components/shared/cart/cart.component';
+import { CheckoutComponent } from './components/shared/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
 import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
 import { EmployeesComponent } from './components/managers/employees/employees.component';
@@ -42,7 +42,8 @@ import { AllOrdersComponent } from './components/managers/all-orders/all-orders.
 import { GuestComponent } from './components/guests/guest/guest.component';
 import { GuestNavbarComponent } from './components/guests/guest-navbar/guest-navbar.component';
 import { GuestOrderComponent } from './components/guests/guest-order/guest-order.component';
-import { GuestCartComponent } from './components/guests/guest-cart/guest-cart.component';
+import { CustomerCheckoutComponent } from './components/customers/customer-checkout/customer-checkout.component';
+import { GuestCheckoutComponent } from './components/guests/guest-checkout/guest-checkout.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { GuestCartComponent } from './components/guests/guest-cart/guest-cart.co
     GuestComponent,
     GuestNavbarComponent,
     GuestOrderComponent,
-    GuestCartComponent,
+    CustomerCheckoutComponent,
+    GuestCheckoutComponent,
   ],
   imports: [
     BrowserModule,
