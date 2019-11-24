@@ -5,6 +5,7 @@ import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/interfaces/order';
 import { Router } from '@angular/router';
 import { CartItem } from 'src/app/interfaces/cart-item';
+import { GuestService } from 'src/app/services/guest.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,15 +15,15 @@ import { CartItem } from 'src/app/interfaces/cart-item';
 export class CheckoutComponent implements OnInit {
   userName:string = "";
   userPhone:string = "";
-  customerAddress:string = ""; 
+  customerAddress:string = "";
   customerNameOnCard:string = "";
   customerCardNumber:string = "";
   customerCVV:string = "";
   customerExpirationDate:string = "";
   @Input('guest') guest = false;
-  constructor(private cartServe:CartService,private orderServe:OrderService,private router:Router) 
-  { 
-    
+  constructor(private cartServe:CartService,private orderServe:OrderService,private router:Router,private guestServe:GuestService)
+  {
+
   }
 
   ngOnInit() {
@@ -42,7 +43,7 @@ export class CheckoutComponent implements OnInit {
       });
     }
   }
-  
+
   checkout(form)
   {
     if(this.guest)
@@ -121,6 +122,23 @@ export class CheckoutComponent implements OnInit {
       this.cartServe.cart = new Array();
       this.cartServe.cart$.next(this.cartServe.cart);
       localStorage.setItem("cart",JSON.stringify(this.cartServe.cart));
+      this.guestServe.checkIfGuestExists(form.phone).pipe(take(1)).subscribe(exists=>{
+        if(!exists)
+        {
+          let tempGuest = {
+            name:form.name,
+            phone:form.phone,
+            address:form.address,
+            paymentDetails:{
+              cardNumber:form.cardNumber,
+              CVV:form.CVV,
+              expirationDate:form.expirationDate,
+              nameOnCard:form.nameOnCard
+            }
+          }
+          this.guestServe.addGuest(tempGuest);
+        }
+      })
       this.router.navigateByUrl("/guest");
   }
 

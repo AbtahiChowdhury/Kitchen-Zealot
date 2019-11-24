@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Guest } from '../interfaces/guest';
 import { Observable } from 'rxjs';
+import { take, switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class GuestService
 
   addGuest(guest:Guest)
   {
-    this.guestCollection.add(guest);
+    this.guestCollection.doc(guest.phone).set(guest);
   }
 
   removeGuest(guest:Guest)
@@ -30,5 +31,12 @@ export class GuestService
   getGuest(uid:string):Observable<Guest>
   {
     return this.afs.doc("guests/" + uid).valueChanges() as Observable<Guest>;
+  }
+
+  checkIfGuestExists(phone:string)
+  {
+    return this.afs.doc("guests/"+phone).get().pipe(map(guest=>{
+      return guest.exists;
+    }));
   }
 }
