@@ -47,6 +47,8 @@ import { GuestCheckoutComponent } from './components/guests/guest-checkout/guest
 import { DeliveryNavbarComponent } from './components/delivery-people/delivery-navbar/delivery-navbar.component';
 import { PendingBidsComponent } from './components/delivery-people/pending-bids/pending-bids.component';
 import { DeliveredOrdersComponent } from './components/delivery-people/delivered-orders/delivered-orders.component';
+import { CookNavbarComponent } from './components/cooks/cook-navbar/cook-navbar.component';
+import { ModifyMenuComponent } from './components/cooks/modify-menu/modify-menu.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { DeliveredOrdersComponent } from './components/delivery-people/delivered
     DeliveryNavbarComponent,
     PendingBidsComponent,
     DeliveredOrdersComponent,
+    CookNavbarComponent,
+    ModifyMenuComponent
   ],
   imports: [
     BrowserModule,
