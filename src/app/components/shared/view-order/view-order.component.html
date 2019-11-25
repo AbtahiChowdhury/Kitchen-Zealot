@@ -6,6 +6,11 @@
         </tr>
 
         <tr style="border: solid black 5px;">
+            <td style="border: solid black 5px;" class = "bg-primary" >Ordered By:</td>
+            <td *ngIf = "orderedOn">{{orderedBy}}</td>
+        </tr>
+
+        <tr style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Ordered On:</td>
             <td *ngIf = "orderedOn">{{(orderedOn.seconds*1000)|date:'medium'}}</td>
         </tr>

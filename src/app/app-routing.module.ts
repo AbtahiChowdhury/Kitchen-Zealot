@@ -15,12 +15,11 @@ import { DeliveryPersonComponent } from './components/delivery-people/delivery-p
 import { SalespersonComponent } from './components/salespeople/salesperson/salesperson.component';
 import { CheckoutComponent } from './components/shared/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
-import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
+import { ViewOrderComponent } from './components/shared/view-order/view-order.component';
 import { EmployeesComponent } from './components/managers/employees/employees.component';
 import { CustomersComponent } from './components/managers/customers/customers.component';
 import { ViewEmployeeComponent } from './components/managers/view-employee/view-employee.component';
 import { ViewCustomerComponent } from './components/managers/view-customer/view-customer.component';
-import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
 import { AddEmployeeComponent } from './components/managers/add-employee/add-employee.component';
 import { AllOrdersComponent } from './components/managers/all-orders/all-orders.component';
 import { GuestComponent } from './components/guests/guest/guest.component';
@@ -54,7 +53,7 @@ const routes: Routes = [
     {path:"employees",component:EmployeesComponent},
     {path:"customers/:uid",component:ViewCustomerComponent},
     {path:"customers",component:CustomersComponent},
-    {path:"orders/:uid",component:ViewAllOrdersComponent},
+    {path:"orders/:uid",component:ViewOrderComponent},
     {path:"orders",component:AllOrdersComponent},
   ]},
   {path:"guest",component:GuestComponent, children:[

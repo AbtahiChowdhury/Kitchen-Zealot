@@ -31,12 +31,11 @@ import { ManagerNavbarComponent } from './components/managers/manager-navbar/man
 import { CartComponent } from './components/shared/cart/cart.component';
 import { CheckoutComponent } from './components/shared/checkout/checkout.component';
 import { ProfileComponent } from './components/customers/profile/profile.component';
-import { ViewOrderComponent } from './components/customers/view-order/view-order.component';
+import { ViewOrderComponent } from './components/shared/view-order/view-order.component';
 import { EmployeesComponent } from './components/managers/employees/employees.component';
 import { CustomersComponent } from './components/managers/customers/customers.component';
 import { ViewEmployeeComponent } from './components/managers/view-employee/view-employee.component';
 import { ViewCustomerComponent } from './components/managers/view-customer/view-customer.component';
-import { ViewAllOrdersComponent } from './components/managers/view-all-orders/view-all-orders.component';
 import { AddEmployeeComponent } from './components/managers/add-employee/add-employee.component';
 import { AllOrdersComponent } from './components/managers/all-orders/all-orders.component';
 import { GuestComponent } from './components/guests/guest/guest.component';
@@ -77,7 +76,6 @@ import { ModifyMenuComponent } from './components/cooks/modify-menu/modify-menu.
     CustomersComponent,
     ViewEmployeeComponent,
     ViewCustomerComponent,
-    ViewAllOrdersComponent,
     AddEmployeeComponent,
     AllOrdersComponent,
     GuestComponent,

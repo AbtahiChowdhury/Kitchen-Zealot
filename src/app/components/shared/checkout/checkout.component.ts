@@ -57,10 +57,20 @@ export class CheckoutComponent implements OnInit {
       orderedOn:null,
       orderDestination:null,
       paymentDetails:{CVV:null,cardNumber:null,expirationDate:null,nameOnCard:null},
+      cookedBy:null,
+      deliveredBy:null,
+      foodRating:null,
+      deliveredOn:null,
+      deliveryRating:null,
+      customerRating:null,
       subtotal:0,
       tax:0,
       discount:0,
-      total:0};
+      total:0,
+      currentBid:20,
+      currentBidder:null,
+      status:"ORDERED"
+    };
     this.cartServe.getCustomer().pipe(take(1)).subscribe(customer=>{
       this.cartServe.getUser().pipe(take(1)).subscribe(user=>{
         order.contents = customer.shoppingCart;
@@ -96,10 +106,20 @@ export class CheckoutComponent implements OnInit {
       orderedOn:null,
       orderDestination:null,
       paymentDetails:{CVV:null,cardNumber:null,expirationDate:null,nameOnCard:null},
+      cookedBy:null,
+      deliveredBy:null,
+      foodRating:null,
+      deliveredOn:null,
+      deliveryRating:null,
+      customerRating:null,
       subtotal:0,
       tax:0,
       discount:0,
-      total:0};
+      total:0,
+      currentBid:20,
+      currentBidder:null,
+      status:"ORDERED"
+    };
 
       order.contents = JSON.parse(localStorage.getItem("cart")) as CartItem[];
       order.orderedBy = form.phone;

@@ -19,4 +19,7 @@ export interface Order
     tax:number;
     discount:number;
     total:number;
+    currentBid?:number;
+    currentBidder?:string;
+    status:string;
 }
