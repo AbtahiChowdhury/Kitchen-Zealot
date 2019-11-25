@@ -1,34 +1,36 @@
-<div class="bodybg w-100 vh-100"></div>
+<body>
+    <img src="./../../../../assets/logo.png" class="logo center">
+    <div class="card">
+        <h1 class="card-header bg-dark">Sign In</h1>
+        <form #form = "ngForm" (ngSubmit)="login(form.value)" class="card-body">
+            <div *ngIf = "this.authServe.error" class="alert alert-danger">
+                {{this.authServe.error}}
+            </div>
+            <div class = "form-group">
+                <label for="email">Email</label>
+                <input ngModel type="email" required #email = "ngModel" name="email" class="form-control">
+            </div>
 
-<div class="container w-50">
-    <form #form = "ngForm" (ngSubmit)="login(form.value)">
-        <div *ngIf = "this.authServe.error" class="alert alert-danger">
-            {{this.authServe.error}}
-        </div>
-        <div class = "form-group">
-            <label for="email">Email</label>
-            <input ngModel type="email" required #email = "ngModel" name="email" class="form-control">
-        </div>
-
-        <div class = "form-group">
-            <label for="password">Password</label>
-            <input ngModel type="password" required #password = "ngModel" name="password" class="form-control">
-        </div>
-        <div class="row m-2">
-            <div class="col">
-                <button class="btn btn-primary btn-block">Login</button>
+            <div class = "form-group">
+                <label for="password">Password</label>
+                <input ngModel type="password" required #password = "ngModel" name="password" class="form-control">
             </div>
-        </div>
-        <div class="row m-2">
-            <div class="col-6">
-                <a class="btn btn-warning btn-block" routerLink="/register" type = "button">Sign Up</a>
+            <div class="row m-2">
+                <div class="col">
+                    <button class="btn btn-primary btn-block">Login</button>
+                </div>
             </div>
-            <div class="col-6">
-                <button class="btn btn-secondary btn-block" type = "button" (click) = "guestLogin()">Continue as Guest</button>
+            <div class="row m-2">
+                <div class="col-6">
+                    <a class="btn btn-warning btn-block" routerLink="/register" type = "button">Sign Up</a>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-secondary btn-block" type = "button" (click) = "guestLogin()">Continue as Guest</button>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+</body>
 
 <!--
 <div class="col-6">
