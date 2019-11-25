@@ -44,6 +44,9 @@ import { GuestNavbarComponent } from './components/guests/guest-navbar/guest-nav
 import { GuestOrderComponent } from './components/guests/guest-order/guest-order.component';
 import { CustomerCheckoutComponent } from './components/customers/customer-checkout/customer-checkout.component';
 import { GuestCheckoutComponent } from './components/guests/guest-checkout/guest-checkout.component';
+import { DeliveryNavbarComponent } from './components/delivery-people/delivery-navbar/delivery-navbar.component';
+import { PendingBidsComponent } from './components/delivery-people/pending-bids/pending-bids.component';
+import { DeliveredOrdersComponent } from './components/delivery-people/delivered-orders/delivered-orders.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,9 @@ import { GuestCheckoutComponent } from './components/guests/guest-checkout/guest
     GuestOrderComponent,
     CustomerCheckoutComponent,
     GuestCheckoutComponent,
+    DeliveryNavbarComponent,
+    PendingBidsComponent,
+    DeliveredOrdersComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,8 @@ import { GuestComponent } from './components/guests/guest/guest.component';
 import { GuestOrderComponent } from './components/guests/guest-order/guest-order.component';
 import { CustomerCheckoutComponent } from './components/customers/customer-checkout/customer-checkout.component';
 import { GuestCheckoutComponent } from './components/guests/guest-checkout/guest-checkout.component';
+import { PendingBidsComponent } from './components/delivery-people/pending-bids/pending-bids.component';
+import { DeliveredOrdersComponent } from './components/delivery-people/delivered-orders/delivered-orders.component';
 
 
 const routes: Routes = [
@@ -59,8 +61,16 @@ const routes: Routes = [
     {path:"order",component:GuestOrderComponent},
     {path:"checkout",component:GuestCheckoutComponent}
   ]},
-  {path:"cook",component:CookComponent},
-  {path:"delivery-person",component:DeliveryPersonComponent},
+
+  {path:"cook",component:CookComponent, children:[
+    {path:"",component:HomeContentComponent},
+  ]},
+
+  {path:"delivery",component:DeliveryPersonComponent, children:[
+    {path:"",component:HomeContentComponent},
+    {path:"pending-bids",component:PendingBidsComponent},
+    {path:"delivered-orders",component:DeliveredOrdersComponent}
+  ]},
   {path:"salesperson",component:SalespersonComponent}
 ];
 
