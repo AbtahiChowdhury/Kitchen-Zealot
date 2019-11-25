@@ -20,7 +20,7 @@
                 <td>{{order.currentBid|currency}}</td>
                 <td>{{order.currentBidder?order.currentBidder:"N/A"}}</td>
                 <td><button class = "btn btn-primary">Start Bid</button></td>
-                <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
+                <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
             </tr>
         </tbody>
     </table>
@@ -43,7 +43,7 @@
                 <td>{{order.deliveredOn?order.deliveredOn:"N/A"}}</td>
                 <td>{{order.foodRating?order.foodrating:"N/A"}}</td>
                 <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
-                <td><a class = "btn btn-primary" [routerLink] = "['/orders/',order.uid]">View</a></td>
+                <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
             </tr>
         </tbody>
     </table>

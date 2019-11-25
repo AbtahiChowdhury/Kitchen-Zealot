@@ -3,6 +3,8 @@ import { ActivatedRoute, RouteConfigLoadStart } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 import { take } from 'rxjs/operators';
 import { CartItem } from 'src/app/interfaces/cart-item';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-view-order',
@@ -30,7 +32,9 @@ export class ViewOrderComponent implements OnInit
   currentBidder?:string;
   status:string;
 
-  constructor(private aRoute:ActivatedRoute, private orderServe:OrderService) 
+  manager:boolean = false;
+
+  constructor(private aRoute:ActivatedRoute, private orderServe:OrderService,private authServe:AuthService,private emplServe:EmployeeService) 
   { 
     this.uid = this.aRoute.snapshot.paramMap.get("uid");
     this.orderServe.getOrder(this.uid).pipe(take(1)).subscribe(order=>{
@@ -52,7 +56,21 @@ export class ViewOrderComponent implements OnInit
       this.currentBidder = order.currentBidder ? order.currentBidder : null;
       this.status = order.status;
     })
+
+    this.authServe.user$.pipe(take(1)).subscribe(firebaseUser=>{
+      this.emplServe.getUser(firebaseUser.uid).pipe(take(1)).subscribe(user=>{
+        if(user.type == "employee")
+        {
+          this.emplServe.getEmployee(firebaseUser.uid).pipe(take(1)).subscribe(employee=>{
+            if(employee.position == "manager")
+              this.manager = true;
+          })
+        }
+      })
+    })
   }
+
+
 
   ngOnInit() {
   }
