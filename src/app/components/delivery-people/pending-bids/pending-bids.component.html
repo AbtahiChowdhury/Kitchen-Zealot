@@ -1,1 +1,27 @@
-<p>pending-bids works!</p>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Ordered On</th>
+                <th>Order Destination</th>
+                <th>Current Bid</th>
+                <th>Current Bidder</th>
+                <th>Bid</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor = "let order of orders$|async">
+                <tr *ngIf = "order.status == 'BIDDING'">
+                    <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                    <td>{{order.orderDestination}}</td>
+                    <td>{{order.currentBid? order.currentBid:"N/A"}}</td>
+                    <td>{{order.currentBidder ? order.currentBidder:"N/A"}}</td>
+                    <td>
+                        <input ngModel #bidValue = "ngModel" type="number">
+                        <button class="btn btn-primary" (click) = "placeBid(order,bidValue.value)">Bid</button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

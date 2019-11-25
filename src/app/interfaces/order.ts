@@ -5,7 +5,7 @@ export interface Order
 {
     uid?:string;
     orderedBy:string;
-    orderedOn:Date;
+    orderedOn:any;
     orderDestination:string;
     paymentDetails:Payment;
     cookedBy?:string;
