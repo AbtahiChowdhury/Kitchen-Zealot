@@ -11,7 +11,7 @@ export interface Order
     cookedBy?:string;
     deliveredBy?:string;
     foodRating?:number;
-    deliveredOn?:Date;
+    deliveredOn?:any;
     deliveryRating?:number;
     customerRating?:number;
     contents:CartItem[];
@@ -21,5 +21,6 @@ export interface Order
     total:number;
     currentBid?:number;
     currentBidder?:string;
+    currentBidderName?:string;
     status:string;
 }

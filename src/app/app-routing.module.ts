@@ -70,7 +70,8 @@ const routes: Routes = [
   {path:"delivery",component:DeliveryPersonComponent, children:[
     {path:"",component:HomeContentComponent},
     {path:"pending-bids",component:PendingBidsComponent},
-    {path:"delivered-orders",component:DeliveredOrdersComponent}
+    {path:"delivered-orders",component:DeliveredOrdersComponent},
+    {path:"orders/:uid",component:ViewOrderComponent}
   ]},
   {path:"salesperson",component:SalespersonComponent}
 ];
