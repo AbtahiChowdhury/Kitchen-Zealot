@@ -14,6 +14,8 @@ export interface Order
     deliveredOn?:any;
     deliveryRating?:number;
     customerRating?:number;
+    customerDeliveryComment?:string;
+    customerFoodComment?:string;
     contents:CartItem[];
     subtotal:number;
     tax:number;

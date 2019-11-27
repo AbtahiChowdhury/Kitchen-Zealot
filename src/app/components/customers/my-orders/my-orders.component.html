@@ -11,14 +11,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor = "let order of myOrders">
-                <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
-                <td>{{order.total|currency}}</td>
-                <td>{{order.deliveredOn ? order.deliveredOn:"N/A"}}</td>
-                <td>{{order.foodRating ? order.foodRating:"N/A"}}</td>
-                <td>{{order.deliveryRating ? order.deliveryRating:"N/A"}}</td>
-                <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
-            </tr>
+            <ng-container *ngFor = "let order of (orders$|async)">
+                <tr *ngIf = "userid == order.orderedBy">
+                    <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                    <td>{{order.total|currency}}</td>
+                    <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
+                    <td *ngIf = "order.deliveredOn">
+                        <select [(ngModel)] = "order.foodRating" #foodRating = "ngModel" name="foodRating" id="foodRating" class = "form-control" (change) = "foodRatingChange(order,foodRating.value)">
+                            <option value = ""></option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    </td>
+                    <td *ngIf = "!order.deliveredOn">N/A</td>
+                    <td>{{order.deliveryRating ? order.deliveryRating:"N/A"}}</td>
+                    <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
+                </tr>
+            </ng-container>
         </tbody>
     </table>
 </div>
