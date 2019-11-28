@@ -19,7 +19,7 @@ export class AddNewAuthService {
     secondaryApp.auth().createUserWithEmailAndPassword(formValue.email,"123456").then(userCredentials=>{
       let tempUser:User = {uid:userCredentials.user.uid,email:userCredentials.user.email,phone:formValue.phone,name:formValue.name,type:"employee"};
       this.userServe.addUser(tempUser);
-      let tempEmployee:Employee = {uid:userCredentials.user.uid,position:formValue.position,salary:formValue.salary};
+      let tempEmployee:Employee = {uid:userCredentials.user.uid,position:formValue.position,salary:formValue.salary,active:true};
       this.emplServe.addEmployee(tempEmployee);
       secondaryApp.auth().signOut();
     });

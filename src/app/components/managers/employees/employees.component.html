@@ -12,7 +12,7 @@
             <tr *ngFor = "let employee of employeesArr">
                 <td>{{employee[1].name}}</td>
                 <td>{{employee[0].position|uppercase}}</td>
-                <td><a class = "btn btn-primary" [routerLink] = "['/manager/employees/',employee.uid]">View</a></td>
+                <td><a class = "btn btn-primary" [routerLink] = "['/manager/employees/',employee[0].uid]">View</a></td>
             </tr>
         </tbody>
     </table>

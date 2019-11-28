@@ -8,4 +8,5 @@ export interface Employee
     averageRating?:number;
     warningCount?:number;
     dropCount?:number;
+    active:boolean;
 }
