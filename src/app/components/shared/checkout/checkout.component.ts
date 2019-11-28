@@ -87,7 +87,7 @@ export class CheckoutComponent implements OnInit {
         this.order.paymentDetails.nameOnCard = form.nameOnCard;
         for(let cartItem of this.order.contents)
         {
-          cartItem.product.orderFrequency = cartItem.product.orderFrequency ? cartItem.product.orderFrequency + cartItem.quantity:cartItem.quantity;
+          cartItem.product.orderFrequency = cartItem.product.orderFrequency ? (cartItem.product.orderFrequency + cartItem.quantity):cartItem.quantity;
           this.order.subtotal += cartItem.product.price * cartItem.quantity;
           this.productServe.update(cartItem.product.uid,cartItem.product);
         }

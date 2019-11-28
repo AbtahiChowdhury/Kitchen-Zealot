@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Product } from '../interfaces/product';
 import { OrderService } from './order.service';
+import { EmployeeService } from './employee.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ProductService {
   productsCollection: AngularFirestoreCollection<Product>;
   productObservable: Observable<Product[]>;
 
-  constructor(private afs:AngularFirestore,private orderServe:OrderService) { 
+  constructor(private afs:AngularFirestore,private orderServe:OrderService,private emplServe:EmployeeService) { 
     this.productsCollection = afs.collection('products',ref => ref.orderBy("title","asc"));
     this.productObservable = this.productsCollection.valueChanges({idField:"uid"});
   }
@@ -62,6 +63,15 @@ export class ProductService {
       }
       product.averageRating = sum/count;
       this.update(product.uid,product);
+
+      if(product.averageRating >= 1 && product.averageRating <2)
+      {
+        this.emplServe.getEmployee(product.addedBy).pipe(take(1)).subscribe(employee=>{
+          employee.dropCount = employee.dropCount ? employee.dropCount + 1 : 1;
+          this.emplServe.updateEmployee(employee.uid,employee);
+          this.delete(product.uid);
+        })
+      }
     })
   }
 }
