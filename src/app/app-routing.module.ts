@@ -29,6 +29,7 @@ import { GuestCheckoutComponent } from './components/guests/guest-checkout/guest
 import { PendingBidsComponent } from './components/delivery-people/pending-bids/pending-bids.component';
 import { DeliveredOrdersComponent } from './components/delivery-people/delivered-orders/delivered-orders.component';
 import { ModifyMenuComponent } from './components/cooks/modify-menu/modify-menu.component';
+import { ProductFormComponent } from './components/shared/product-form/product-form.component';
 
 
 const routes: Routes = [
@@ -64,13 +65,16 @@ const routes: Routes = [
 
   {path:"cook",component:CookComponent, children:[
     {path:"",component:HomeContentComponent},
+    {path:"modify-menu/new",component:ProductFormComponent},
+    {path:"modify-menu/:uid",component:ProductFormComponent},
     {path:"modify-menu",component:ModifyMenuComponent},
   ]},
 
   {path:"delivery",component:DeliveryPersonComponent, children:[
     {path:"",component:HomeContentComponent},
     {path:"pending-bids",component:PendingBidsComponent},
-    {path:"delivered-orders",component:DeliveredOrdersComponent}
+    {path:"delivered-orders",component:DeliveredOrdersComponent},
+    {path:"orders/:uid",component:ViewOrderComponent}
   ]},
   {path:"salesperson",component:SalespersonComponent}
 ];

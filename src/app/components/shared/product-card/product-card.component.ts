@@ -15,6 +15,7 @@ export class ProductCardComponent implements OnInit,OnDestroy {
   @Input('product') product: Product;
   @Input('showActions') showActions = false;
   @Input('guest') guest = false;
+  @Input('cook') cook = false;
   localCart:CartItem[] = new Array();
   quantity$:Subscription;
   quantity:number = 0;

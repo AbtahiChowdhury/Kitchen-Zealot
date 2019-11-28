@@ -1,1 +1,55 @@
-<p>delivered-orders works!</p>
+<div class="container">
+    <h1>CURRENT ORDERS</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Ordered On</th>
+                <th>Total</th>
+                <th>Order Destination</th>
+                <th>Status</th>
+                <th>Delivery Rating</th>
+                <th>Action</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor = "let order of (orders$|async)" >
+                <tr *ngIf = "(order.status == 'BID OVER'||order.status == 'OUT FOR DELIVERY') && deliveryUid == order.currentBidder">
+                    <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                    <td>{{order.total|currency}}</td>
+                    <td>{{order.orderDestination}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
+                    <td *ngIf = "order.status == 'BID OVER'"><button class = "btn btn-primary" (click) = "outForDelivery(order)">Out For Delivery</button></td>
+                    <td *ngIf = "order.status == 'OUT FOR DELIVERY'"><button class = "btn btn-primary" (click) = "delivered(order)">Delivered</button></td>
+                    <td><a class = "btn btn-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <h1>PAST ORDERS</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Ordered On</th>
+                <th>Total</th>
+                <th>Order Destination</th>
+                <th>Delivered On</th>
+                <th>Delivery Rating</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor = "let order of (orders$|async)">
+                <tr *ngIf = "order.status == 'DELIVERED'">
+                    <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                    <td>{{order.total|currency}}</td>
+                    <td>{{order.orderDestination}}</td>
+                    <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
+                    <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
+                    <td><a class = "btn btn-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

@@ -15,7 +15,7 @@
                     <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
                     <td>{{order.orderDestination}}</td>
                     <td>{{order.currentBid? order.currentBid:"N/A"}}</td>
-                    <td>{{order.currentBidder ? order.currentBidder:"N/A"}}</td>
+                    <td>{{order.currentBidderName ? order.currentBidderName:"N/A"}}</td>
                     <td>
                         <input ngModel #bidValue = "ngModel" type="number">
                         <button class="btn btn-primary" (click) = "placeBid(order,bidValue.value)">Bid</button>

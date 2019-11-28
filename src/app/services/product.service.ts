@@ -19,7 +19,10 @@ export class ProductService {
 
   create(product:Product)
   {
-    this.productsCollection.add(product);
+    let id = this.afs.createId()
+    product.uid = id;
+    this.productsCollection.doc(id).set(product);
+    return id;
   }
 
   lookup(uid:string):Observable<Product>

@@ -6,4 +6,5 @@ export interface Employee
     position:string;
     salary:number;
     averageRating?:number;
+    warningCount?:number;
 }

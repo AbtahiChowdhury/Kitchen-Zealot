@@ -21,6 +21,12 @@ export class AllOrdersComponent implements OnInit
     this.orderServe.updateOrder(order.uid,order);
   }
 
+  stopBid(order:Order)
+  {
+    order.status = "BID OVER";
+    this.orderServe.updateOrder(order.uid,order);
+  }
+
   ngOnInit() {
   }
 

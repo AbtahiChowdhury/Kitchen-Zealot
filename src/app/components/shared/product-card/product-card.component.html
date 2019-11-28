@@ -38,5 +38,8 @@
                 </ng-template>
             </ng-template>
         </div>
+        <div *ngIf = "!showActions && cook" class = "card-footer">
+            <a class="btn btn-primary btn-block" [routerLink] = "['/cook/modify-menu/',product.uid]">Edit</a>
+        </div>
     </div>
     

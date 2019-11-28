@@ -20,7 +20,7 @@ export class ViewOrderComponent implements OnInit
   cookedBy:string;
   deliveredBy:string;
   foodRating:number;
-  deliveredOn:Date;
+  deliveredOn:any;
   deliveryRating:number;
   customerRating:number;
   contents:CartItem[];
@@ -30,9 +30,13 @@ export class ViewOrderComponent implements OnInit
   total:number;
   currentBid:number;
   currentBidder?:string;
+  currentBidderName?:string;
   status:string;
+  deliveryComment:string;
 
   manager:boolean = false;
+  delivery:boolean = false;
+  customer:boolean = false;
 
   constructor(private aRoute:ActivatedRoute, private orderServe:OrderService,private authServe:AuthService,private emplServe:EmployeeService) 
   { 
@@ -54,16 +58,23 @@ export class ViewOrderComponent implements OnInit
       this.total = order.total;
       this.currentBid = order.currentBid ? order.currentBid : null;
       this.currentBidder = order.currentBidder ? order.currentBidder : null;
+      this.currentBidderName = order.currentBidderName ? order.currentBidderName : null;
       this.status = order.status;
+      this.deliveryComment = order.customerDeliveryComment ? order.customerDeliveryComment : null;
+      
     })
 
     this.authServe.user$.pipe(take(1)).subscribe(firebaseUser=>{
       this.emplServe.getUser(firebaseUser.uid).pipe(take(1)).subscribe(user=>{
+        if(user.type == "customer")
+          this.customer = true;
         if(user.type == "employee")
         {
           this.emplServe.getEmployee(firebaseUser.uid).pipe(take(1)).subscribe(employee=>{
             if(employee.position == "manager")
               this.manager = true;
+            if(employee.position == "delivery")
+              this.delivery = true;
           })
         }
       })

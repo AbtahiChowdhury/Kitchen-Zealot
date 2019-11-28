@@ -10,7 +10,7 @@
             <td>{{status}}</td>
         </tr>
 
-        <tr *ngIf = "manager" style="border: solid black 5px;">
+        <tr *ngIf = "manager || delivery" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Ordered By:</td>
             <td>{{orderedBy}}</td>
         </tr>
@@ -30,39 +30,47 @@
             <td>{{cookedBy}}</td>
         </tr>
 
-        <tr *ngIf = "deliveredBy" style="border: solid black 5px;">
+        <tr *ngIf = "deliveredOn" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Delivered By:</td>
-            <td>{{deliveredBy}}</td>
+            <td>{{currentBidderName}}</td>
         </tr>
 
-        <tr *ngIf = "deliveredOn" style="border: solid black 5px;">
+        <tr *ngIf = "foodRating" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Food Rating:</td>
             <td>{{foodRating}}</td>
         </tr>
 
-        <tr *ngIf = "deliveredOn" style="border: solid black 5px;">
+
+        <tr *ngIf = "deliveryRating" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Delivery Rating:</td>
-            <td>{{deliveryRating}}</td>
+            <td>
+                {{deliveryRating}}
+            </td>
         </tr>
 
-        <tr *ngIf = "manager" style="border: solid black 5px;">
+        <tr *ngIf = "deliveryComment" style="border: solid black 5px;">
+            <td style="border: solid black 5px;" class = "bg-primary" >Delivery Rating Comment:</td>
+            <td>{{deliveryComment}}</td>
+        </tr>
+
+        <tr *ngIf = "deliveredOn" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Delivered On:</td>
-            <td>{{deliveredOn}}</td>
+            <td>{{deliveredOn.seconds*1000 | date:'medium'}}</td>
         </tr>
 
-        <tr *ngIf = "manager" style="border: solid black 5px;">
+        <tr *ngIf = "manager||delivery" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Customer Rating:</td>
             <td>{{customerRating}}</td>
         </tr>
 
-        <tr *ngIf = "manager" style="border: solid black 5px;">
+        <tr *ngIf = "manager||delivery" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Current Bid:</td>
             <td>{{currentBid}}</td>
         </tr>
 
-        <tr *ngIf = "manager" style="border: solid black 5px;">
+        <tr *ngIf = "manager||delivery" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Curent Bidder:</td>
-            <td>{{currentBidder}}</td>
+            <td>{{currentBidderName}}</td>
         </tr>
 
         <tr style="border: solid black 5px;">

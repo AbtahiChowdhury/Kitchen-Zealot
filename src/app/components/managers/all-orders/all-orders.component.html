@@ -8,8 +8,8 @@
                 <th>Status</th>
                 <th>Current Bid</th>
                 <th>Current Bidder</th>
+                <th>Bidding</th>
                 <th>View</th>
-                <th>Start Bid</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +19,10 @@
                     <td>{{order.total|currency}}</td>
                     <td>{{order.status}}</td>
                     <td>{{order.currentBid|currency}}</td>
-                    <td>{{order.currentBidder?order.currentBidder:"N/A"}}</td>
-                    <td><button class = "btn btn-primary" (click) = "startBid(order)">Start Bid</button></td>
+                    <td>{{order.currentBidderName?order.currentBidderName:"N/A"}}</td>
+                    <td *ngIf = "order.status == 'ORDERED'"><button class = "btn btn-primary" (click) = "startBid(order)">Start Bid</button></td>
+                    <td *ngIf = "order.status == 'BIDDING'"><button class = "btn btn-primary" (click) = "stopBid(order)">Stop Bid</button></td>
+                    <td *ngIf = "order.status == 'BID OVER'">Bid Over</td>
                     <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
                 </tr>
             </ng-container>
@@ -43,8 +45,8 @@
                 <tr *ngIf = "order.status == 'DELIVERED'">
                     <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
                     <td>{{order.total|currency}}</td>
-                    <td>{{order.deliveredOn?order.deliveredOn:"N/A"}}</td>
-                    <td>{{order.foodRating?order.foodrating:"N/A"}}</td>
+                    <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
+                    <td>{{order.foodRating?order.foodRating:"N/A"}}</td>
                     <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
                     <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
                 </tr>

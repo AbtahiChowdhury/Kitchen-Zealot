@@ -12,6 +12,7 @@ export class MenuComponent implements OnInit {
 
   @Input('showActions')showActions;
   @Input('guest') guest = false;
+  @Input('cook') cook = false;
   products$:Observable<Product[]>
   constructor(private productServe: ProductService) {
     this.products$ = productServe.productObservable; 

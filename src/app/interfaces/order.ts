@@ -11,9 +11,11 @@ export interface Order
     cookedBy?:string;
     deliveredBy?:string;
     foodRating?:number;
-    deliveredOn?:Date;
+    deliveredOn?:any;
     deliveryRating?:number;
     customerRating?:number;
+    customerDeliveryComment?:string;
+    customerFoodComment?:string;
     contents:CartItem[];
     subtotal:number;
     tax:number;
@@ -21,5 +23,6 @@ export interface Order
     total:number;
     currentBid?:number;
     currentBidder?:string;
+    currentBidderName?:string;
     status:string;
 }
