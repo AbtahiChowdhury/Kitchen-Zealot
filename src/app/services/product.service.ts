@@ -61,17 +61,24 @@ export class ProductService {
           }
         }
       }
-      product.averageRating = sum/count;
-      this.update(product.uid,product);
+      this.lookup(product.uid).pipe(take(1)).subscribe(currentProduct=>{
+        currentProduct.averageRating = sum/count;
+        if(currentProduct.averageRating >= 1 && currentProduct.averageRating <2)
+        {
+          this.emplServe.getEmployee(product.addedBy).pipe(take(1)).subscribe(employee=>{
+            employee.dropCount = employee.dropCount ? employee.dropCount + 1 : 1;
+            if(employee.dropCount == 2)
+            {
+              employee.dropCount = 0;
+              employee.warningCount = employee.warningCount ? employee.warningCount + 1 : 1;
+            }
+            this.emplServe.updateEmployee(employee.uid,employee);
+          })
+          currentProduct.status = "DROPPED";
+        }
 
-      if(product.averageRating >= 1 && product.averageRating <2)
-      {
-        this.emplServe.getEmployee(product.addedBy).pipe(take(1)).subscribe(employee=>{
-          employee.dropCount = employee.dropCount ? employee.dropCount + 1 : 1;
-          this.emplServe.updateEmployee(employee.uid,employee);
-          this.delete(product.uid);
-        })
-      }
+        this.update(product.uid,currentProduct);
+      })
     })
   }
 }

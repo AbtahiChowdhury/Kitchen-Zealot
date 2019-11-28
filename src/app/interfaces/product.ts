@@ -8,4 +8,5 @@ export interface Product
     averageRating?:number;
     orderFrequency?:number;
     addedBy?:string;
+    status?:string;
 }

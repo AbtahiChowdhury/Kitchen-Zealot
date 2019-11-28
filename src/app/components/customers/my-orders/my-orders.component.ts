@@ -39,20 +39,6 @@ export class MyOrdersComponent implements OnInit,OnDestroy {
     for(let item of order.contents)
     {
       this.productServe.updateRating(item.product);
-      this.productServe.lookup(item.product.uid).pipe(take(1)).subscribe(product=>{
-        if(product.averageRating >= 1 && product.averageRating < 2)
-        {
-          this.emplServe.getEmployee(product.addedBy).pipe(take(1)).subscribe(employee=>{
-            employee.dropCount = employee.dropCount ? employee.dropCount + 1 : 1;
-            if(employee.dropCount == 2)
-            {
-              employee.dropCount = 0;
-              employee.warningCount = employee.warningCount ? employee.warningCount + 1 : 1;
-            }
-            this.emplServe.updateEmployee(employee.uid,employee);
-          })
-        }
-      })
     }
     
     order.foodRating = Number(value);
