@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-product-form',
@@ -15,7 +16,7 @@ export class ProductFormComponent implements OnInit,OnDestroy
   id:string;
   product:Product = {title:"",price:null,imageUrl:""};
   subscription:Subscription;
-  constructor(private productServe:ProductService,private aRoute:ActivatedRoute,private router:Router) 
+  constructor(private productServe:ProductService,private aRoute:ActivatedRoute,private router:Router,private authServe:AuthService) 
   { 
     this.id = this.aRoute.snapshot.paramMap.get("uid");
     if(this.id)
@@ -26,19 +27,23 @@ export class ProductFormComponent implements OnInit,OnDestroy
 
   save(formValue)
   {
-    this.product.title = formValue.title;
-    this.product.price = formValue.price;
-    this.product.imageUrl = formValue.imageUrl;
-    if(this.id)
-    {
-      this.productServe.update(this.id,this.product);
-    }
-    else
-    {
-      this.productServe.create(this.product);
-    }
-    
-    this.router.navigateByUrl("/cook/modify-menu");
+    this.authServe.user$.pipe(take(1)).subscribe(user=>{
+      this.product.addedBy = user.uid;
+      this.product.title = formValue.title;
+      this.product.price = formValue.price;
+      this.product.imageUrl = formValue.imageUrl;
+      this.product.averageRating = null;
+      if(this.id)
+      {
+        this.productServe.update(this.id,this.product);
+      }
+      else
+      {
+        this.productServe.create(this.product);
+      }
+      
+      this.router.navigateByUrl("/cook/modify-menu");
+    })
   }
 
   delete()

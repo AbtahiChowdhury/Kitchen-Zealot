@@ -21,7 +21,7 @@ export class PendingBidsComponent implements OnInit
 
   placeBid(order:Order,newBid:number)
   {
-    if(order.currentBid > newBid && order.currentBid > 10)
+    if(order.currentBid > newBid && newBid > 0 && newBid != null)
     {
       order.currentBid = newBid;
       this.authServe.user$.pipe(take(1)).subscribe(firebaseUser=>{

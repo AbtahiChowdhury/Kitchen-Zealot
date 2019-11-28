@@ -41,7 +41,7 @@
         </thead>
         <tbody>
             <ng-container *ngFor = "let order of (orders$|async)">
-                <tr *ngIf = "order.status == 'DELIVERED'">
+                <tr *ngIf = "order.status == 'DELIVERED' && deliveryUid == order.deliveredBy">
                     <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
                     <td>{{order.total|currency}}</td>
                     <td>{{order.orderDestination}}</td>

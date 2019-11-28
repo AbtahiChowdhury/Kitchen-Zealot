@@ -7,4 +7,5 @@ export interface Employee
     salary:number;
     averageRating?:number;
     warningCount?:number;
+    dropCount?:number;
 }

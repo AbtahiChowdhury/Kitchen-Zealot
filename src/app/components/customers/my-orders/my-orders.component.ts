@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Subscription, Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-my-orders',
@@ -16,7 +17,7 @@ export class MyOrdersComponent implements OnInit,OnDestroy {
   orders$:Observable<Order[]>;
   userid:string;
   currentOrder:Order;
-  constructor(private orderServe:OrderService,private custServe:CustomerService,private emplServe:EmployeeService) 
+  constructor(private orderServe:OrderService,private custServe:CustomerService,private emplServe:EmployeeService,private productServe:ProductService) 
   { 
     this.orders$ = this.orderServe.ordersObservable;
     this.custServe.getCurrentUser().pipe(take(1)).subscribe(user=>{
@@ -34,6 +35,26 @@ export class MyOrdersComponent implements OnInit,OnDestroy {
     {
       document.getElementById("foodRatingButton").click();
     }
+    
+    for(let item of order.contents)
+    {
+      this.productServe.updateRating(item.product);
+      this.productServe.lookup(item.product.uid).pipe(take(1)).subscribe(product=>{
+        if(product.averageRating >= 1 && product.averageRating < 2)
+        {
+          this.emplServe.getEmployee(product.addedBy).pipe(take(1)).subscribe(employee=>{
+            employee.dropCount = employee.dropCount ? employee.dropCount + 1 : 1;
+            if(employee.dropCount == 2)
+            {
+              employee.dropCount = 0;
+              employee.warningCount = employee.warningCount ? employee.warningCount + 1 : 1;
+            }
+            this.emplServe.updateEmployee(employee.uid,employee);
+          })
+        }
+      })
+    }
+    
     order.foodRating = Number(value);
     this.currentOrder = order;
     this.orderServe.updateOrder(order.uid,order);
