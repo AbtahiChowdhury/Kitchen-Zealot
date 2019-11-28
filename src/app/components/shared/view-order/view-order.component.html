@@ -35,14 +35,22 @@
             <td>{{currentBidderName}}</td>
         </tr>
 
-        <tr *ngIf = "deliveredOn" style="border: solid black 5px;">
+        <tr *ngIf = "foodRating" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Food Rating:</td>
             <td>{{foodRating}}</td>
         </tr>
 
-        <tr *ngIf = "deliveredOn" style="border: solid black 5px;">
+
+        <tr *ngIf = "deliveryRating" style="border: solid black 5px;">
             <td style="border: solid black 5px;" class = "bg-primary" >Delivery Rating:</td>
-            <td>{{deliveryRating}}</td>
+            <td>
+                {{deliveryRating}}
+            </td>
+        </tr>
+
+        <tr *ngIf = "deliveryComment" style="border: solid black 5px;">
+            <td style="border: solid black 5px;" class = "bg-primary" >Delivery Rating Comment:</td>
+            <td>{{deliveryComment}}</td>
         </tr>
 
         <tr *ngIf = "deliveredOn" style="border: solid black 5px;">
