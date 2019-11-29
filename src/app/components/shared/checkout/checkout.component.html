@@ -1,56 +1,58 @@
-<form #form = "ngForm" (ngSubmit)="checkout(form.value)">
-    <div class = "form-group">
-        <label for="name">Name</label>
-        <input [ngModel] = "userName" type="text" required #name = "ngModel" name="name" class="form-control">
-        <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
-            Name is Invalid
+<div class="card rounded-lg shadow-lg">
+    <h1 class="card-header bg-dark">Checkout</h1>
+    <form #form = "ngForm" (ngSubmit)="checkout(form.value)" class="card-body">
+        <div class = "form-group">
+            <label for="name">Name</label>
+            <input [ngModel] = "userName" type="text" required #name = "ngModel" name="name" class="form-control">
+            <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
+                Name is Invalid
+            </div>
         </div>
-    </div>
 
-    <div class = "form-group">
-        <label for="phone">Phone Number</label>
-        <input [ngModel] = "userPhone" type="tel" required #phone = "ngModel" name="phone" class="form-control">
-        <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
-            Phone Number is Invalid
+        <div class = "form-group">
+            <label for="phone">Phone Number</label>
+            <input [ngModel] = "userPhone" type="tel" required #phone = "ngModel" name="phone" class="form-control">
+            <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
+                Phone Number is Invalid
+            </div>
         </div>
-    </div>
 
-    <div class = "form-group">
-        <label for="address">Address</label>
-        <input [ngModel] = "customerAddress" type="text" required #address = "ngModel" name="address" class="form-control">
-        <div *ngIf = "address.touched && address.invalid" class="alert alert-danger">
-            Address is Invalid
+        <div class = "form-group">
+            <label for="address">Address</label>
+            <input [ngModel] = "customerAddress" type="text" required #address = "ngModel" name="address" class="form-control">
+            <div *ngIf = "address.touched && address.invalid" class="alert alert-danger">
+                Address is Invalid
+            </div>
         </div>
-    </div>
 
-    <div class = "form-group">
-        <label for="nameOnCard">Name on Card</label>
-        <input [ngModel] = "customerNameOnCard" type="text" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
-        <div *ngIf = "nameOnCard.touched && nameOnCard.invalid" class="alert alert-danger">
-            Name on Card is Invalid
+        <div class = "form-group">
+            <label for="nameOnCard">Name on Card</label>
+            <input [ngModel] = "customerNameOnCard" type="text" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
+            <div *ngIf = "nameOnCard.touched && nameOnCard.invalid" class="alert alert-danger">
+                Name on Card is Invalid
+            </div>
         </div>
-    </div>
-    <div class = "form-group">
-        <label for="cardNumber">Credit Card Number</label>
-        <input [ngModel] = "customerCardNumber" type="text" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
-        <div *ngIf = "cardNumber.touched && cardNumber.invalid" class="alert alert-danger">
-            Credit Card Number is Invalid
+        <div class = "form-group">
+            <label for="cardNumber">Credit Card Number</label>
+            <input [ngModel] = "customerCardNumber" type="text" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
+            <div *ngIf = "cardNumber.touched && cardNumber.invalid" class="alert alert-danger">
+                Credit Card Number is Invalid
+            </div>
         </div>
-    </div>
-    <div class = "form-group">
-        <label for="expirationDate">Expiration Date</label>
-        <input [ngModel] = "customerExpirationDate" type="text" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required #expirationDate = "ngModel" name="expirationDate" class="form-control">
-        <div *ngIf = "expirationDate.touched && expirationDate.invalid" class="alert alert-danger">
-            Expiration Date is Invalid
+        <div class = "form-group">
+            <label for="expirationDate">Expiration Date</label>
+            <input [ngModel] = "customerExpirationDate" type="text" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required #expirationDate = "ngModel" name="expirationDate" class="form-control">
+            <div *ngIf = "expirationDate.touched && expirationDate.invalid" class="alert alert-danger">
+                Expiration Date is Invalid
+            </div>
         </div>
-    </div>
-    <div class = "form-group">
-        <label for="CVV">CVV</label>
-        <input [ngModel] = "customerCVV" type="text" required #CVV = "ngModel" name="CVV" class="form-control">
-        <div *ngIf = "CVV.touched && CVV.invalid" class="alert alert-danger">
-            CVV is Invalid
+        <div class = "form-group">
+            <label for="CVV">CVV</label>
+            <input [ngModel] = "customerCVV" type="text" required #CVV = "ngModel" name="CVV" class="form-control">
+            <div *ngIf = "CVV.touched && CVV.invalid" class="alert alert-danger">
+                CVV is Invalid
+            </div>
         </div>
-    </div>
-    <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Order</button>
-    <br>
-</form>
+        <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Order</button>
+    </form>
+</div>

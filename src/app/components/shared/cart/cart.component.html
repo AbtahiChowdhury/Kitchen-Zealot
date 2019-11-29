@@ -1,14 +1,14 @@
-<div class="sticky-top" style="padding-top: 15%">
+<div class="sticky-top" style="padding-top: 20%">
     <div class="card shadow rounded-lg">
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="thead-dark card-header">
                 <tr>
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="card-body">
                 <tr *ngFor = "let cartItem of shoppingCart">
                     <td>{{cartItem.product.title}}</td>
                     <td>{{cartItem.product.price|currency}}</td>
