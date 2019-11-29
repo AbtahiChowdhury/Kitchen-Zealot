@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { take } from 'rxjs/operators';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-delivered-orders',
@@ -16,7 +17,7 @@ export class DeliveredOrdersComponent implements OnInit {
   orders$:Observable<Order[]>;
   deliveryUid:string;
 
-  constructor(private orderServe:OrderService,private authServe:AuthService,private emplService:EmployeeService) 
+  constructor(private orderServe:OrderService,private authServe:AuthService,private emplService:EmployeeService,private custServe:CustomerService) 
   { 
     this.orders$ = this.orderServe.ordersObservable;
     this.authServe.user$.pipe(take(1)).subscribe(firebaseUser=>{
@@ -40,6 +41,13 @@ export class DeliveredOrdersComponent implements OnInit {
       order.deliveredOn = new Date();
       this.orderServe.updateOrder(order.uid,order);
     })
+  }
+
+  customerRatingChange(order:Order,value:string)
+  {
+    order.customerRating = Number(value);
+    this.orderServe.updateOrder(order.uid,order);
+    this.custServe.updateRating(order.orderedBy);
   }
 
   ngOnInit() {

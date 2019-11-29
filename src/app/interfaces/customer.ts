@@ -8,4 +8,6 @@ export interface Customer
     address:string;
     paymentDetails?:Payment;
     shoppingCart:CartItem[];
+    averageRating?:number;
+    rank?:string;
 }

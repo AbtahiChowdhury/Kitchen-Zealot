@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { AuthService } from './auth.service';
 import { switchMap, take } from 'rxjs/operators';
+import { OrderService } from './order.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class CustomerService {
   customerCollection:AngularFirestoreCollection<Customer>;
   customersObservable:Observable<Customer[]>;
 
-  constructor(private afs:AngularFirestore, private userServe:UserService,private authServe:AuthService) 
+  constructor(private afs:AngularFirestore, private userServe:UserService,private authServe:AuthService,private orderServe:OrderService) 
   { 
     this.customerCollection = this.afs.collection('customers');
     this.customersObservable = this.customerCollection.valueChanges({idfield:"uid"});
@@ -38,7 +39,7 @@ export class CustomerService {
 
   getCustomer(uid:string):Observable<Customer>
   {
-    return this.afs.doc("customers/" + uid).valueChanges() as Observable<Customer>;
+    return this.afs.doc("customers/"+uid).valueChanges() as Observable<Customer>;
   }
 
   getUser(uid:string):Observable<User>
@@ -58,5 +59,34 @@ export class CustomerService {
     return this.authServe.user$.pipe(switchMap(user=>{
       return this.getCustomer(user.uid)
     }));
+  }
+
+  updateRating(uid:string)
+  {
+    this.orderServe.ordersObservable.pipe(take(1)).subscribe(orders=>{
+      let filteredOrders = orders.filter(o => o.orderedBy == uid);
+      let sortedOrders = filteredOrders.sort((a,b)=>a.deliveredOn < b.deliveredOn ? 1 : a.deliveredOn > b.deliveredOn ? -1 : 0);
+      let sum = 0;
+      let count = 0;
+      let average = 5;
+      for(let i = 0;i<sortedOrders.length;i++)
+      {
+        if(sortedOrders[i].customerRating != null)
+        {
+          count++;
+          sum += sortedOrders[i].customerRating;
+        }
+      }
+      if(count == 0)
+        average = 0;
+      else
+        average = sum/count;
+      
+      uid = uid.trim();
+      this.getCustomer(uid).pipe(take(1)).subscribe(customer=>{
+        customer.averageRating = average;
+        this.updateCustomer(uid,customer);
+      })
+    })
   }
 }
