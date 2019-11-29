@@ -1,19 +1,21 @@
 <div class="container">
-    <button class="btn btn-primary" routerLink = "add">Add Employee</button>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>View</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor = "let employee of employeesArr">
-                <td>{{employee[1].name}}</td>
-                <td>{{employee[0].position|uppercase}}</td>
-                <td><a class = "btn btn-primary" [routerLink] = "['/manager/employees/',employee[0].uid]">View</a></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card rounded-lg shadow-lg" style="margin-bottom: 2%">
+        <table class="table">
+            <thead class="thead-dark card-header">
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+            <tbody class="card-body">
+                <tr *ngFor = "let employee of employeesArr">
+                    <td>{{employee[1].name}}</td>
+                    <td>{{employee[0].position|uppercase}}</td>
+                    <td><a class = "btn btn-primary" [routerLink] = "['/manager/employees/',employee[0].uid]">View</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-primary btn-block" routerLink = "add">Add Employee</button>
 </div>

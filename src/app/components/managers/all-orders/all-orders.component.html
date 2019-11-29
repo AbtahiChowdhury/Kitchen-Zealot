@@ -1,56 +1,61 @@
 <div class="container">
-    <h1>CURRENT ORDERS</h1>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Ordered On</th>
-                <th>Total</th>
-                <th>Status</th>
-                <th>Current Bid</th>
-                <th>Current Bidder</th>
-                <th>Bidding</th>
-                <th>View</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor = "let order of (orders$|async)" >
-                <tr *ngIf = "order.status != 'DELIVERED'">
-                    <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
-                    <td>{{order.total|currency}}</td>
-                    <td>{{order.status}}</td>
-                    <td>{{order.currentBid|currency}}</td>
-                    <td>{{order.currentBidderName?order.currentBidderName:"N/A"}}</td>
-                    <td *ngIf = "order.status == 'ORDERED'"><button class = "btn btn-primary" (click) = "startBid(order)">Start Bid</button></td>
-                    <td *ngIf = "order.status == 'BIDDING'"><button class = "btn btn-primary" (click) = "stopBid(order)">Stop Bid</button></td>
-                    <td *ngIf = "order.status == 'BID OVER'">Bid Over</td>
-                    <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
+    <div class="card rounded-lg shadow-lg" style="margin-bottom: 5%">
+        <h1 class="card-header">CURRENT ORDERS</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ordered On</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Current Bid</th>
+                    <th>Current Bidder</th>
+                    <th>Bidding</th>
+                    <th>View</th>
                 </tr>
-            </ng-container>
-        </tbody>
-    </table>
-    <h1>PAST ORDERS</h1>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Ordered On</th>
-                <th>Total</th>
-                <th>Delivered On</th>
-                <th>Food Rating</th>
-                <th>Delivery Rating</th>
-                <th>View</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor = "let order of (orders$|async)">
-                <tr *ngIf = "order.status == 'DELIVERED'">
-                    <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
-                    <td>{{order.total|currency}}</td>
-                    <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
-                    <td>{{order.foodRating?order.foodRating:"N/A"}}</td>
-                    <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
-                    <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
+            </thead>
+            <tbody>
+                <ng-container *ngFor = "let order of (orders$|async)" >
+                    <tr *ngIf = "order.status != 'DELIVERED'">
+                        <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                        <td>{{order.total|currency}}</td>
+                        <td>{{order.status}}</td>
+                        <td>{{order.currentBid|currency}}</td>
+                        <td>{{order.currentBidderName?order.currentBidderName:"N/A"}}</td>
+                        <td *ngIf = "order.status == 'ORDERED'"><button class = "btn btn-primary" (click) = "startBid(order)">Start Bid</button></td>
+                        <td *ngIf = "order.status == 'BIDDING'"><button class = "btn btn-primary" (click) = "stopBid(order)">Stop Bid</button></td>
+                        <td *ngIf = "order.status == 'BID OVER'">Bid Over</td>
+                        <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card rounded-lg shadow-lg" style="margin-bottom: 5%">
+        <h1 class="card-header">PAST ORDERS</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ordered On</th>
+                    <th>Total</th>
+                    <th>Delivered On</th>
+                    <th>Food Rating</th>
+                    <th>Delivery Rating</th>
+                    <th>View</th>
                 </tr>
-            </ng-container>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <ng-container *ngFor = "let order of (orders$|async)">
+                    <tr *ngIf = "order.status == 'DELIVERED'">
+                        <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                        <td>{{order.total|currency}}</td>
+                        <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
+                        <td>{{order.foodRating?order.foodRating:"N/A"}}</td>
+                        <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
+                        <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
 </div>
