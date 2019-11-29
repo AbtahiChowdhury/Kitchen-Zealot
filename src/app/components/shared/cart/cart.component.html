@@ -1,39 +1,43 @@
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let cartItem of shoppingCart">
-            <td>{{cartItem.product.title}}</td>
-            <td>{{cartItem.product.price|currency}}</td>
-            <td>{{cartItem.quantity}}</td>
-        </tr>
-        <tr>
-            <td>Subtotal</td>
-            <td>{{subtotal|currency}}</td>
-        </tr>
-        <ng-container *ngIf = "checkout">
-            <tr>
-                <td>Tax</td>
-                <td>+{{tax|currency}}</td>
-            </tr>
-            <tr>
-                <td>Customer Discount</td>
-                <td>-{{discount|currency}}</td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td>{{total|currency}}</td>
-            </tr>
-        </ng-container>
-    </tbody>
-</table>
+<div class="sticky-top" style="padding-top: 15%">
+    <div class="card shadow rounded-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let cartItem of shoppingCart">
+                    <td>{{cartItem.product.title}}</td>
+                    <td>{{cartItem.product.price|currency}}</td>
+                    <td>{{cartItem.quantity}}</td>
+                </tr>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>{{subtotal|currency}}</td>
+                </tr>
+                <ng-container *ngIf = "checkout">
+                    <tr>
+                        <td>Tax</td>
+                        <td>+{{tax|currency}}</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Discount</td>
+                        <td>-{{discount|currency}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>{{total|currency}}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
 
-<div *ngIf = "!checkout">
-    <button *ngIf = "!guest" class="btn btn-primary btn-block" routerLink = "/customer/checkout" >Order</button>
-    <button *ngIf = "guest" class="btn btn-primary btn-block" routerLink = "/guest/checkout" >Order</button>
+        <div *ngIf = "!checkout">
+            <button *ngIf = "!guest" class="btn btn-primary btn-block" routerLink = "/customer/checkout" >Order</button>
+            <button *ngIf = "guest" class="btn btn-primary btn-block" routerLink = "/guest/checkout" >Order</button>
+        </div>
+    </div>
 </div>

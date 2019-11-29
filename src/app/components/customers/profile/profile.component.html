@@ -1,6 +1,7 @@
 <div class="container">
-        <form #form = "ngForm" (ngSubmit)="update(form.value)">
-            <br>
+    <div class="card rounded-lg shadow-lg">
+        <h1 class="card-header bg-dark">My Profile</h1>
+        <form #form = "ngForm" (ngSubmit)="update(form.value)" class="card-body">
             <div class = "form-group">
                 <label for="name">Name</label>
                 <input disabled [ngModel] = "userName" type="text" required #name = "ngModel" name="name" class="form-control">
@@ -53,7 +54,7 @@
                 </div>
             </div>
             <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Save</button>
-            <br>
         </form>
+    </div>
 </div>
 

@@ -1,46 +1,48 @@
 <div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Ordered On</th>
-                <th>Total</th>
-                <th>Delivered On</th>
-                <th>Food Rating</th>
-                <th>Delivery Rating</th>
-                <th>View</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor = "let order of (orders$|async)">
-                <tr *ngIf = "userid == order.orderedBy">
-                    <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
-                    <td>{{order.total|currency}}</td>
-                    <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
-                    <td *ngIf = "order.deliveredOn">
-                        <select [(ngModel)] = "order.foodRating" #foodRating = "ngModel" name="foodRating" id="foodRating" class = "form-control" (change) = "foodRatingChange(order,foodRating.value)">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                        </select>
-                    </td>
-                    <td *ngIf = "!order.deliveredOn">N/A</td>
-                    <td *ngIf = "order.deliveredOn">
-                        <select [(ngModel)] = "order.deliveryRating" #deliveryRating = "ngModel" name="deliveryRating" id="deliveryRating" class = "form-control" (change) = "deliveryRatingChange(order,deliveryRating.value);">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                        </select>
-                    </td>
-                    <td *ngIf = "!order.deliveredOn">N/A</td>
-                    <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
+    <div class="card rounded-lg shadow-lg">
+        <table class="table">
+            <thead class="thead-dark card-header">
+                <tr>
+                    <th>Ordered On</th>
+                    <th>Total</th>
+                    <th>Delivered On</th>
+                    <th>Food Rating</th>
+                    <th>Delivery Rating</th>
+                    <th>View</th>
                 </tr>
-            </ng-container>
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="card-body">
+                <ng-container *ngFor = "let order of (orders$|async)">
+                    <tr *ngIf = "userid == order.orderedBy">
+                        <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                        <td>{{order.total|currency}}</td>
+                        <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
+                        <td *ngIf = "order.deliveredOn">
+                            <select [(ngModel)] = "order.foodRating" #foodRating = "ngModel" name="foodRating" id="foodRating" class = "form-control" (change) = "foodRatingChange(order,foodRating.value)">
+                                <option value = "1">1</option>
+                                <option value = "2">2</option>
+                                <option value = "3">3</option>
+                                <option value = "4">4</option>
+                                <option value = "5">5</option>
+                            </select>
+                        </td>
+                        <td *ngIf = "!order.deliveredOn">N/A</td>
+                        <td *ngIf = "order.deliveredOn">
+                            <select [(ngModel)] = "order.deliveryRating" #deliveryRating = "ngModel" name="deliveryRating" id="deliveryRating" class = "form-control" (change) = "deliveryRatingChange(order,deliveryRating.value);">
+                                <option value = "1">1</option>
+                                <option value = "2">2</option>
+                                <option value = "3">3</option>
+                                <option value = "4">4</option>
+                                <option value = "5">5</option>
+                            </select>
+                        </td>
+                        <td *ngIf = "!order.deliveredOn">N/A</td>
+                        <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
 
     <button hidden id="foodRatingButton"type="button" class="btn btn-primary" data-toggle="modal" data-target="#foodCommentModal">
         Open modal
