@@ -1,4 +1,4 @@
-<div *ngIf = "product.title" class="card">
+<div *ngIf = "product.title" class="card shadow rounded-lg">
         <img [src]="product.imageUrl" alt="{{product.title}}" class="card-img-top" style="width:100%;height:20vw;object-fit:cover;" *ngIf = "product.imageUrl">
         <div class="card-body">
             <h4 class="card-title">{{product.title}}</h4>
