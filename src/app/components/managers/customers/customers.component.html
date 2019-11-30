@@ -1,1 +1,16 @@
-<p>customers works!</p>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark card-header">
+            <tr>
+                <th>Name</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody class="card-body">
+            <tr *ngFor = "let customer of customersArr">
+                <td>{{customer[1].name}}</td>
+                <td><a class = "btn btn-primary" [routerLink] = "['/manager/customers/',customer[0].uid]">View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

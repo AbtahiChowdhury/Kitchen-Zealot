@@ -89,7 +89,7 @@ import { ProductFormComponent } from './components/shared/product-form/product-f
     DeliveredOrdersComponent,
     CookNavbarComponent,
     ModifyMenuComponent,
-    ProductFormComponent
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,
