@@ -36,8 +36,39 @@
         </table>
 
         <div *ngIf = "!checkout">
-            <button *ngIf = "!guest" class="btn btn-primary btn-block" routerLink = "/customer/checkout" >Order</button>
+            <button *ngIf = "!guest" class="btn btn-primary btn-block" (click) = "order()">Order</button>
             <button *ngIf = "guest" class="btn btn-primary btn-block" routerLink = "/guest/checkout" >Order</button>
+        </div>
+    </div>
+</div>
+
+<button hidden id="freeItemButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#freeItemModal">
+        Open modal
+</button>
+<div class="modal" id="freeItemModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">You can choose a free side</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        
+            <!-- Modal body -->
+            <div class="modal-body">
+                <ng-container *ngFor = "let product of products$|async">
+                    <ng-container *ngIf = "product.category == 'Side'">
+                        <input [(ngModel)] = "freeItemSelected" type="radio" name="foodChoice" [value]="product">{{product.title}}
+                    </ng-container>
+                </ng-container>
+            </div>
+        
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "addFreeFood();">Add</button>
+            </div>
+    
         </div>
     </div>
 </div>

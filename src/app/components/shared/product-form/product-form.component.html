@@ -21,11 +21,18 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="category">Category</label>
+                <select required [(ngModel)] = "product.category" #category = "ngModel" name="category" id="category" class = "form-control">
+                    <option value="Main">Main</option>
+                    <option value="Side">Side</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="imageUrl">Image URL</label>
                 <input #imageUrl = "ngModel" [(ngModel)] = "product.imageUrl" id = "imageUrl" name = "imageUrl" type="text" class="form-control">
             </div>
         
-            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-primary" [disabled] = "form.invalid">Save</button>
             <button *ngIf = "id" type = "button" (click) = "delete()"class="btn btn-danger">Delete</button>
         </form>
     </div>

@@ -49,7 +49,7 @@ export class CartService
       this.custServe.getCustomer(user.uid).pipe(take(1)).subscribe(customer=>{
         for(let cartIndex = 0;cartIndex<customer.shoppingCart.length;cartIndex++)
         {
-          if(customer.shoppingCart[cartIndex].product.title == product.title)
+          if(customer.shoppingCart[cartIndex].product.uid == product.uid)
           {
             customer.shoppingCart[cartIndex].quantity -= 1;
             if(customer.shoppingCart[cartIndex].quantity == 0)

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <ng-container *ngFor = "let product of products$|async; let i = index">
             <div *ngIf = "product.status=='ACTIVE'"class="col-4">
@@ -7,4 +7,25 @@
             <div *ngIf = "(i+1) % 3 == 0"class = "w-100"></div>
         </ng-container>
     </div>         
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor = "let product of mainProduct; let i = index">
+            <div *ngIf = "product.status=='ACTIVE'"class="col-4">
+                <product-card [product] = "product" [showActions] = "showActions" [guest] = "guest" [cook] = "cook"></product-card>
+            </div>
+            <div *ngIf = "(i+1) % 3 == 0"class = "w-100"></div>
+        </ng-container>
+    </div>
+    <hr>
+    <h1>Sides</h1>
+    <div class="row">
+        <ng-container *ngFor = "let product of sideProduct; let i = index">
+            <div *ngIf = "product.status=='ACTIVE'"class="col-4">
+                <product-card [product] = "product" [showActions] = "showActions" [guest] = "guest" [cook] = "cook"></product-card>
+            </div>
+            <div *ngIf = "(i+1) % 3 == 0"class = "w-100"></div>
+        </ng-container>
+    </div>           
 </div>

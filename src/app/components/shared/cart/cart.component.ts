@@ -1,7 +1,11 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { CartItem } from 'src/app/interfaces/cart-item';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { Product } from 'src/app/interfaces/product';
+import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -17,10 +21,14 @@ export class CartComponent implements OnInit,OnDestroy
   total:number = 0;
   shoppingCart:CartItem[] = null;
 
+  products$:Observable<Product[]>
+  VIPActionDone:boolean = true;
+  freeItemSelected:Product;
   @Input('checkout') checkout = false;
   @Input('guest') guest = false;
-  constructor(private cartServe:CartService)
+  constructor(private cartServe:CartService,private productServe:ProductService,private router:Router)
   { 
+    this.products$ = this.productServe.productObservable;
   }
 
   ngOnInit() 
@@ -60,6 +68,42 @@ export class CartComponent implements OnInit,OnDestroy
   ngOnDestroy()
   {
     this.shoppingCart$.unsubscribe();
+  }
+
+  order()
+  {
+    this.cartServe.getCustomer().pipe(take(1)).subscribe(customer=>{
+      if(customer.rank == "VIP")
+      {
+        for(let cartItem of customer.shoppingCart)
+        {
+          if(cartItem.product.category == 'FREE')
+          {
+            this.VIPActionDone = true;
+            this.router.navigateByUrl("/customer/checkout");
+            return;
+          }
+        }
+        document.getElementById("freeItemButton").click();
+        this.VIPActionDone = false;
+      }
+
+      if(this.VIPActionDone)
+        this.router.navigateByUrl("/customer/checkout");
+    })
+  }
+
+  addFreeFood()
+  {
+    if(this.freeItemSelected)
+    {
+      var clone = Object.assign({}, this.freeItemSelected);
+      clone.category = "FREE";
+      clone.price = 0;
+      clone.title = "FREE "+ this.freeItemSelected.title;
+      this.cartServe.addToCart(clone);
+    }
+    this.VIPActionDone = true;
   }
 
 }

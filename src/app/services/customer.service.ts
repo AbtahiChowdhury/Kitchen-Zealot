@@ -84,6 +84,8 @@ export class CustomerService {
       
       uid = uid.trim();
       this.getCustomer(uid).pipe(take(1)).subscribe(customer=>{
+        if(sortedOrders.length > 3 && average > 4)
+          customer.rank = "VIP";
         customer.averageRating = average;
         this.updateCustomer(uid,customer);
       })

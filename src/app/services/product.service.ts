@@ -71,7 +71,10 @@ export class ProductService {
             {
               employee.dropCount = 0;
               employee.warningCount = employee.warningCount ? employee.warningCount + 1 : 1;
+              if(employee.warningCount > 3)
+                employee.active = false;
             }
+
             this.emplServe.updateEmployee(employee.uid,employee);
           })
           currentProduct.status = "DROPPED";

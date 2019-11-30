@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { CartItem } from 'src/app/interfaces/cart-item';
 import { GuestService } from 'src/app/services/guest.service';
 import { ProductService } from 'src/app/services/product.service';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/interfaces/product';
 
 @Component({
   selector: 'app-checkout',
@@ -46,7 +48,6 @@ export class CheckoutComponent implements OnInit {
   @Input('guest') guest = false;
   constructor(private cartServe:CartService,private orderServe:OrderService,private router:Router,private guestServe:GuestService,private productServe:ProductService)
   {
-
   }
 
   ngOnInit() {

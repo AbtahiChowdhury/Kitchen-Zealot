@@ -70,7 +70,7 @@ export class ProductCardComponent implements OnInit,OnDestroy {
       this.quantity$ = this.cartServe.getCustomer().subscribe(customer=>{
         for(let cartItem of customer.shoppingCart)
         {
-          if(cartItem.product.title == this.product.title)
+          if(cartItem.product.uid == this.product.uid)
           {
             this.quantity = cartItem.quantity;
             return;

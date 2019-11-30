@@ -86,6 +86,8 @@ export class EmployeeService {
         employee.averageRating = average;
         if(average >= 1 && average < 2)
           employee.warningCount = employee.warningCount?employee.warningCount+1:1;
+        if(employee.warningCount > 3)
+          employee.active = false;
         this.updateEmployee(uid,employee);
       })
     })

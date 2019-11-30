@@ -34,6 +34,7 @@ export class ProductFormComponent implements OnInit,OnDestroy
       this.product.imageUrl = formValue.imageUrl;
       this.product.averageRating = null;
       this.product.status = "ACTIVE";
+      this.product.category = formValue.category;
       if(this.id)
       {
         this.productServe.update(this.id,this.product);
