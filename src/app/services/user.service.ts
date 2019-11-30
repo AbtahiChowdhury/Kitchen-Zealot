@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
+import { Customer } from '../interfaces/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,11 @@ export class UserService {
   addUser(user:User)
   {
     this.userCollection.doc(user.uid).set(user);
+  }
+
+  addCustomer(customer:Customer)
+  {
+    this.afs.collection('customers').doc(customer.uid).set(customer);
   }
 
   removeUser(user:User)

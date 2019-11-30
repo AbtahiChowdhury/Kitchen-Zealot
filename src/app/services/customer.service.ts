@@ -86,6 +86,12 @@ export class CustomerService {
       this.getCustomer(uid).pipe(take(1)).subscribe(customer=>{
         if(sortedOrders.length > 3 && average > 4)
           customer.rank = "VIP";
+        if(sortedOrders.length > 3 && average >= 2 && average <= 4)
+          customer.rank = "Normal";
+        if(sortedOrders.length > 3 && average > 1 && average < 2)
+          customer.rank = "Guest";
+        if(sortedOrders.length > 3 && average == 1)
+          customer.rank = "Blacklist";
         customer.averageRating = average;
         this.updateCustomer(uid,customer);
       })

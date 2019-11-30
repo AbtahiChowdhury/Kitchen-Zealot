@@ -23,14 +23,14 @@ export class GuestService
     this.guestCollection.doc(guest.phone).set(guest);
   }
 
-  removeGuest(guest:Guest)
+  removeGuest(phone:string)
   {
-    this.afs.doc("guests/" + guest.uid).delete();
+    this.afs.doc("guests/" + phone).delete();
   }
 
-  getGuest(uid:string):Observable<Guest>
+  getGuest(phone:string):Observable<Guest>
   {
-    return this.afs.doc("guests/" + uid).valueChanges() as Observable<Guest>;
+    return this.afs.doc("guests/" + phone).valueChanges() as Observable<Guest>;
   }
 
   checkIfGuestExists(phone:string)

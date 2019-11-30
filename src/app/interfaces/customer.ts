@@ -5,7 +5,7 @@ import { Payment } from './payment';
 export interface Customer
 {
     uid:string;
-    address:string;
+    address?:string;
     paymentDetails?:Payment;
     shoppingCart:CartItem[];
     averageRating?:number;
