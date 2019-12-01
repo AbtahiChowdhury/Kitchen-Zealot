@@ -79,7 +79,7 @@ export class CheckoutComponent implements OnInit {
     this.cartServe.getCustomer().pipe(take(1)).subscribe(customer=>{
       this.cartServe.getUser().pipe(take(1)).subscribe(user=>{
         this.order.contents = customer.shoppingCart;
-        this.order.orderedBy = user.uid;
+        this.order.orderedBy = (user.uid.trim());
         this.order.orderedOn = new Date();
         this.order.orderDestination = form.address;
         this.order.paymentDetails.CVV = form.CVV;
@@ -94,7 +94,9 @@ export class CheckoutComponent implements OnInit {
         }
         this.order.tax = this.order.subtotal * .08;
         this.order.discount = this.order.tax;
-        this.order.total = this.order.subtotal;
+        if(customer.rank == "Guest")
+          this.order.discount = 0;
+        this.order.total = this.order.subtotal + this.order.tax - this.order.discount;
         let id = this.orderServe.addOrder(this.order);
         this.order.uid = id;
         this.orderServe.updateOrder(id,this.order);
@@ -122,8 +124,8 @@ export class CheckoutComponent implements OnInit {
         this.productServe.update(cartItem.product.uid,cartItem.product);
       }
       this.order.tax = this.order.subtotal * .08;
-      this.order.discount = this.order.tax;
-      this.order.total = this.order.subtotal;
+      this.order.discount = 0;
+      this.order.total = this.order.subtotal + this.order.tax;
       let id = this.orderServe.addOrder(this.order);
       this.order.uid = id;
       this.orderServe.updateOrder(id,this.order);

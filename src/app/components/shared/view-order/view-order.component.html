@@ -100,7 +100,7 @@
             <td>
                 <div>Subtotal: {{subtotal|currency}}</div>
                 <div>Tax: +{{tax|currency}}</div>
-                <div>Discount: -{{discount|currency}}</div>
+                <div *ngIf = "discount != 0 ">Discount: -{{discount|currency}}</div>
                 <div>Total: {{total|currency}}</div>
             </td>
         </tr>

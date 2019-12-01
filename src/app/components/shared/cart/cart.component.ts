@@ -6,6 +6,7 @@ import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-cart',
@@ -26,7 +27,7 @@ export class CartComponent implements OnInit,OnDestroy
   freeItemSelected:Product;
   @Input('checkout') checkout = false;
   @Input('guest') guest = false;
-  constructor(private cartServe:CartService,private productServe:ProductService,private router:Router)
+  constructor(private cartServe:CartService,private productServe:ProductService,private router:Router,private custServe:CustomerService)
   { 
     this.products$ = this.productServe.productObservable;
   }
@@ -44,8 +45,8 @@ export class CartComponent implements OnInit,OnDestroy
           this.subtotal += cartItem.product.price * cartItem.quantity;
         }
         this.tax = this.subtotal * .08;
-        this.discount = this.tax;
-        this.total = this.subtotal;
+        this.discount = 0;
+        this.total = this.subtotal + this.tax;
       })
     }
     else
@@ -59,7 +60,9 @@ export class CartComponent implements OnInit,OnDestroy
         }
         this.tax = this.subtotal * .08;
         this.discount = this.tax;
-        this.total = this.subtotal;
+        if(customer.rank == "Guest")
+          this.discount = 0;
+        this.total = this.subtotal+this.tax-this.discount;
       });
     }
     

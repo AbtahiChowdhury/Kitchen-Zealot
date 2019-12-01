@@ -23,7 +23,7 @@
                         <td>Tax</td>
                         <td>+{{tax|currency}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf = "discount != 0">
                         <td>Customer Discount</td>
                         <td>-{{discount|currency}}</td>
                     </tr>

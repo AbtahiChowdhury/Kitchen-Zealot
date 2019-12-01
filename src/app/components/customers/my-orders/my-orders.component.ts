@@ -6,6 +6,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { Subscription, Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { ProductService } from 'src/app/services/product.service';
+import { Customer } from 'src/app/interfaces/customer';
 
 @Component({
   selector: 'app-my-orders',
@@ -17,11 +18,18 @@ export class MyOrdersComponent implements OnInit,OnDestroy {
   orders$:Observable<Order[]>;
   userid:string;
   currentOrder:Order;
+  customerRank:string;
+  guest:boolean;
   constructor(private orderServe:OrderService,private custServe:CustomerService,private emplServe:EmployeeService,private productServe:ProductService) 
   { 
     this.orders$ = this.orderServe.ordersObservable;
-    this.custServe.getCurrentUser().pipe(take(1)).subscribe(user=>{
-      this.userid = user.uid;
+    this.custServe.getCurrentCustomer().pipe(take(1)).subscribe(customer=>{
+      this.userid = customer.uid;
+      this.customerRank = customer.rank;
+      if(this.customerRank == "Guest")
+        this.guest = true;
+      else
+        this.guest = false;
     })
   }
 
