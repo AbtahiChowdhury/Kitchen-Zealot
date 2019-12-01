@@ -12,16 +12,30 @@ import { take } from 'rxjs/operators';
 })
 export class CustomersComponent implements OnInit {
 
-  customersArr:[Customer,User][] = new Array();
+  normalCustomersArr:[Customer,User][] = new Array();
+  VIPCustomersArr:[Customer,User][] = new Array();
+  guestCustomersArr:[Customer,User][] = new Array();
+  blacklistedCustomersArr:[Customer,User][] = new Array();
   subscription:Subscription;
   constructor(private custServe:CustomerService) 
   { 
     this.subscription = this.custServe.customersObservable.subscribe(customers=>{
-        this.customersArr = [];
+        this.normalCustomersArr = [];
+        this.VIPCustomersArr = [];
+        this.guestCustomersArr = [];
+        this.blacklistedCustomersArr = [];
       for(let customer of customers)
       {
-        this.custServe.getUser(customer.uid).pipe(take(1)).subscribe(user=>{
-            this.customersArr.push([customer,user]);
+        this.custServe.getUser(customer.uid).pipe(take(1)).subscribe(user=>
+        {
+          if(customer.rank == "VIP")
+            this.VIPCustomersArr.push([customer,user]);
+          if(customer.rank == "Normal")
+            this.normalCustomersArr.push([customer,user]);
+          if(customer.rank == "Guest")
+            this.guestCustomersArr.push([customer,user]);
+          if(customer.rank == "Blacklisted")
+            this.blacklistedCustomersArr.push([customer,user]);
         })
       }
     })

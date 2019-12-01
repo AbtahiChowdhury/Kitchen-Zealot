@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
+import { take } from 'rxjs/operators';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-view-customer',
@@ -7,9 +11,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCustomerComponent implements OnInit {
 
-  constructor() { }
+  uid:string;
+  userName:string;
+  userPhone:string;
+  userEmail:string;
+  customerAddress:string;
+  customerAverageRating:number;
+  customerRank:string;
+  constructor(private aRoute:ActivatedRoute,private router:Router,private custServe:CustomerService,private orderServe:OrderService) 
+  {
+    this.uid = this.aRoute.snapshot.paramMap.get("uid");
+    this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
+      this.customerAddress = customer.address;
+      this.customerAverageRating = customer.averageRating;
+      this.customerRank = customer.rank;
+    })
+
+    this.custServe.getUser(this.uid).pipe(take(1)).subscribe(user=>{
+      this.userName = user.name;
+      this.userEmail = user.email;
+      this.userPhone = user.phone;
+    })
+  }
 
   ngOnInit() {
+  }
+
+  promote()
+  {
+    this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
+      this.customerRank = "Normal";
+      customer.rank = "Normal";
+      this.custServe.updateCustomer(customer.uid,customer);
+    })
   }
 
 }
