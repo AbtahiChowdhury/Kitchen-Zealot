@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 import { take } from 'rxjs/operators';
 import { OrderService } from 'src/app/services/order.service';
+import { Observable } from 'rxjs';
+import { Order } from 'src/app/interfaces/order';
 
 @Component({
   selector: 'app-view-customer',
@@ -18,6 +20,8 @@ export class ViewCustomerComponent implements OnInit {
   customerAddress:string;
   customerAverageRating:number;
   customerRank:string;
+
+  orders$:Observable<Order[]>
   constructor(private aRoute:ActivatedRoute,private router:Router,private custServe:CustomerService,private orderServe:OrderService) 
   {
     this.uid = this.aRoute.snapshot.paramMap.get("uid");
@@ -32,6 +36,8 @@ export class ViewCustomerComponent implements OnInit {
       this.userEmail = user.email;
       this.userPhone = user.phone;
     })
+    
+    this.orders$ = this.orderServe.ordersObservable;
   }
 
   ngOnInit() {

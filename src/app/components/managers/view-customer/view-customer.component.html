@@ -30,6 +30,30 @@
             <label for="rank">Rank</label>
             <input disabled [ngModel] = "customerRank" type="text" required #rank = "ngModel" name="rank" class="form-control">
         </div>
+        <h1>Order History</h1>
+        <table class="table">
+            <thead class="thead-dark card-header">
+                <tr>
+                    <th>Ordered On</th>
+                    <th>Total</th>
+                    <th>Delivered On</th>
+                    <th>Customer Rating</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor = "let order of (orders$|async)">
+                    <tr *ngIf = "uid == order.orderedBy">
+                        <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                        <td>{{order.total|currency}}</td>
+                        <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
+                        <td>{{order.customerRating?order.customerRating:'N/A'}}</td>
+                        <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+            
         <button *ngIf = "customerRank=='Guest'" type="button" class="btn btn-primary btn-block" [disabled] = "form.invalid" (click) = "promote()">Promote</button>
         <br>
     </form>
