@@ -30,7 +30,7 @@ export class CartService
       this.custServe.getCustomer(user.uid).pipe(take(1)).subscribe(customer=>{
         for(let cartItem of customer.shoppingCart)
         {
-          if(cartItem.product.title == product.title)
+          if(cartItem.product.uid == product.uid)
           {
             cartItem.quantity += 1;
             this.custServe.updateCustomer(user.uid,customer);

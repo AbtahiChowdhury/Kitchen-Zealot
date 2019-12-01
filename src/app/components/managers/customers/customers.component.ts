@@ -17,16 +17,22 @@ export class CustomersComponent implements OnInit {
   guestCustomersArr:[Customer,User][] = new Array();
   blacklistedCustomersArr:[Customer,User][] = new Array();
   subscription:Subscription;
+  subscription2:Subscription;
   constructor(private custServe:CustomerService) 
   { 
+    
+  }
+
+  ngOnInit() 
+  {
     this.subscription = this.custServe.customersObservable.subscribe(customers=>{
-        this.normalCustomersArr = [];
-        this.VIPCustomersArr = [];
-        this.guestCustomersArr = [];
-        this.blacklistedCustomersArr = [];
+      this.normalCustomersArr = [];
+      this.VIPCustomersArr = [];
+      this.guestCustomersArr = [];
+      this.blacklistedCustomersArr = [];
       for(let customer of customers)
       {
-        this.custServe.getUser(customer.uid).pipe(take(1)).subscribe(user=>
+        this.subscription2 = this.custServe.getUser(customer.uid).subscribe(user=>
         {
           if(customer.rank == "VIP")
             this.VIPCustomersArr.push([customer,user]);
@@ -41,11 +47,9 @@ export class CustomersComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-  }
-
   ngOnDestroy()
   {
     this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
   }
 }

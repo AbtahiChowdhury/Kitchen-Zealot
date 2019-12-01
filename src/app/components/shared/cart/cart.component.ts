@@ -104,9 +104,25 @@ export class CartComponent implements OnInit,OnDestroy
       clone.category = "FREE";
       clone.price = 0;
       clone.title = "FREE "+ this.freeItemSelected.title;
+      clone.uid = "FREE";
       this.cartServe.addToCart(clone);
     }
     this.VIPActionDone = true;
+  }
+
+  removeAll(product:Product)
+  {
+    this.cartServe.getCustomer().pipe(take(1)).subscribe(customer=>{
+        for(let i = 0;i<customer.shoppingCart.length;i++)
+        {
+          if(customer.shoppingCart[i].product.uid == product.uid)
+          {
+            customer.shoppingCart.splice(i,1);
+            this.cartServe.updateCart(customer);
+            return;
+          }
+      }
+    })
   }
 
 }
