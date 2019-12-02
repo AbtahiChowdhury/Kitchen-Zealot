@@ -10,6 +10,7 @@
                     <th>Status</th>
                     <th>Delivery Rating</th>
                     <th>Action</th>
+                    <th>Track</th>
                     <th>View</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                         <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
                         <td *ngIf = "order.status == 'BID OVER'"><button class = "btn btn-primary" (click) = "outForDelivery(order)">Out For Delivery</button></td>
                         <td *ngIf = "order.status == 'OUT FOR DELIVERY'"><button class = "btn btn-primary" (click) = "delivered(order)">Delivered</button></td>
+                        <td><button class = "btn btn-primary" (click) = "track(order)">Track</button></td>
                         <td><a class = "btn btn-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
                     </tr>
                 </ng-container>

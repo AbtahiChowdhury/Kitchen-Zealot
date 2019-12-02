@@ -40,7 +40,7 @@ export class CustomersComponent implements OnInit {
             this.normalCustomersArr.push([customer,user]);
           if(customer.rank == "Guest")
             this.guestCustomersArr.push([customer,user]);
-          if(customer.rank == "Blacklisted")
+          if(customer.rank == "Blacklist")
             this.blacklistedCustomersArr.push([customer,user]);
         })
       }

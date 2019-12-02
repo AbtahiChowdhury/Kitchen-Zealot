@@ -7,6 +7,7 @@ import { User } from '../interfaces/user';
 import { AuthService } from './auth.service';
 import { switchMap, take } from 'rxjs/operators';
 import { OrderService } from './order.service';
+import { BlacklistService } from './blacklist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CustomerService {
   customerCollection:AngularFirestoreCollection<Customer>;
   customersObservable:Observable<Customer[]>;
 
-  constructor(private afs:AngularFirestore, private userServe:UserService,private authServe:AuthService,private orderServe:OrderService) 
+  constructor(private afs:AngularFirestore, private userServe:UserService,private authServe:AuthService,private orderServe:OrderService,private blacklist:BlacklistService) 
   { 
     this.customerCollection = this.afs.collection('customers');
     this.customersObservable = this.customerCollection.valueChanges({idfield:"uid"});
@@ -91,7 +92,15 @@ export class CustomerService {
         if(sortedOrders.length > 3 && average > 1 && average < 2)
           customer.rank = "Guest";
         if(sortedOrders.length > 3 && average == 1)
+        {
           customer.rank = "Blacklist";
+          this.userServe.getUser(customer.uid).pipe(take(1)).subscribe(user=>{
+            this.blacklist.isOnBlacklist(user.email).pipe(take(1)).subscribe(exists=>{
+              if(!exists)
+                this.blacklist.addToBlacklist(user.email);
+            })
+          })
+        }
         customer.averageRating = average;
         this.updateCustomer(uid,customer);
       })

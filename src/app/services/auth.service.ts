@@ -11,6 +11,7 @@ import { Employee } from '../interfaces/employee';
 import { GuestService } from './guest.service';
 import { Customer } from '../interfaces/customer';
 import { OrderService } from './order.service';
+import { BlacklistService } from './blacklist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,29 +19,39 @@ import { OrderService } from './order.service';
 export class AuthService 
 {
   user$:Observable<firebase.User>;
-  error:FirebaseError;
-  constructor(private afAuth:AngularFireAuth,private userServe:UserService,private emplServe:EmployeeService,private guestServe:GuestService, public router:Router,private orderServe:OrderService) { 
+  error:any;
+  constructor(private afAuth:AngularFireAuth,private userServe:UserService,private emplServe:EmployeeService,private guestServe:GuestService, public router:Router,private orderServe:OrderService,private blacklist:BlacklistService) { 
     this.user$ = afAuth.authState;
   }
 
   login(email:string, password:string)
   {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password).then(userCredentials=>{
-      this.user$.pipe(take(1)).subscribe(user=>{
-        this.userServe.getUser(user.uid).pipe(take(1)).subscribe(user=>{
-          if(user.type=="customer")
-          {
-            this.router.navigateByUrl("/" + user.type);
-          }
-          else
-          {
-            this.emplServe.getEmployee(user.uid).pipe(take(1)).subscribe(employee=>{
-              this.router.navigateByUrl("/" + employee.position);
+    this.blacklist.isOnBlacklist(email).pipe(take(1)).subscribe(exists=>{
+      if(exists)
+      {
+        this.error = "User not allowed";
+        return;
+      }
+      else
+      {
+        this.afAuth.auth.signInWithEmailAndPassword(email, password).then(userCredentials=>{
+          this.user$.pipe(take(1)).subscribe(user=>{
+            this.userServe.getUser(user.uid).pipe(take(1)).subscribe(user=>{
+              if(user.type=="customer")
+              {
+                this.router.navigateByUrl("/" + user.type);
+              }
+              else
+              {
+                this.emplServe.getEmployee(user.uid).pipe(take(1)).subscribe(employee=>{
+                  this.router.navigateByUrl("/" + employee.position);
+                })
+              }
             })
-          }
-        })
-      })
-    }).catch(error=>{this.error = error});
+          })
+        }).catch(error=>{this.error = error});
+      }
+    })
   }
 
   registerExistingGuest(email:string, password:string,name:string,phone:string)

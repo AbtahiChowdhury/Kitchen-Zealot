@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { take } from 'rxjs/operators';
 import { CustomerService } from 'src/app/services/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delivered-orders',
@@ -48,6 +49,12 @@ export class DeliveredOrdersComponent implements OnInit {
     order.customerRating = Number(value);
     this.orderServe.updateOrder(order.uid,order);
     this.custServe.updateRating(order.orderedBy);
+  }
+
+  track(order:Order)
+  {
+    let parsedAddress = order.orderDestination.replace(" ","+");
+    window.location.href = "https://www.google.com/maps/dir/The+City+College+of+New+York,+160+Convent+Ave,+New+York,+NY+10031/"+parsedAddress;
   }
 
   ngOnInit() {

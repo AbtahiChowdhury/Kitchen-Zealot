@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { take } from 'rxjs/operators';
+import { BlacklistService } from 'src/app/services/blacklist.service';
 
 @Component({
   selector: 'app-view-employee',
@@ -20,7 +21,7 @@ export class ViewEmployeeComponent implements OnInit
   employeeAverageRating:number;
   userPhone:string;
   dropCount:number;
-  constructor(private aRoute:ActivatedRoute,private router:Router,private emplServe:EmployeeService) 
+  constructor(private aRoute:ActivatedRoute,private router:Router,private emplServe:EmployeeService,private blacklist:BlacklistService) 
   {
     this.uid = this.aRoute.snapshot.paramMap.get("uid");
     this.emplServe.getEmployee(this.uid).pipe(take(1)).subscribe(employee=>{
@@ -53,6 +54,20 @@ export class ViewEmployeeComponent implements OnInit
       warningCount:formValue.warnings,
       dropCount:this.dropCount
     }
+
+    this.blacklist.isOnBlacklist(this.userEmail).pipe(take(1)).subscribe(exists=>{
+      if(exists && tempEmployee.active)
+      {
+        this.blacklist.removeFromBlacklist(this.userEmail);
+      }
+      else
+      {
+        if(!exists && !tempEmployee.active)
+        {
+          this.blacklist.addToBlacklist(this.userEmail);
+        }
+      }
+    })
 
     this.emplServe.updateEmployee(this.uid,tempEmployee);
     this.router.navigateByUrl("/manager/employees");

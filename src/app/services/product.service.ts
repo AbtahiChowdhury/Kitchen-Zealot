@@ -5,6 +5,7 @@ import { map, take } from 'rxjs/operators';
 import { Product } from '../interfaces/product';
 import { OrderService } from './order.service';
 import { EmployeeService } from './employee.service';
+import { BlacklistService } from './blacklist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ProductService {
   productsCollection: AngularFirestoreCollection<Product>;
   productObservable: Observable<Product[]>;
 
-  constructor(private afs:AngularFirestore,private orderServe:OrderService,private emplServe:EmployeeService) { 
+  constructor(private afs:AngularFirestore,private orderServe:OrderService,private emplServe:EmployeeService,private blacklist:BlacklistService) { 
     this.productsCollection = afs.collection('products',ref => ref.orderBy("title","asc"));
     this.productObservable = this.productsCollection.valueChanges({idField:"uid"});
   }
@@ -72,7 +73,15 @@ export class ProductService {
               employee.dropCount = 0;
               employee.warningCount = employee.warningCount ? employee.warningCount + 1 : 1;
               if(employee.warningCount > 3)
+              {
                 employee.active = false;
+                this.emplServe.getUser(employee.uid).pipe(take(1)).subscribe(user=>{
+                  this.blacklist.isOnBlacklist(user.email).pipe(take(1)).subscribe(exists=>{
+                    if(!exists)
+                      this.blacklist.addToBlacklist(user.email);
+                  })
+                })
+              }
             }
 
             this.emplServe.updateEmployee(employee.uid,employee);

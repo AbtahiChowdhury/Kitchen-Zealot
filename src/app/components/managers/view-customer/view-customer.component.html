@@ -55,6 +55,8 @@
         </table>
             
         <button *ngIf = "customerRank=='Guest'" type="button" class="btn btn-primary btn-block" [disabled] = "form.invalid" (click) = "promote()">Promote</button>
+        <button *ngIf = "customerRank!='Blacklist'" type="button" class="btn btn-danger btn-block" (click) = "blacklist()">Blacklist</button>
+        <button *ngIf = "customerRank=='Blacklist'" type="button" class="btn btn-danger btn-block" (click) = "removeFromBlacklist()">Remove From Blacklist</button>
         <br>
     </form>
 </div>

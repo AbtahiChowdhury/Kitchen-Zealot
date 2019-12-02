@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { OrderService } from 'src/app/services/order.service';
 import { Observable } from 'rxjs';
 import { Order } from 'src/app/interfaces/order';
+import { BlacklistService } from 'src/app/services/blacklist.service';
 
 @Component({
   selector: 'app-view-customer',
@@ -22,7 +23,7 @@ export class ViewCustomerComponent implements OnInit {
   customerRank:string;
 
   orders$:Observable<Order[]>
-  constructor(private aRoute:ActivatedRoute,private router:Router,private custServe:CustomerService,private orderServe:OrderService) 
+  constructor(private aRoute:ActivatedRoute,private router:Router,private custServe:CustomerService,private orderServe:OrderService,private blacklistServe:BlacklistService) 
   {
     this.uid = this.aRoute.snapshot.paramMap.get("uid");
     this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
@@ -50,6 +51,29 @@ export class ViewCustomerComponent implements OnInit {
       customer.rank = "Normal";
       this.custServe.updateCustomer(customer.uid,customer);
     })
+  }
+
+  blacklist()
+  {
+    this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
+      this.customerRank = "Blacklist";
+      customer.rank = "Blacklist";
+      this.custServe.updateCustomer(customer.uid,customer);
+    })
+
+    this.blacklistServe.addToBlacklist(this.userEmail);
+  }
+
+  removeFromBlacklist()
+  {
+    this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
+      this.customerRank = "Guest";
+      customer.rank = "Guest";
+      this.custServe.updateCustomer(customer.uid,customer);
+    })
+
+
+    this.blacklistServe.removeFromBlacklist(this.userEmail);
   }
 
 }

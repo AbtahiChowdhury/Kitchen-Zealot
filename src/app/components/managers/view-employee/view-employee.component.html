@@ -46,7 +46,7 @@
         </div>
         <div class = "form-group">
             <label for="active">Active</label>
-            <input [ngModel] = "employeeActive" type="checkbox" required #active = "ngModel" name="active"[checked]="employeeActive">
+            <input [ngModel] = "employeeActive" type="checkbox" #active = "ngModel" name="active"[checked]="employeeActive">
         </div>
         <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Save</button>
         <br>

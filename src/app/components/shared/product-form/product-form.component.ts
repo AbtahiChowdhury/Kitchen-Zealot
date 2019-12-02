@@ -41,6 +41,7 @@ export class ProductFormComponent implements OnInit,OnDestroy
       }
       else
       {
+        this.product.orderFrequency = 0;
         this.productServe.create(this.product);
       }
       

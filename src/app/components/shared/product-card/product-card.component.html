@@ -3,6 +3,7 @@
     <div class="card-body">
         <h4 class="card-title">{{product.title}}</h4>
         <p class="card-text">{{product.price | currency:'USD':'symbol'}}</p>
+        <p class="card-text" *ngIf = "product.averageRating">Rating:{{product.averageRating}}</p>
     </div>
     <div *ngIf = "showActions" class="card-footer">
         <div *ngIf = "guest;else customer">
