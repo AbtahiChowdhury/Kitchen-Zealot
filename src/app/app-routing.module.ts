@@ -30,6 +30,8 @@ import { PendingBidsComponent } from './components/delivery-people/pending-bids/
 import { DeliveredOrdersComponent } from './components/delivery-people/delivered-orders/delivered-orders.component';
 import { ModifyMenuComponent } from './components/cooks/modify-menu/modify-menu.component';
 import { ProductFormComponent } from './components/shared/product-form/product-form.component';
+import { OrderIngredientsComponent } from './components/salespeople/order-ingredients/order-ingredients.component';
+import { IngredientsRequestedComponent } from './components/salespeople/ingredients-requested/ingredients-requested.component';
 
 
 const routes: Routes = [
@@ -76,7 +78,11 @@ const routes: Routes = [
     {path:"delivered-orders",component:DeliveredOrdersComponent},
     {path:"orders/:uid",component:ViewOrderComponent}
   ]},
-  {path:"salesperson",component:SalespersonComponent}
+  {path:"salesperson",component:SalespersonComponent, children:[
+    {path:"",component:HomeContentComponent},
+    {path:"order",component:OrderIngredientsComponent},
+    {path:"requested",component:IngredientsRequestedComponent}
+  ]}
 ];
 
 @NgModule({

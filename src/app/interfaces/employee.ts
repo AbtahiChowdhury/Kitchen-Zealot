@@ -1,4 +1,6 @@
 import { User } from './user';
+import { Ingredient } from './ingredient';
+import { IngredientCartItem } from './ingredient-cart-item';
 
 export interface Employee
 {
@@ -9,4 +11,5 @@ export interface Employee
     warningCount?:number;
     dropCount?:number;
     active:boolean;
+    supplyCart?:IngredientCartItem[];
 }

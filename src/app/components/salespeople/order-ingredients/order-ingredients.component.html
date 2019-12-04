@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-8">
+        <div class="container">
+            <div class="row">
+                <ng-container *ngFor = "let ingredient of ingredients$|async; let i = index">
+                    <div class="col-4">
+                        <ingredient-card [ingredient] = "ingredient"></ingredient-card>
+                    </div>
+                    <div *ngIf = "(i+1) % 3 == 0"class = "w-100"></div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="sticky-top" style="padding-top: 20%">
+            <div class="card shadow rounded-lg">
+                <table class="table">
+                    <thead class="thead-dark card-header">
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody class="card-body">
+                        <tr *ngFor = "let cartItem of supplyCart">
+                            <td>{{cartItem.ingredient.title}}</td>
+                            <td>{{cartItem.ingredient.price|currency}}</td>
+                            <td>{{cartItem.quantity}}</td>
+                            <td><button class="btn btn-danger"(click) = "removeAll(cartItem.ingredient)">X</button></td>
+                        </tr>
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>{{subtotal|currency}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tax</td>
+                            <td>+{{tax|currency}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>{{total|currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+                <button class="btn btn-primary btn-block" (click) = "order()">Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

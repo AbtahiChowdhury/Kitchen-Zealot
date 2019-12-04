@@ -49,6 +49,10 @@ import { DeliveredOrdersComponent } from './components/delivery-people/delivered
 import { CookNavbarComponent } from './components/cooks/cook-navbar/cook-navbar.component';
 import { ModifyMenuComponent } from './components/cooks/modify-menu/modify-menu.component';
 import { ProductFormComponent } from './components/shared/product-form/product-form.component';
+import { SalespersonNavbarComponent } from './components/salespeople/salesperson-navbar/salesperson-navbar.component';
+import { OrderIngredientsComponent } from './components/salespeople/order-ingredients/order-ingredients.component';
+import { IngredientsRequestedComponent } from './components/salespeople/ingredients-requested/ingredients-requested.component';
+import { IngredientCardComponent } from './components/shared/ingredient-card/ingredient-card.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +94,10 @@ import { ProductFormComponent } from './components/shared/product-form/product-f
     CookNavbarComponent,
     ModifyMenuComponent,
     ProductFormComponent,
+    SalespersonNavbarComponent,
+    OrderIngredientsComponent,
+    IngredientsRequestedComponent,
+    IngredientCardComponent,
   ],
   imports: [
     BrowserModule,
