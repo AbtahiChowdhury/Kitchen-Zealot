@@ -6,6 +6,7 @@ import { take } from 'rxjs/operators';
 import { SupplyRequestsService } from 'src/app/services/supply-requests.service';
 import { SupplyRequest } from 'src/app/interfaces/supply-request';
 import { AuthService } from 'src/app/services/auth.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-request-supplies',
@@ -17,7 +18,7 @@ export class RequestSuppliesComponent implements OnInit
   inventory$:Observable<IngredientCartItem[]>;
   requests$:Observable<SupplyRequest[]>;
   userid:string;
-  constructor(private inventoryServe:InventoryService,private supplyRequestsServe:SupplyRequestsService,private authServe:AuthService) 
+  constructor(private inventoryServe:InventoryService,private supplyRequestsServe:SupplyRequestsService,private authServe:AuthService,private emplServe:EmployeeService) 
   { 
     this.inventory$ = this.inventoryServe.inventoryObservable;
     this.authServe.user$.pipe(take(1)).subscribe(user=>{ 
@@ -68,6 +69,13 @@ export class RequestSuppliesComponent implements OnInit
       } 
       this.supplyRequestsServe.create(request);
     });
+  }
+
+  supplyRatingChange(request:SupplyRequest,value:string)
+  {
+    request.supplyRating = Number(value);
+    this.supplyRequestsServe.update(request);
+    this.emplServe.updateAverageSalesRating(request.completedBy);
   }
 
 }

@@ -40,6 +40,7 @@
                     <th>Requested On</th>
                     <th>Status</th>
                     <th>Contents</th>
+                    <th>Rate</th>
                 </tr>
             </thead>
             <tbody class="card-body">
@@ -53,7 +54,7 @@
                                     <tr>
                                         <th>Product</th>
                                         <th>Price</th>
-                                        <th>Quantity</th>
+                                        <th>Requested</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,6 +65,15 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </td>
+                        <td *ngIf = "request.status == 'Complete'">
+                            <select [(ngModel)] = "request.supplyRating" #supplyRating = "ngModel" name="supplyRating" id="supplyRating" class = "form-control" (change) = "supplyRatingChange(request,supplyRating.value)">
+                                <option value = "1">1</option>
+                                <option value = "2">2</option>
+                                <option value = "3">3</option>
+                                <option value = "4">4</option>
+                                <option value = "5">5</option>
+                            </select>
                         </td>
                     </tr>
                 </ng-container>
