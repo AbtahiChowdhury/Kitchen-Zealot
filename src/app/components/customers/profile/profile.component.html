@@ -27,14 +27,14 @@
 
             <div class = "form-group">
                 <label for="nameOnCard">Name on Card</label>
-                <input [ngModel] = "customerNameOnCard" type="text" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
+                <input [ngModel] = "customerNameOnCard" type="text" pattern ="[a-zA-Z][a-zA-Z ]*" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
                 <div *ngIf = "nameOnCard.touched && nameOnCard.invalid" class="alert alert-danger">
                     Name on Card is Required
                 </div>
             </div>
             <div class = "form-group">
                 <label for="cardNumber">Credit Card Number</label>
-                <input [ngModel] = "customerCardNumber" type="number" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
+                <input [ngModel] = "customerCardNumber" type="number" pattern="[0-9]{16}" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
                 <div *ngIf = "cardNumber.touched && cardNumber.invalid" class="alert alert-danger">
                     Credit Card Number is Invalid
                 </div>
@@ -48,7 +48,7 @@
             </div>
             <div class = "form-group">
                 <label for="CVV">CVV</label>
-                <input [ngModel] = "customerCVV" type="number" required #CVV = "ngModel" name="CVV" class="form-control">
+                <input [ngModel] = "customerCVV" type="number" pattern="[0-9]{3}" required #CVV = "ngModel" name="CVV" class="form-control">
                 <div *ngIf = "CVV.touched && CVV.invalid" class="alert alert-danger">
                     CVV is Invalid
                 </div>
