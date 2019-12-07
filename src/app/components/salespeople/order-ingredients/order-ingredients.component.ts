@@ -31,7 +31,7 @@ export class OrderIngredientsComponent implements OnInit,OnDestroy {
       {
         this.subtotal += cartItem.ingredient.price * cartItem.quantity;
       }
-      this.tax = this.subtotal * .08;
+      this.tax = this.subtotal * .08875;
       this.total = this.subtotal+this.tax;
     });
   }

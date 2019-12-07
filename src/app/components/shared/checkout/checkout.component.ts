@@ -95,7 +95,7 @@ export class CheckoutComponent implements OnInit {
             this.productServe.update(cartItem.product.uid,cartItem.product);
           }
         }
-        this.order.tax = this.order.subtotal * .08;
+        this.order.tax = this.order.subtotal * .08875;
         this.order.discount = this.order.tax;
         if(customer.rank == "Guest")
           this.order.discount = 0;
@@ -126,7 +126,7 @@ export class CheckoutComponent implements OnInit {
         this.order.subtotal += cartItem.product.price * cartItem.quantity;
         this.productServe.update(cartItem.product.uid,cartItem.product);
       }
-      this.order.tax = this.order.subtotal * .08;
+      this.order.tax = this.order.subtotal * .08875;
       this.order.discount = 0;
       this.order.total = this.order.subtotal + this.order.tax;
       let id = this.orderServe.addOrder(this.order);

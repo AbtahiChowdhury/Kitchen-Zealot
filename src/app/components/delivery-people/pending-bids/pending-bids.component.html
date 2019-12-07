@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="card shadow-lg rounded-lg">
+<div class="container" style="margin-bottom: 2%;">
+    <div class="card shadow-lg">
         <table class="table">
             <thead class="thead-dark card-header">
                 <tr>
@@ -18,8 +18,8 @@
                         <td>{{order.currentBid? order.currentBid:"N/A"}}</td>
                         <td>{{order.currentBidderName ? order.currentBidderName:"N/A"}}</td>
                         <td>
-                            <input ngModel #bidValue = "ngModel" type="number">
-                            <button class="btn btn-primary" (click) = "placeBid(order,bidValue.value)">Bid</button>
+                            <input ngModel #bidValue = "ngModel" type="number" style="margin-right: 3%;">
+                            <button class="btn btn-outline-primary" (click) = "placeBid(order,bidValue.value)">Place Bid</button>
                         </td>
                     </tr>
                 </ng-container>

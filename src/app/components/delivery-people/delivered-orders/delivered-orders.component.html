@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card shadow-lg rounded-lg" style="margin-bottom: 5%">
+    <div class="card shadow-lg" style="margin-bottom: 5%">
         <h1 class="card-header">CURRENT ORDERS</h1>
         <table class="table">
             <thead class="thead-dark">
@@ -25,7 +25,7 @@
                         <td *ngIf = "order.status == 'BID OVER'"><button class = "btn btn-primary" (click) = "outForDelivery(order)">Out For Delivery</button></td>
                         <td *ngIf = "order.status == 'OUT FOR DELIVERY'"><button class = "btn btn-primary" (click) = "delivered(order)">Delivered</button></td>
                         <td><button class = "btn btn-primary" (click) = "track(order)">Track</button></td>
-                        <td><a class = "btn btn-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
+                        <td><a class = "btn btn-outline-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
                     </tr>
                 </ng-container>
             </tbody>
@@ -62,7 +62,7 @@
                             </select>
                         </td>
                         <td *ngIf = "order.deliveryRating">N/A</td>
-                        <td><a class = "btn btn-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
+                        <td><a class = "btn btn-outline-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
                     </tr>
                 </ng-container>
             </tbody>

@@ -48,7 +48,7 @@
                         <td>{{order.total|currency}}</td>
                         <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
                         <td>{{order.customerRating?order.customerRating:'N/A'}}</td>
-                        <td><a class = "btn btn-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
+                        <td><a class = "btn btn-outline-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
                     </tr>
                 </ng-container>
             </tbody>

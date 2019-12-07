@@ -12,10 +12,10 @@
                 <tr *ngFor = "let employee of employeesArr">
                     <td>{{employee[1].name}}</td>
                     <td>{{employee[0].position|uppercase}}</td>
-                    <td><a class = "btn btn-primary" [routerLink] = "['/manager/employees/',employee[0].uid]">View</a></td>
+                    <td><a class = "btn btn-outline-primary" [routerLink] = "['/manager/employees/',employee[0].uid]">View</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <button class="btn btn-primary btn-block" routerLink = "add">Add Employee</button>
+    <button class="btn btn-primary btn-block" style="font-size:13pt" routerLink = "add">Add Employee</button>
 </div>

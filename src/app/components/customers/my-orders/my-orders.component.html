@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="card rounded-lg shadow-lg">
+<div class="container" style="margin-bottom: 2%;">
+    <div class="card shadow-lg">
         <table class="table">
             <thead class="thead-dark card-header">
                 <tr>
@@ -37,7 +37,7 @@
                             </select>
                         </td>
                         <td *ngIf = "!order.deliveredOn && !guest">N/A</td>
-                        <td><a class = "btn btn-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
+                        <td><a class = "btn btn-outline-primary" [routerLink] = "['/customer/my-orders/',order.uid]">View</a></td>
                     </tr>
                 </ng-container>
             </tbody>

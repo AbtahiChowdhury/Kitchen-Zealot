@@ -44,7 +44,7 @@ export class CartComponent implements OnInit,OnDestroy
         {
           this.subtotal += cartItem.product.price * cartItem.quantity;
         }
-        this.tax = this.subtotal * .08;
+        this.tax = this.subtotal * .08875;
         this.discount = 0;
         this.total = this.subtotal + this.tax;
       })
@@ -58,7 +58,7 @@ export class CartComponent implements OnInit,OnDestroy
         {
           this.subtotal += cartItem.product.price * cartItem.quantity;
         }
-        this.tax = this.subtotal * .08;
+        this.tax = this.subtotal * .08875;
         this.discount = this.tax;
         if(customer.rank == "Guest")
           this.discount = 0;
