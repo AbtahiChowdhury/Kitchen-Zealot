@@ -1,6 +1,6 @@
 label {
     font-weight: bold; 
-    font-size: 20pt;
+    font-size: 15pt;
 }
 
 .center {
@@ -14,8 +14,4 @@ label {
 .logo {
     margin-bottom: 1%; 
     margin-top: -4%;
-}
-
-.btn {
-    font-size: 15pt;
 }
