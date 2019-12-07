@@ -1,1 +1,74 @@
-<p>ingredients-requested works!</p>
+<div class="container">
+    <h1>Requested Supplies</h1>
+    <table class="table">
+        <thead class="thead-dark card-header">
+            <tr>
+                <th>Requested On</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Contents</th>
+            </tr>
+        </thead>
+        <tbody class="card-body">
+            <ng-container *ngFor = "let request of (requests$|async)">
+                <tr>
+                    <td *ngIf= "request.requestedOn">{{request.requestedOn.seconds*1000 | date:'medium'}}</td>
+                    <td>{{request.status}}</td>
+                    <td *ngIf = "request.status == 'Requested'"><button class="btn btn-primary" (click) = "complete(request)">Complete</button></td>
+                    <td *ngIf = "request.status == 'Complete'">N/A</td>
+                    <td>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Requested</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor = "let cartItem of request.contents">
+                                    <td>{{cartItem.ingredient.title}}</td>
+                                    <td>{{cartItem.ingredient.price|currency}}</td>
+                                    <td>{{cartItem.requestedQuantity}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+
+    <h1>Requested Supplies</h1>
+    <table class="table">
+        <thead class="thead-dark card-header">
+            <tr>
+                <th>Ordered On</th>
+                <th>Contents</th>
+            </tr>
+        </thead>
+        <tbody class="card-body">
+            <ng-container *ngFor = "let order of (orders$|async)">
+                <tr>
+                    <td *ngIf= "order.orderedOn">{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
+                    <td>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor = "let cartItem of order.contents">
+                                    <td>{{cartItem.ingredient.title}}</td>
+                                    <td>{{cartItem.ingredient.price|currency}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

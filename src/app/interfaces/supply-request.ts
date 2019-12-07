@@ -6,7 +6,7 @@ export interface SupplyRequest
     requestedBy:string;
     requestedOn:any;
     supplyRating?:number;
-    deliveredOn?:any;
+    completedBy?:string;
     contents:IngredientCartItem[];
     status:string;
 }

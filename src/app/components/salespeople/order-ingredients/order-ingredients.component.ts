@@ -5,6 +5,10 @@ import { IngredientsService } from 'src/app/services/ingredients.service';
 import { IngredientCartItem } from 'src/app/interfaces/ingredient-cart-item';
 import { IngredientsCartService } from 'src/app/services/ingredients-cart.service';
 import { take } from 'rxjs/operators';
+import { SupplyOrdersService } from 'src/app/services/supply-orders.service';
+import { SupplyOrder } from 'src/app/interfaces/supply-order';
+import { Router } from '@angular/router';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-order-ingredients',
@@ -18,7 +22,7 @@ export class OrderIngredientsComponent implements OnInit,OnDestroy {
   total:number = 0;
   supplyCart:IngredientCartItem[] = null;
   ingredients$:Observable<Ingredient[]>;
-  constructor(private ingredientServe:IngredientsService,private cartServe:IngredientsCartService) { 
+  constructor(private ingredientServe:IngredientsService,private cartServe:IngredientsCartService,private orderServe:SupplyOrdersService,private router:Router,private emplServe:EmployeeService) { 
     this.ingredients$ = this.ingredientServe.ingredientsObservable;
   }
 
@@ -38,7 +42,17 @@ export class OrderIngredientsComponent implements OnInit,OnDestroy {
 
   order()
   {
-
+    this.cartServe.getEmployee().pipe(take(1)).subscribe(employee=>{
+      let tempOrder:SupplyOrder = {
+        orderedOn:new Date(),
+        orderedBy:employee.uid,
+        contents:employee.supplyCart
+      }
+      this.orderServe.create(tempOrder);
+      employee.supplyCart = [];
+      this.emplServe.updateEmployee(employee.uid,employee);
+      this.router.navigateByUrl("/salesperson/requested");
+    })
   }
 
   removeAll(ingredient:Ingredient)
