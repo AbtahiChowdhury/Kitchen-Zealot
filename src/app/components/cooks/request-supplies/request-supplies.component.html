@@ -39,7 +39,7 @@
                 <tr>
                     <th>Requested On</th>
                     <th>Status</th>
-                    <td>Contents</td>
+                    <th>Contents</th>
                 </tr>
             </thead>
             <tbody class="card-body">
@@ -57,10 +57,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor = "let cartItem of contents">
-                                        <td>{{cartItem.product.title}}</td>
-                                        <td>{{cartItem.product.price|currency}}</td>
-                                        <td>{{cartItem.quantity}}</td>
+                                    <tr *ngFor = "let cartItem of request.contents">
+                                        <td>{{cartItem.ingredient.title}}</td>
+                                        <td>{{cartItem.ingredient.price|currency}}</td>
+                                        <td>{{cartItem.requestedQuantity}}</td>
                                     </tr>
                                 </tbody>
                             </table>
