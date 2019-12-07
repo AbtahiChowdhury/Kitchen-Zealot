@@ -40,4 +40,25 @@ export class InventoryService
   {
     return this.afs.doc('inventory/'+uid).delete();
   }
+
+  
+  dummyChange()
+  {
+    let id = this.afs.createId();
+    let dummyItem = {
+      ingredient:{
+        uid:"",
+        title: "",
+        price: 0,
+        category: "",
+        imageUrl: "",
+        orderFrequency:0
+      },
+      quantity:20,
+      requestedQuantity:0,
+      uid:id
+    }
+    this.inventoryCollection.doc(id).set(dummyItem);
+    this.afs.doc('inventory/'+id).delete();
+  }
 }
