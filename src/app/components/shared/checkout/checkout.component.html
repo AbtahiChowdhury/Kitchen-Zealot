@@ -3,7 +3,7 @@
     <form #form = "ngForm" (ngSubmit)="checkout(form.value)" class="card-body">
         <div class = "form-group">
             <label for="name">Name</label>
-            <input [ngModel] = "userName" type="text" required #name = "ngModel" name="name" class="form-control">
+            <input [ngModel] = "userName" type="text" pattern ="[a-zA-Z][a-zA-Z ]*" required #name = "ngModel" name="name" class="form-control">
             <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
                 Name is Invalid
             </div>
@@ -11,7 +11,7 @@
 
         <div class = "form-group">
             <label for="phone">Phone Number</label>
-            <input [ngModel] = "userPhone" type="tel" required #phone = "ngModel" name="phone" class="form-control">
+            <input [ngModel] = "userPhone" type="tel" pattern="[0-9]{10}" required #phone = "ngModel" name="phone" class="form-control">
             <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
                 Phone Number is Invalid
             </div>
@@ -27,14 +27,14 @@
 
         <div class = "form-group">
             <label for="nameOnCard">Name on Card</label>
-            <input [ngModel] = "customerNameOnCard" type="text" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
+            <input [ngModel] = "customerNameOnCard" type="text" pattern ="[a-zA-Z][a-zA-Z ]*" required #nameOnCard = "ngModel" name="nameOnCard" class="form-control">
             <div *ngIf = "nameOnCard.touched && nameOnCard.invalid" class="alert alert-danger">
                 Name on Card is Invalid
             </div>
         </div>
         <div class = "form-group">
             <label for="cardNumber">Credit Card Number</label>
-            <input [ngModel] = "customerCardNumber" type="text" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
+            <input [ngModel] = "customerCardNumber" type="text" pattern="[0-9]{16}" required #cardNumber = "ngModel" name="cardNumber" class="form-control">
             <div *ngIf = "cardNumber.touched && cardNumber.invalid" class="alert alert-danger">
                 Credit Card Number is Invalid
             </div>
@@ -48,7 +48,7 @@
         </div>
         <div class = "form-group">
             <label for="CVV">CVV</label>
-            <input [ngModel] = "customerCVV" type="text" required #CVV = "ngModel" name="CVV" class="form-control">
+            <input [ngModel] = "customerCVV" type="text" pattern="[0-9]{3}" required #CVV = "ngModel" name="CVV" class="form-control">
             <div *ngIf = "CVV.touched && CVV.invalid" class="alert alert-danger">
                 CVV is Invalid
             </div>
