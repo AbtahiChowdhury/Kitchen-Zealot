@@ -2,7 +2,7 @@
     <img src="./../../../../assets/logo.png" class="logo center">
     <div class="container" style="margin-bottom: 2%;">
         <div class="card rounded-lg shadow-lg">
-            <h1 class="card-header bg-dark text-white">Sign In</h1>
+            <h1 class="card-header bg-dark text-white text-center">Sign In</h1>
             <form #form = "ngForm" (ngSubmit)="login(form.value)" class="card-body">
                 <div *ngIf = "this.authServe.error" class="alert alert-danger">
                     {{this.authServe.error}}
