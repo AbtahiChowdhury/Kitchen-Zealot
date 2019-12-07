@@ -4,7 +4,7 @@
             <thead class="thead-dark card-header">
                 <tr>
                     <th>Title</th>
-                    <th>Amount</th>
+                    <th>Current Amount</th>
                     <th>Request Amount</th>
                 </tr>
             </thead>
@@ -31,5 +31,43 @@
             </tbody>
         </table>
         <button class="btn btn-primary btn-block" (click) = "request()">Request Supplies</button>
+    </div>
+    <br>
+    <div>
+        <table class="table">
+            <thead class="thead-dark card-header">
+                <tr>
+                    <th>Requested On</th>
+                    <th>Status</th>
+                    <td>Contents</td>
+                </tr>
+            </thead>
+            <tbody class="card-body">
+                <ng-container *ngFor = "let request of (requests$|async)">
+                    <tr>
+                        <td *ngIf= "request.requestedOn">{{request.requestedOn.seconds*1000 | date:'medium'}}</td>
+                        <td>{{request.status}}</td>
+                        <td>
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor = "let cartItem of contents">
+                                        <td>{{cartItem.product.title}}</td>
+                                        <td>{{cartItem.product.price|currency}}</td>
+                                        <td>{{cartItem.quantity}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
     </div>
 </div>
