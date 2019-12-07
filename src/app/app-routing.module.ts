@@ -32,6 +32,7 @@ import { ModifyMenuComponent } from './components/cooks/modify-menu/modify-menu.
 import { ProductFormComponent } from './components/shared/product-form/product-form.component';
 import { OrderIngredientsComponent } from './components/salespeople/order-ingredients/order-ingredients.component';
 import { IngredientsRequestedComponent } from './components/salespeople/ingredients-requested/ingredients-requested.component';
+import { RequestSuppliesComponent } from './components/cooks/request-supplies/request-supplies.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,7 @@ const routes: Routes = [
     {path:"modify-menu/new",component:ProductFormComponent},
     {path:"modify-menu/:uid",component:ProductFormComponent},
     {path:"modify-menu",component:ModifyMenuComponent},
+    {path:"inventory",component:RequestSuppliesComponent}
   ]},
 
   {path:"delivery",component:DeliveryPersonComponent, children:[

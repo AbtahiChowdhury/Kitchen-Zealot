@@ -53,6 +53,7 @@ import { SalespersonNavbarComponent } from './components/salespeople/salesperson
 import { OrderIngredientsComponent } from './components/salespeople/order-ingredients/order-ingredients.component';
 import { IngredientsRequestedComponent } from './components/salespeople/ingredients-requested/ingredients-requested.component';
 import { IngredientCardComponent } from './components/shared/ingredient-card/ingredient-card.component';
+import { RequestSuppliesComponent } from './components/cooks/request-supplies/request-supplies.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { IngredientCardComponent } from './components/shared/ingredient-card/ing
     OrderIngredientsComponent,
     IngredientsRequestedComponent,
     IngredientCardComponent,
+    RequestSuppliesComponent,
   ],
   imports: [
     BrowserModule,

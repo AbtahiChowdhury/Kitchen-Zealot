@@ -46,7 +46,8 @@ export class MyOrdersComponent implements OnInit,OnDestroy {
     
     for(let item of order.contents)
     {
-      this.productServe.updateRating(item.product);
+      if(item.product.category != "FREE")
+        this.productServe.updateRating(item.product);
     }
     
     order.foodRating = Number(value);

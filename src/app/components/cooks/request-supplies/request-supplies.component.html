@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card rounded-lg shadow-lg">
+        <table class="table">
+            <thead class="thead-dark card-header">
+                <tr>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Request Amount</th>
+                </tr>
+            </thead>
+            <tbody class="card-body">
+                <ng-container *ngFor = "let inventoryItem of (inventory$|async)">
+                    <tr>
+                        <td>{{inventoryItem.ingredient.title}}</td>
+                        <td>{{inventoryItem.quantity}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-3">
+                                    <button class = "btn btn-primary btn-block" (click) = "removeRequested(inventoryItem)">-</button>
+                                </div>
+                                <div class="col-6">
+                                    <div class = "text-center">{{inventoryItem.requestedQuantity}}</div>
+                                </div>
+                                <div class="col-3">
+                                    <button class = "btn btn-primary btn-block" (click) = "addRequested(inventoryItem)">+</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <button class="btn btn-primary btn-block" (click) = "request()">Request Supplies</button>
+    </div>
+</div>
