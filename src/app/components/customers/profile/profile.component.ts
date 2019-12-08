@@ -58,6 +58,6 @@ export class ProfileComponent implements OnInit
       },
       shoppingCart: this.customerCart
     }
-    this.custServe.updateCustomer(this.userUid.trim(),tempCust);
+    this.custServe.updateCustomer((this.userUid.trim()),tempCust);
   }
 }

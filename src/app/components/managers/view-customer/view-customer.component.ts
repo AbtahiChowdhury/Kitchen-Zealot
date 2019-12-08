@@ -49,7 +49,7 @@ export class ViewCustomerComponent implements OnInit {
     this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
       this.customerRank = "Normal";
       customer.rank = "Normal";
-      this.custServe.updateCustomer(customer.uid,customer);
+      this.custServe.updateCustomer((customer.uid.trim()),customer);
     })
   }
 
@@ -58,7 +58,7 @@ export class ViewCustomerComponent implements OnInit {
     this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
       this.customerRank = "Blacklist";
       customer.rank = "Blacklist";
-      this.custServe.updateCustomer(customer.uid,customer);
+      this.custServe.updateCustomer((customer.uid.trim()),customer);
     })
 
     this.blacklistServe.addToBlacklist(this.userEmail);
@@ -69,7 +69,7 @@ export class ViewCustomerComponent implements OnInit {
     this.custServe.getCustomer(this.uid).pipe(take(1)).subscribe(customer=>{
       this.customerRank = "Guest";
       customer.rank = "Guest";
-      this.custServe.updateCustomer(customer.uid,customer);
+      this.custServe.updateCustomer((customer.uid.trim()),customer);
     })
 
 

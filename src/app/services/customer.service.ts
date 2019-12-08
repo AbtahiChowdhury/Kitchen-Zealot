@@ -35,7 +35,7 @@ export class CustomerService {
 
   updateCustomer(uid:string,customer:Customer)
   {
-    this.afs.doc("customers/"+uid).update(customer);
+    this.afs.doc("customers/"+(uid.trim())).update(customer);
   }
 
   getCustomer(uid:string):Observable<Customer>
