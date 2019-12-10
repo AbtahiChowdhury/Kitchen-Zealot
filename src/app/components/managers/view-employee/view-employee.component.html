@@ -1,55 +1,56 @@
-<div class="container">
-    <form #form = "ngForm" (ngSubmit)="update(form.value)">
-        <br>
-        <div class = "form-group">
-            <label for="name">Name</label>
-            <input disabled [ngModel] = "userName" type="text" required #name = "ngModel" name="name" class="form-control">
-        </div>
-
-        <div class = "form-group">
-            <label for="phone">Phone Number</label>
-            <input disabled [ngModel] = "userPhone" type="tel" required #phone = "ngModel" name="phone" class="form-control">
-        </div>
-
-        <div class = "form-group">
-            <label for="email">Email</label>
-            <input disabled [ngModel] = "userEmail" type="email" #email = "ngModel" name="email" class="form-control">
-        </div>
-
-        <div class = "form-group">
-            <label for="salary">Salary</label>
-            <input [ngModel] = "employeeSalary" type="number" required #salary = "ngModel" name="salary" class="form-control">
-            <div *ngIf = "salary.touched && salary.invalid" class="alert alert-danger">
-                Salary is Required
+<div class="container" style="margin-bottom: 2%;">
+    <div class="card">
+        <h1 class="card-header text-center text-white bg-dark">{{userName}}'s Information</h1>
+        <form #form = "ngForm" (ngSubmit)="update(form.value)" class="card-body">
+            <div class = "form-group">
+                <label for="name">Name</label>
+                <input disabled [ngModel] = "userName" type="text" required #name = "ngModel" name="name" class="form-control">
             </div>
-        </div>
 
-        <div class = "form-group">
-            <label for="position">Position</label>
-            <input [ngModel] = "employeePosition" type="text" required #position = "ngModel" name="position" class="form-control">
-            <div *ngIf = "position.touched && position.invalid" class="alert alert-danger">
-                Position is Required
+            <div class = "form-group">
+                <label for="phone">Phone Number</label>
+                <input disabled [ngModel] = "userPhone" type="tel" required #phone = "ngModel" name="phone" class="form-control">
             </div>
-        </div>
 
-        <div class = "form-group">
-            <label for="averageRating">Average Rating</label>
-            <input disabled [ngModel] = "employeeAverageRating" type="number" required #averageRating = "ngModel" name="averageRating" class="form-control">
-        </div>
-
-        <div class = "form-group">
-            <label for="warnings">Warnings</label>
-            <input [ngModel] = "employeeWarnings" type="number" required #warnings = "ngModel" name="warnings" class="form-control">
-            <div *ngIf = "warnings.touched && warnings.invalid" class="alert alert-danger">
-                Warnings is Invalid
+            <div class = "form-group">
+                <label for="email">Email</label>
+                <input disabled [ngModel] = "userEmail" type="email" #email = "ngModel" name="email" class="form-control">
             </div>
-        </div>
-        <div class = "form-group">
-            <label for="active">Active</label>
-            <input [ngModel] = "employeeActive" type="checkbox" #active = "ngModel" name="active"[checked]="employeeActive">
-        </div>
-        <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Save</button>
-        <br>
-    </form>
+
+            <div class = "form-group">
+                <label for="salary">Salary</label>
+                <input [ngModel] = "employeeSalary" type="number" required #salary = "ngModel" name="salary" class="form-control">
+                <div *ngIf = "salary.touched && salary.invalid" class="alert alert-danger">
+                    Salary is Required
+                </div>
+            </div>
+
+            <div class = "form-group">
+                <label for="position">Position</label>
+                <input [ngModel] = "employeePosition" type="text" required #position = "ngModel" name="position" class="form-control">
+                <div *ngIf = "position.touched && position.invalid" class="alert alert-danger">
+                    Position is Required
+                </div>
+            </div>
+
+            <div class = "form-group">
+                <label for="averageRating">Average Rating</label>
+                <input disabled [ngModel] = "employeeAverageRating" type="number" required #averageRating = "ngModel" name="averageRating" class="form-control">
+            </div>
+
+            <div class = "form-group">
+                <label for="warnings">Warnings</label>
+                <input [ngModel] = "employeeWarnings" type="number" required #warnings = "ngModel" name="warnings" class="form-control">
+                <div *ngIf = "warnings.touched && warnings.invalid" class="alert alert-danger">
+                    Warnings is Invalid
+                </div>
+            </div>
+            <div class = "form-group">
+                <label for="active">Active</label>
+                <input [ngModel] = "employeeActive" type="checkbox" #active = "ngModel" name="active"[checked]="employeeActive">
+            </div>
+            <button class="btn btn-primary btn-block" [disabled] = "form.invalid">Save</button>
+        </form>
+    </div>
 </div>
 
