@@ -21,7 +21,7 @@
                         <td>{{order.status}}</td>
                         <td>{{order.currentBid|currency}}</td>
                         <td>{{order.currentBidderName?order.currentBidderName:"N/A"}}</td>
-                        <td *ngIf = "order.status == 'ORDERED'"><button class = "btn btn-primary" (click) = "startBid(order)">Start Bid</button></td>
+                        <td *ngIf = "order.status == 'ORDERED'"><button class = "btn btn-outline-primary" (click) = "startBid(order)">Start Bid</button></td>
                         <td *ngIf = "order.status == 'BIDDING'"><button class = "btn btn-outline-danger" (click) = "stopBid(order)">Stop Bid</button></td>
                         <td *ngIf = "order.status == 'BID OVER'">Bid Over</td>
                         <td><a class = "btn btn-outline-primary" [routerLink] = "['/manager/orders/',order.uid]">View</a></td>
