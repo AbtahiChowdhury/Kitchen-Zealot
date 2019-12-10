@@ -28,7 +28,7 @@
                     </div>
                     <div class = "form-group">
                         <label for="phone">Phone Number</label>
-                        <input ngModel type="tel" required #phone = "ngModel" name="phone" class="form-control">
+                        <input ngModel type="tel" pattern="[0-9]{10}" required #phone = "ngModel" name="phone" class="form-control">
                         <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
                             Phone Number is Required
                         </div>
