@@ -31,6 +31,12 @@ export class PendingBidsComponent implements OnInit
       alert("Please enter an amount lower the current bid");
       return;
     }
+
+    if(newBid < 0)
+    {
+      alert("Please enter a valid bid");
+      return;
+    }
     
     if(order.currentBid > newBid && newBid > 0 && newBid != null)
     {
