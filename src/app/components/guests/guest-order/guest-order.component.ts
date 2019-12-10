@@ -14,7 +14,7 @@ export class GuestOrderComponent implements OnInit {
   constructor(private productServe:ProductService) { 
     this.productServe.productObservable.pipe(take(1)).subscribe(products=>{
       let filteredProducts = products.filter(o => o.status == "ACTIVE");
-      this.sortedProducts = filteredProducts.sort((a,b)=>a.orderFrequency < b.orderFrequency ? -1 : a.orderFrequency > b.orderFrequency ? 1 : 0);
+      this.sortedProducts = filteredProducts.sort((a,b)=>a.orderFrequency < b.orderFrequency ? 1 : a.orderFrequency > b.orderFrequency ? -1 : 0);
     });
   }
 
