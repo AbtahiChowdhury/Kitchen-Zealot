@@ -95,6 +95,11 @@ export class CheckoutComponent implements OnInit {
             this.productServe.update(cartItem.product.uid,cartItem.product);
           }
         }
+        if(this.order.subtotal == 0)
+        {
+          alert("Please add an Item to the cart");
+          return;
+        }
         this.order.tax = this.order.subtotal * .08875;
         this.order.discount = this.order.tax;
         if(customer.rank == "Guest")
@@ -125,6 +130,11 @@ export class CheckoutComponent implements OnInit {
         cartItem.product.orderFrequency = cartItem.product.orderFrequency ? cartItem.product.orderFrequency + cartItem.quantity:cartItem.quantity;
         this.order.subtotal += cartItem.product.price * cartItem.quantity;
         this.productServe.update(cartItem.product.uid,cartItem.product);
+      }
+      if(this.order.subtotal == 0)
+      {
+        alert("Please add an Item to the cart");
+        return;
       }
       this.order.tax = this.order.subtotal * .08875;
       this.order.discount = 0;

@@ -4,6 +4,7 @@ import { take } from 'rxjs/operators';
 import { Product } from 'src/app/interfaces/product';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,7 @@ export class OrderComponent implements OnInit
 {
   sortedOrders:Map<string,number>;
   sortedArray:Array<any>;
-  constructor(private orderServe:OrderService,private authServe:AuthService,private productServe:ProductService) { 
+  constructor(private orderServe:OrderService,private authServe:AuthService,private productServe:ProductService,private cartServe:CartService) { 
     this.sortedOrders = new Map();
     this.sortedArray = new Array();
     this.authServe.user$.pipe(take(1)).subscribe(user=>{
@@ -38,12 +39,32 @@ export class OrderComponent implements OnInit
           this.sortedArray.push(value);
         }
         this.sortedArray = this.sortedArray.sort((a,b)=>a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : 0);
-        console.log(this.sortedArray);
       })
     })
   }
 
   ngOnInit() {
+  }
+  vOrder()
+  {
+    const speechRecognition = Window['webkitSpeechRecognition'];
+    const {webkitSpeechRecognition} = (window as any);
+    let recognition = new webkitSpeechRecognition();
+    recognition.onresult = (event) =>{
+      let speechToText:string = event.results[0][0].transcript;
+      console.log(speechToText);
+      this.productServe.dummyChange();
+      this.productServe.productObservable.pipe(take(1)).subscribe(products=>{
+        for(let product of products)
+        {
+          if(product.title.toLowerCase() == speechToText.toLowerCase())
+          {
+            this.cartServe.addToCart(product);
+          }
+        }
+      })
+    }
+    recognition.start();
   }
 
 }

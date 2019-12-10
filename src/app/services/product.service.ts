@@ -43,6 +43,20 @@ export class ProductService {
     return this.afs.doc('products/'+uid).delete();
   }
 
+  dummyChange()
+  {
+    let id = this.afs.createId()
+    let product = {
+      uid:"",
+      title: "",
+      price: 0,
+      imageUrl: ""
+    }
+    product.uid = id;
+    this.productsCollection.doc(id).set(product);
+    this.afs.doc('products/'+id).delete();
+  }
+
   updateRating(product:Product)
   {
     let sum = 0;
