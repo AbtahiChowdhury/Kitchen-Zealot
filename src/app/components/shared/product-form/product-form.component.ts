@@ -27,6 +27,11 @@ export class ProductFormComponent implements OnInit,OnDestroy
 
   save(formValue)
   {
+    if(formValue.price < 0)
+    {
+      alert("Please enter a valid price");
+      return;
+    }
     this.authServe.user$.pipe(take(1)).subscribe(user=>{
       this.product.addedBy = user.uid;
       this.product.title = formValue.title;

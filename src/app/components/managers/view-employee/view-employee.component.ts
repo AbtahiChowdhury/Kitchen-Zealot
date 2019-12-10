@@ -45,6 +45,11 @@ export class ViewEmployeeComponent implements OnInit
 
   update(formValue)
   {
+    if(formValue.salary <= 30000)
+    {
+      alert("Below Minimum Salary");
+      return;
+    }
     let tempEmployee = {
       uid:this.uid,
       position:formValue.position,

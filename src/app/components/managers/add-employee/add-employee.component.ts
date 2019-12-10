@@ -16,6 +16,11 @@ export class AddEmployeeComponent implements OnInit {
 
   add(formValue)
   {
+    if(formValue.salary <= 30000)
+    {
+      alert("Below Minimum Salary");
+      return;
+    }
     this.addNewAuthServe.addNewEmployee(formValue);
     this.router.navigateByUrl("/manager/employees");
   }
