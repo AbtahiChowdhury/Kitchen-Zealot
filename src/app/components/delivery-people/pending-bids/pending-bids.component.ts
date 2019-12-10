@@ -21,6 +21,17 @@ export class PendingBidsComponent implements OnInit
 
   placeBid(order:Order,newBid:number)
   {
+    if(newBid == null)
+    {
+      alert("Please enter a bid");
+      return;
+    }
+    if(order.currentBid < newBid)
+    {
+      alert("Please enter an amount lower the current bid");
+      return;
+    }
+    
     if(order.currentBid > newBid && newBid > 0 && newBid != null)
     {
       order.currentBid = newBid;

@@ -6,7 +6,7 @@
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Remove</th>
+                    <th *ngIf = "!guest">Remove</th>
                 </tr>
             </thead>
             <tbody class="card-body">
@@ -14,7 +14,9 @@
                     <td>{{cartItem.product.title}}</td>
                     <td>{{cartItem.product.price|currency}}</td>
                     <td>{{cartItem.quantity}}</td>
-                    <td><button class="btn btn-danger"(click) = "removeAll(cartItem.product)">X</button></td>
+                    <td>
+                        <button *ngIf = "!guest" class="btn btn-danger"(click) = "removeAll(cartItem.product)">X</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Subtotal</td>
