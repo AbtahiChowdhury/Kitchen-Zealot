@@ -15,7 +15,7 @@
                     <tr *ngIf = "order.status == 'BIDDING'">
                         <td>{{order.orderedOn.seconds*1000 | date:'medium'}}</td>
                         <td>{{order.orderDestination}}</td>
-                        <td>{{order.currentBid? order.currentBid:"N/A"}}</td>
+                        <td>{{order.currentBid? (order.currentBid|currency):"N/A"}}</td>
                         <td>{{order.currentBidderName ? order.currentBidderName:"N/A"}}</td>
                         <td>
                             <input ngModel #bidValue = "ngModel" type="number" style="margin-right: 3%;">

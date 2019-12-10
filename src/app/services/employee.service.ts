@@ -119,20 +119,18 @@ export class EmployeeService {
             employee.salary = employee.salary + employee.salary *.1;
             this.updateEmployee(employee.uid,employee);
           });
+          return;
         }
       }
-      else
+      for(let i = 0;i<sortedOrders.length;i++)
       {
-        for(let i = 0;i<sortedOrders.length;i++)
+        if(sortedOrders[i].supplyRating != null)
         {
-          if(sortedOrders[i].supplyRating != null)
-          {
-            count++;
-            sum += sortedOrders[i].supplyRating;
-          }
+          count++;
+          sum += sortedOrders[i].supplyRating;
         }
-        return;
       }
+      
 
       let average = 0;
       if(count != 0 )
@@ -149,7 +147,7 @@ export class EmployeeService {
           employee.warningCount = employee.warningCount?employee.warningCount+1:1;
           employee.salary = employee.salary - employee.salary *.1;
         }
-        if(employee.warningCount > 3)
+        if(employee.warningCount >= 3)
         {
           employee.active = false;
           this.getUser(uid).pipe(take(1)).subscribe(user=>{

@@ -23,8 +23,15 @@ export class AllOrdersComponent implements OnInit
 
   stopBid(order:Order)
   {
-    order.status = "BID OVER";
-    this.orderServe.updateOrder(order.uid,order);
+    if(order.currentBidder == null)
+    {
+      alert("No bid has been placed");
+    }
+    else
+    {
+      order.status = "BID OVER";
+      this.orderServe.updateOrder(order.uid,order);
+    }
   }
 
   ngOnInit() {

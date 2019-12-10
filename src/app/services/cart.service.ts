@@ -33,12 +33,12 @@ export class CartService
           if(cartItem.product.uid == product.uid)
           {
             cartItem.quantity += 1;
-            this.custServe.updateCustomer(user.uid,customer);
+            this.custServe.updateCustomer((user.uid.trim()),customer);
             return;
           }
         }
         customer.shoppingCart.push({product:product,quantity:1});
-        this.custServe.updateCustomer(user.uid,customer);
+        this.custServe.updateCustomer((user.uid.trim()),customer);
       });
     });
   }
@@ -56,7 +56,7 @@ export class CartService
             {
               customer.shoppingCart.splice(cartIndex,1);
             }
-            this.custServe.updateCustomer(user.uid,customer);
+            this.custServe.updateCustomer((user.uid.trim()),customer);
             return;
           }
         }
@@ -77,7 +77,7 @@ export class CartService
   updateCart(customer:Customer)
   {
     this.authServe.user$.pipe(take(1)).subscribe(user=>{
-      this.custServe.updateCustomer(user.uid,customer);
+      this.custServe.updateCustomer((user.uid.trim()),customer);
     })
   }
 

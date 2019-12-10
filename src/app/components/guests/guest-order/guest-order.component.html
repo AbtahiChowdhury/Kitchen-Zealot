@@ -1,3 +1,17 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="thead-dark card-header">
+            <tr>
+                <th colspan = "3">Most Popular</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td *ngIf = "sortedProducts[0]">{{sortedProducts[0].title}}</td>
+            <td *ngIf = "sortedProducts[1]">{{sortedProducts[1].title}}</td>
+            <td *ngIf = "sortedProducts[2]">{{sortedProducts[2].title}}</td>
+        </tbody>
+    </table>
+</div>
 <div class="row">
     <div class="col-8"><app-menu [showActions] = "true" [guest] = "true"></app-menu></div>
     <div class="col-3"><app-cart [checkout] = "false" [guest] = "true"></app-cart></div>
