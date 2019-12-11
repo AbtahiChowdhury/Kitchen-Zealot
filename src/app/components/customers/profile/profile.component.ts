@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit
   customerCVV:string = "";
   customerExpirationDate:string = "";
   customerCart:CartItem[] = null;
+  customerRank:string = "";
 
   constructor(private custServe:CustomerService)
   {
@@ -38,6 +39,7 @@ export class ProfileComponent implements OnInit
       this.customerCVV = customer.paymentDetails.CVV;
       this.customerExpirationDate = customer.paymentDetails.expirationDate;
       this.customerCart = customer.shoppingCart;
+      this.customerRank = customer.rank;
     })
 
   }
