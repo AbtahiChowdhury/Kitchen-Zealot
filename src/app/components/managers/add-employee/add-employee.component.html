@@ -4,7 +4,7 @@
         <form #form = "ngForm" (ngSubmit) = "add(form.value)" class="card-body"> 
             <div class = "form-group">
                 <label for="name">Name</label>
-                <input ngModel type="text" required #name = "ngModel" name="name" class="form-control">
+                <input ngModel type="text" pattern ="[a-zA-Z][a-zA-Z ]*" required #name = "ngModel" name="name" class="form-control">
                 <div *ngIf = "name.touched && name.invalid" class="alert alert-danger">
                     Name is Required
                 </div>
@@ -20,28 +20,28 @@
 
             <div class = "form-group">
                 <label for="phone">Phone Number</label>
-                <input ngModel type="tel" required #phone = "ngModel" name="phone" class="form-control">
+                <input ngModel type="tel" pattern="[0-9]{10}" required #phone = "ngModel" name="phone" class="form-control">
                 <div *ngIf = "phone.touched && phone.invalid" class="alert alert-danger">
-                    Password is Required
+                    Phone Number is Required
                 </div>
             </div>
 
             <div class = "form-group">
                 <label for="position">Position</label>
-            <select ngModel #position = "ngModel" class = "form-control" name="position" id="position">
+                <select ngModel #position = "ngModel" class = "form-control" name="position" id="position">
                     <option value=""></option>
-                <option value="cook">Cook</option>
-                <option value="delivery">Delivery</option>
-                <option value="salesperson">Salesperson</option>
-            </select>
-                <div *ngIf = "position.touched && position.invalid" class="alert alert-danger">
-                    Position is Required
-                </div>
+                    <option value="cook">Cook</option>
+                    <option value="delivery">Delivery</option>
+                    <option value="salesperson">Salesperson</option>
+                </select>
+                    <div *ngIf = "position.touched && position.invalid" class="alert alert-danger">
+                        Position is Required
+                    </div>
             </div>
 
             <div class = "form-group">
                 <label for="salary">Salary</label>
-                <input ngModel type="number" required #salary = "ngModel" name="salary" class="form-control">
+                <input ngModel type="number" pattern="[0-9]+" required #salary = "ngModel" name="salary" class="form-control">
                 <div *ngIf = "salary.touched && salary.invalid" class="alert alert-danger">
                     Salary is Required
                 </div>
