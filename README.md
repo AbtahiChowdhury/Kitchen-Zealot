@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Additonal Info
+
+Make sure to extract and download the environments folder from [here](https://drive.google.com/file/d/1tGNdjRjlrCBNHutG-iosvuh5GpbbpKD5/view?usp=sharing). Set the file path to `csc322/src/environments`.
+
+## Over View
+
+### Scope
+Our system allows users to purchase different consumable products, and have it delivered to their residence as fast as possible. We aim to create a user friendly product that makes it easy for customers to order food and employees to manage their responsibilities. The system boasts different views complemented by different functionalities for user type
+
+Our system not only does it allow customers (registered users) and guests (unregistered users) to order and receive food,but also gives managers, salespeople, cooks, and delivery people access to their own page to handle services in the company. Delivery people have access to see all the different orders from customers and guests, and bid on them. Salespeople are given comments from cooks, to know and order ingredients that are needed. Cooks are allowed to request more supplies from salespeople, rate salespeople, and change menu items. Managers can approve guest to customers, view order history, view all ratings, start delivery bidding process per order, pay employees, hire/fire employees, and remove warnings.
+
+For more information visit `csc322/Reports`
