@@ -41,7 +41,7 @@ export class MyOrdersComponent implements OnInit,OnDestroy {
   {
     if(Number(value) < 3)
     {
-      document.getElementById("foodRatingButton").click();
+      document.getElementById("foodCommentButton").click();
     }
     
     for(let item of order.contents)

@@ -28,12 +28,12 @@ export class MenuComponent implements OnInit,OnDestroy {
       this.sortedProducts = new Array();
       for(let product of products)
       {
-        if(product.category == "Main")
+        if(product.category == "Main" && product.status == "ACTIVE")
         {
           this.mainProduct.push(product);
           this.sortedProducts.push(product);
         }
-        if(product.category == "Side")
+        if(product.category == "Side" && product.status == "ACTIVE")
           this.sideProduct.push(product);
       }
 

@@ -52,7 +52,7 @@
                         <td>{{order.orderDestination}}</td>
                         <td>{{order.deliveredOn?(order.deliveredOn.seconds*1000 | date:'medium'):"N/A"}}</td>
                         <td>{{order.deliveryRating?order.deliveryRating:"N/A"}}</td>
-                        <td *ngIf = "!order.deliveryRating">
+                        <td *ngIf = "!order.deliveryRating && !order.customerRating">
                             <select [(ngModel)] = "order.customerRating" #customerRating = "ngModel" name="customerRating" id="customerRating" class = "form-control" (change) = "customerRatingChange(order,customerRating.value)">
                                 <option value = "1">1</option>
                                 <option value = "2">2</option>
@@ -61,7 +61,8 @@
                                 <option value = "5">5</option>
                             </select>
                         </td>
-                        <td *ngIf = "order.deliveryRating">N/A</td>
+                        <td *ngIf = "order.deliveryRating && !order.customerRating">N/A</td>
+                        <td *ngIf = "order.deliveryRating && order.customerRating">{{order.customerRating}}</td>
                         <td><a class = "btn btn-outline-primary" [routerLink] = "['/delivery/orders/',order.uid]">View</a></td>
                     </tr>
                 </ng-container>

@@ -13,7 +13,7 @@ export class SupplyOrdersService {
 
   constructor(private afs:AngularFirestore) 
   { 
-    this.ordersCollection = this.afs.collection("supply-orders");
+    this.ordersCollection = this.afs.collection("supply-orders", ref => ref.orderBy("orderedOn","desc"));
     this.ordersObservable = this.ordersCollection.valueChanges({idField:"uid"});
   }
 

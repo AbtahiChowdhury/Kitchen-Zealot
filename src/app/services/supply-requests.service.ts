@@ -13,7 +13,7 @@ export class SupplyRequestsService {
 
   constructor(private afs:AngularFirestore) 
   { 
-    this.requestsCollection = this.afs.collection("supply-requests");
+    this.requestsCollection = this.afs.collection("supply-requests", ref => ref.orderBy("requestedOn","desc"));
     this.requestsObservable = this.requestsCollection.valueChanges({idField:"uid"});
   }
 

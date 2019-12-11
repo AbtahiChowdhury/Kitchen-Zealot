@@ -54,7 +54,8 @@ export class DeliveredOrdersComponent implements OnInit {
   track(order:Order)
   {
     let parsedAddress = order.orderDestination.replace(" ","+");
-    window.location.href = "https://www.google.com/maps/dir/The+City+College+of+New+York,+160+Convent+Ave,+New+York,+NY+10031/"+parsedAddress;
+    window.open("https://www.google.com/maps/dir/The+City+College+of+New+York,+160+Convent+Ave,+New+York,+NY+10031/"+parsedAddress);
+    //window.location.href = "https://www.google.com/maps/dir/The+City+College+of+New+York,+160+Convent+Ave,+New+York,+NY+10031/"+parsedAddress;
   }
 
   ngOnInit() {
