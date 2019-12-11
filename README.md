@@ -49,15 +49,23 @@ For more information visit `csc322/Reports`
 
 ##  Assumptions and Dependencies
 
-Customers can’t change their name/email/phone number or use different credentials to register
-Employees are not customers--they can’t order food
-There is always one manager in the system
-There are always at least two delivery people to bid
-There is always at least one cook
-There is always at least one salesperson
-If users have an account they will not login as guest
-There is only one store location
-~~Only users within our vicinity~~ We have now expanded to all of NYC
+1. Customers can’t change their name/email/phone number or use different credentials to register
+
+2. Employees are not customers--they can’t order food
+
+3. There is always one manager in the system
+
+4. There are always at least two delivery people to bid
+
+5. There is always at least one cook
+
+6. There is always at least one salesperson
+
+7. If users have an account they will not login as guest
+
+8. There is only one store location
+
+9. ~~Only users within our vicinity~~ We have now expanded to all of NYC
 
 ## References
 
