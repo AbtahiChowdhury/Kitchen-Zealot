@@ -1,3 +1,4 @@
+import { ManagerGuardService } from './services/guards/manager-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/homepage/home/home.component';
