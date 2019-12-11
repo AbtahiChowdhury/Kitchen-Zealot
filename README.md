@@ -53,6 +53,6 @@ Only users within our vicinity
 
 ## References
 
-Professor Jie Wei Software Requirements [here](http://www-cs.ccny.cuny.edu/~csjie/322/f19/proj_req_f19.docx).
+[Professor Jie Wei Software Requirements](http://www-cs.ccny.cuny.edu/~csjie/322/f19/proj_req_f19.docx).
 
-Professor Jie Wei Software Requirement Specification Template [here](http://www-cs.ccny.cuny.edu/~csjie/322/spec_sample.pdf). 
+[Professor Jie Wei Software Requirement Specification Template](http://www-cs.ccny.cuny.edu/~csjie/322/spec_sample.pdf). 
