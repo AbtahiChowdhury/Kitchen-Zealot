@@ -28,14 +28,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Additonal Info
 
-Make sure to extract and download the environments folder from [here](https://drive.google.com/file/d/1tGNdjRjlrCBNHutG-iosvuh5GpbbpKD5/view?usp=sharing). Set the file path to `csc322/src/environments`.
+**Make sure** to extract and download the environments folder from [here](https://drive.google.com/file/d/1tGNdjRjlrCBNHutG-iosvuh5GpbbpKD5/view?usp=sharing). Set the file path to `csc322/src/environments`.
 
-## Over View
+## OverView
 
-### Scope
+### Scope of our System
 Our system allows users to purchase different consumable products, and have it delivered to their residence as fast as possible. We aim to create a user friendly product that makes it easy for customers to order food and employees to manage their responsibilities. The system boasts different views complemented by different functionalities for user type
 
-Our system not only does it allow customers (registered users) and guests (unregistered users) to order and receive food,but also gives managers, salespeople, cooks, and delivery people access to their own page to handle services in the company. Delivery people have access to see all the different orders from customers and guests, and bid on them. Salespeople are given comments from cooks, to know and order ingredients that are needed. Cooks are allowed to request more supplies from salespeople, rate salespeople, and change menu items. Managers can approve guest to customers, view order history, view all ratings, start delivery bidding process per order, pay employees, hire/fire employees, and remove warnings.
+Our system not only allows customers (registered users) and guests (unregistered users) to order and receive food, but also gives managers, salespeople, cooks, and delivery people access to their own pages to handle services in the company. 
+**Delivery people** have access to see all the different orders from customers and guests, and bid on them. **Salespeople** are given comments from cooks, to know and order ingredients that are needed. 
+**Cooks** are allowed to request more supplies from salespeople, rate salespeople, and change menu items. **Managers** can approve guest to customers, view order history, view all ratings, start delivery bidding process per order, pay employees, hire/fire employees, and remove warnings.
 
 For more information visit `csc322/Reports`
 
@@ -49,10 +51,10 @@ There is always at least one cook
 There is always at least one salesperson
 If users have an account they will not login as guest
 There is only one store location
-Only users within our vicinity 
+~~Only users within our vicinity~~ We have now expanded to all of NYC
 
 ## References
 
-[Professor Jie Wei Software Requirements](http://www-cs.ccny.cuny.edu/~csjie/322/f19/proj_req_f19.docx).
+[Professor Jie Wei Software Requirements](http://www-cs.ccny.cuny.edu/~csjie/322/f19/proj_req_f19.docx)
 
-[Professor Jie Wei Software Requirement Specification Template](http://www-cs.ccny.cuny.edu/~csjie/322/spec_sample.pdf). 
+[Professor Jie Wei Software Requirement Specification Template](http://www-cs.ccny.cuny.edu/~csjie/322/spec_sample.pdf)
