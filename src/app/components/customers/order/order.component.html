@@ -1,5 +1,4 @@
-<div class="container">
-    <button class="btn btn-block btn-primary" (click) = "vOrder()">VOICE ORDER</button>
+<div class="container" style="margin-bottom: 2%">
     <table class="table table-bordered">
         <thead class="thead-dark card-header">
             <tr>
@@ -13,7 +12,11 @@
         </tbody>
     </table>
 </div>
-<div class="row">
+<hr>
+
+<button class="btn btn-block btn-primary container" (click) = "vOrder()" style="margin-bottom: 1%">VOICE ORDER</button>
+
+<div class="row" style="margin-top: 2%; margin-bottom: 2%;">
     <div class="col-8"><app-menu [showActions] = "true" [guest] = "false" [cook] = "false"></app-menu></div>
     <div class="col-3"><app-cart [checkout] = "false" [guest] = "false"></app-cart></div>
 </div>
