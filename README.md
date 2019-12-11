@@ -2,8 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 **PLEASE NOTE THAT THE ENVIRONMENTS FOLDER IS NOT IN THIS REPOSITORY DUE TO SECURITY REASONS**
+
 **THIS PROJECT WILL NOT RUN WITHOUT THE ENVIRONMENTS FOLDER**
+
 **If you want to see the project in action please click the following link** 
+
 [Kitchen Zealot](https://kitchen-zealot.firebaseapp.com/)
 
 ## Development server
