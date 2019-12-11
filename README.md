@@ -56,7 +56,7 @@ For more information visit `csc322/Reports`
 
 3. There is always one manager in the system
 
-4. ~~There are always at least two delivery people to bid~~ One is sufficient now
+4. There are always at least two delivery people to bid
 
 5. There is always at least one cook
 
@@ -67,6 +67,18 @@ For more information visit `csc322/Reports`
 8. There is only one store location
 
 9. ~~Only users within our vicinity~~ We have now expanded to all of NYC
+
+10. Customers will only input valid data i.e. Address, Email
+
+11. There will always be atleast one menu item available to order
+
+12. When voice ordering customers will only add one item at a time
+
+13. Payment details are always valid and contain enough money to pay for the ordered food
+
+14. Cooks will always enter a valid image url when adding a menu item
+
+15. Supplies ordered by salespeople come from external sources and are available immediately
 
 ## References
 
