@@ -19,7 +19,7 @@
 
             <div class = "form-group">
                 <label for="salary">Salary</label>
-                <input [ngModel] = "employeeSalary" type="number" required #salary = "ngModel" name="salary" class="form-control">
+                <input [ngModel] = "employeeSalary" pattern="[0-9]+" ztype="number" required #salary = "ngModel" name="salary" class="form-control">
                 <div *ngIf = "salary.touched && salary.invalid" class="alert alert-danger">
                     Salary is Required
                 </div>
@@ -27,11 +27,28 @@
 
             <div class = "form-group">
                 <label for="position">Position</label>
+                <select ngModel #position = "ngModel" required #position = "ngModel" class = "form-control" name="position" id="position">
+                    <option value=""></option>
+                    <option value="cook">Cook</option>
+                    <option value="delivery">Delivery</option>
+                    <option value="salesperson">Salesperson</option>
+                </select>
+                <!--
+                    <div *ngIf = "position.touched && position.invalid" class="alert alert-danger">
+                        Position is Required
+                    </div>
+                -->
+                
+            </div>
+            <!--
+            <div class = "form-group">
+                <label for="position">Position</label>
                 <input [ngModel] = "employeePosition" type="text" required #position = "ngModel" name="position" class="form-control">
                 <div *ngIf = "position.touched && position.invalid" class="alert alert-danger">
                     Position is Required
                 </div>
             </div>
+            -->
 
             <div class = "form-group">
                 <label for="averageRating">Average Rating</label>
