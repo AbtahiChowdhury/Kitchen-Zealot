@@ -38,3 +38,20 @@ Our system allows users to purchase different consumable products, and have it d
 Our system not only does it allow customers (registered users) and guests (unregistered users) to order and receive food,but also gives managers, salespeople, cooks, and delivery people access to their own page to handle services in the company. Delivery people have access to see all the different orders from customers and guests, and bid on them. Salespeople are given comments from cooks, to know and order ingredients that are needed. Cooks are allowed to request more supplies from salespeople, rate salespeople, and change menu items. Managers can approve guest to customers, view order history, view all ratings, start delivery bidding process per order, pay employees, hire/fire employees, and remove warnings.
 
 For more information visit `csc322/Reports`
+
+##  Assumptions and Dependencies
+
+Customers can’t change their name/email/phone number or use different credentials to register
+Employees are not customers--they can’t order food
+There is always one manager in the system
+There are always at least two delivery people to bid
+There is always at least one cook
+There is always at least one salesperson
+If users have an account they will not login as guest
+There is only one store location
+Only users within our vicinity 
+
+## References
+
+[Professor Jie Wei Software Requirements] (http://www-cs.ccny.cuny.edu/~csjie/322/f19/proj_req_f19.docx).
+[Professor Jie Wei Software Requirement Specification Template] (http://www-cs.ccny.cuny.edu/~csjie/322/spec_sample.pdf). 
