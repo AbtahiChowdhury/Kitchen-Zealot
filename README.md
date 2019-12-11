@@ -32,9 +32,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## OverView
 
-### Scope of our System
+### What is our System?
 Our system allows users to purchase different consumable products, and have it delivered to their residence as fast as possible. We aim to create a user friendly product that makes it easy for customers to order food and employees to manage their responsibilities. The system boasts different views complemented by different functionalities for user type
 
+### How does it work?   
 Our system not only allows customers (registered users) and guests (unregistered users) to order and receive food, but also gives managers, salespeople, cooks, and delivery people access to their own pages to handle services in the company. 
 
 **Delivery people** have access to see all the different orders from customers and guests, and bid on them.
@@ -51,11 +52,11 @@ For more information visit `csc322/Reports`
 
 1. Customers can’t change their name/email/phone number or use different credentials to register
 
-2. Employees are not customers--they can’t order food
+2. Employees are not customers, so they can’t order food
 
 3. There is always one manager in the system
 
-4. There are always at least two delivery people to bid
+4. ~~There are always at least two delivery people to bid~~ One is sufficient now
 
 5. There is always at least one cook
 
