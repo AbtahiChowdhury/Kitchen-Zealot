@@ -36,8 +36,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Our system allows users to purchase different consumable products, and have it delivered to their residence as fast as possible. We aim to create a user friendly product that makes it easy for customers to order food and employees to manage their responsibilities. The system boasts different views complemented by different functionalities for user type
 
 Our system not only allows customers (registered users) and guests (unregistered users) to order and receive food, but also gives managers, salespeople, cooks, and delivery people access to their own pages to handle services in the company. 
-**Delivery people** have access to see all the different orders from customers and guests, and bid on them. **Salespeople** are given comments from cooks, to know and order ingredients that are needed. 
-**Cooks** are allowed to request more supplies from salespeople, rate salespeople, and change menu items. **Managers** can approve guest to customers, view order history, view all ratings, start delivery bidding process per order, pay employees, hire/fire employees, and remove warnings.
+
+**Delivery people** have access to see all the different orders from customers and guests, and bid on them.
+
+**Salespeople** are given comments from cooks, to know and order ingredients that are needed. 
+
+**Cooks** are allowed to request more supplies from salespeople, rate salespeople, and change menu items. 
+
+**Managers** can approve guest to customers, view order history, view all ratings, start delivery bidding process per order, pay employees, hire/fire employees, and remove warnings.
 
 For more information visit `csc322/Reports`
 
