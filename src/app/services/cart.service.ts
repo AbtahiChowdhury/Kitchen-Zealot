@@ -22,6 +22,11 @@ export class CartService
       this.cart$ = new BehaviorSubject(this.cart);
       this.cart$.next(this.cart);
     }
+    else{
+      localStorage.setItem("cart",JSON.stringify(this.cart));
+      this.cart$ = new BehaviorSubject(this.cart);
+      this.cart$.next(this.cart);
+    }
   }
 
   addToCart(product:Product)
