@@ -90,6 +90,6 @@ For more information visit `csc322/Reports`
 
 ## References
 
-[Professor Jie Wei Software Requirements](http://www-cs.ccny.cuny.edu/~csjie/322/f19/proj_req_f19.docx)
+[Professor Jie Wei Software Requirements](https://github.com/AbtahiChowdhury/Kitchen-Zealot/blob/master/proj_req_f19.docx)
 
 [Professor Jie Wei Software Requirement Specification Template](http://www-cs.ccny.cuny.edu/~csjie/322/spec_sample.pdf)
